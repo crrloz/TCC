@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="images/logo/"/>
+
+    <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones -->
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="themify/themify-icons.css">
+    <script src="https://kit.fontawesome.com/7511bd6378.js" crossorigin="anonymous"></script>
+
+    <!-- ESTILIZAÇÃO PRINCIPAL -->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">

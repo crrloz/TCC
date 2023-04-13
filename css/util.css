@@ -2250,6 +2250,15 @@
 
 /* ------------------------------------ */
 
+/*[WRAP PIC]*/
+
+.wrap-pic-w img {width: 100%;}
+.wrap-pic-max-w img {max-width: 100%;}
+.wrap-pic-h img {height: 100%;}
+.wrap-pic-max-h img {max-height: 100%;}
+
+/* ------------------------------------ */
+
 /*[TAMANHOS]*/
 
 .size1 {
@@ -2614,6 +2623,13 @@
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
+}
+
+/* [LAYOUT] */
+
+.flex-w {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 /* [RESPONSIVIDADE] */

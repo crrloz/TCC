@@ -50,13 +50,8 @@ body, html {
 /* ------------------------------------ */
 
 a {
-  font-weight: 400;
-  font-size: 15px;
-  text-decoration: none;
-  line-height: 1.7;
-  color: #666666;
+  color: #ffffff;
   margin: 0px;
-  transition: all 0.4s;
 }
 
 a:focus {
@@ -200,6 +195,7 @@ nav {
   position: absolute;
   z-index: 1;
   color: white;
+  top: 0;
 }
 
 menu ul li a {
@@ -244,36 +240,18 @@ menu ul li a {
 
 .btn-show-sidebar {
   width: 26px;
-  height: 15px;
-  border-top: 1px solid #666666;
-  border-bottom: 1px solid #666666;
+  height: 7px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
   display: none;
 }
 
 .btn-show-sidebar:hover {
-  border-top: 2px solid #1d1d1d;
-  border-bottom: 2px solid #1d1d1d;
+  border-top: 2px solid rgb(250, 238, 221);;
+  border-bottom: 2px solid rgb(250, 238, 221);;
 }
 
-@media (max-width: 990px){
-  .menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .main_menu {
-    display: none;
-  }
-  .btn-show-sidebar {
-    display: block;
-    margin-right: 10px;
-  }
-  .logo {
-    margin-left: 10px;
-  }
-}
-
-.btn-login {
+.btn-user {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -286,10 +264,28 @@ menu ul li a {
   cursor: pointer;
 }
 
-.btn-login:hover{
+.btn-user:hover{
   color: black;
   background: white;
   transition: 0.4s;
+}
+
+@media (max-width: 980px){
+  .menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .list-section, .btn-user {
+    display: none;
+  }
+  .btn-show-sidebar {
+    display: block;
+    margin-right: 10px;
+  }
+  .logo {
+    margin-left: 10px;
+  }
 }
 
 /* ------------------------------------ */
@@ -312,6 +308,30 @@ menu ul li a {
   position: absolute;
 	right: 40px;
 	bottom: 70px;
+}
+
+/* [NOTÍCIAS] */
+
+.item-news-gallery {
+  display: block;
+  position: relative;
+  width: calc((100% - 30px) / 3 );
+  margin: 5px;
+}
+
+.item-news-gallery::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: all 0.4s;
+}
+
+.item-news-gallery:hover:after {
+  background-color: rgba(124, 124, 124, 0.7);
 }
 
 /*[BUTTONS]*/
