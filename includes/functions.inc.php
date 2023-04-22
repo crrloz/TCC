@@ -41,20 +41,18 @@ function pwdMatch($pwd, $pwdRepeat){
     return $result;
 }
 
-function uidExists($conn, $username, $email){
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+function uidExists($conn, $username) {
+    $sql = "SELECT * FROM users WHERE usersUid = ?;";
     $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../signup.php?error=statementfailed");
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../login.php?error=stmtfailed");
         exit();
     }
-
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+    mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
-
     $resultData = mysqli_stmt_get_result($stmt);
 
-    if(mysqli_fetch_assoc($resultData)){
+    if ($row = mysqli_fetch_assoc($resultData)) {
         return $row;
     } else {
         $result = false;
@@ -93,25 +91,28 @@ function emptyInputLogin($username, $pwd){
     return $result;
 }
 
-function loginUser($conn, $username, $pwd){
-    $uidExists = uidExists($conn, $username, $username);
+// Função que verifica se um usuário com o username especificado existe no banco de dados
 
-    if($uidExists === false){
+
+// Função que faz o login de um usuário
+function loginUser($conn, $username, $pwd) {
+    $uidExists = uidExists($conn, $username);
+
+    if ($uidExists === false) {
         header("location: ../login.php?error=wronglogin");
         exit();
     }
 
-    $pwdHashed = $uidExists["pwdUsers"];
+    $pwdHashed = $uidExists["usersPwd"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
-    if($checkPwd === false){
+    if ($checkPwd === false) {
         header("location: ../login.php?error=wronglogin");
         exit();
-    }
-    else if($checkPwd === true){
+    } else if ($checkPwd === true) {
         session_start();
-        $_SESSION["userid"] = $uidExists["idUsers"];
-        $_SESSION["useruid"] = $uidExists["uidUsers"];
+        $_SESSION["userid"] = $uidExists["usersId"];
+        $_SESSION["useruid"] = $uidExists["usersUid"];
         header("location: ../index.php");
         exit();
     }
