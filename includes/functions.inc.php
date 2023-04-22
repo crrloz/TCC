@@ -94,7 +94,7 @@ function emptyInputLogin($username, $pwd){
 }
 
 function loginUser($conn, $username, $pwd){
-    $uidExists = uidExists($conn, $username, $email);
+    $uidExists = uidExists($conn, $username, $username);
 
     if($uidExists === false){
         header("location: ../login.php?error=wronglogin");
