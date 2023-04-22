@@ -4,6 +4,23 @@
 ?>
     <title>Coletivo Humanos</title>
 </head>
+<style>
+    .entry-shape {
+        height: 85vh;
+        width: 60vh;
+        border-radius: 15rem;
+        background-color: black;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+    }
+
+    .section-half {
+        padding: 60px 0;
+    }
+</style>
 <body style="background-color: rgb(250, 238, 221);">
     <!-- Sidebar -->
 	<aside class="sidebar trans-0-4">
@@ -13,11 +30,11 @@
 		<!-- - -->
 		<ul class="menu-sidebar p-t-95 p-b-70">
 			<li class="t-center m-b-13">
-				<a href="fem.html" class="txt19">Roupas pra ela</a>
+				<a href=".html" class="txt19">aaaaa</a>
 			</li>
 
             <li class="t-center m-b-13">
-				<a href="workingonit.html" class="txt19">Roupas pra ele</a>
+				<a href=".html" class="txt19">aaa</a>
 			</li>
 
 			<li class="t-center">
@@ -34,6 +51,9 @@
 	<!-- Entrada -->
     <section class="section-entry">
         <div class="wrap-title-page">
+            <div class="entry-shape">
+                smthing
+            </div>
             <div class="item-title-page" style="background-image: url(images/fundoteste.jpg);">
                 <div class="wrap-content">
                     <span class="f-glitten">
@@ -52,14 +72,20 @@
         </div>
     </section>
 
-    <section class="section- h-half">
+    <section class="section-half">
         <div class="container">
+            <div class="wrap-text-about pos-absolute">
+                <span class="f-glitten fs-60">Quem </span>
+                <span><i class="f-glitten fs-60">Somos?</i></span>
+            </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="m-t-27" style="background-color: #88a131; height: 250px; width: 375px;"></div>
+                    
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, esse aliquid. Et at iusto dolorem sunt, obcaecati repudiandae recusandae ad eveniet saepe a dignissimos praesentium provident sint dolore dolor ut. <br>
+                    
                 </div>
                 <div class="col-md-6">
-                    <span class="ab-b-r" style="text-align: right;"><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quod vero rem quam! Ea provident, repellat.</a></span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint sed quaerat delectus fuga beatae molestias? Totam sequi voluptatem hic magni dolorem omnis reiciendis facere, dignissimos mollitia obcaecati accusamus nisi!
                 </div>
             </div>
         </div>

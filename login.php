@@ -10,7 +10,7 @@
             <input type="text" name="uid" placeholder="Usuário/E-mail">
             <input type="password" name="pwd" placeholder="Senha">
 
-            <input type="submit" value="Logar">
+            <input type="submit" name="submit" value="Logar">
 
             <?php
                 if(isset($_GET["error"])){

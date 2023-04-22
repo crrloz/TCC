@@ -26,7 +26,7 @@
                         if(isset($_SESSION["useruid"])){
                             echo '<a href="profile.php">Meu Perfil</a>';
                         } else {
-                            echo '<a href="signup.php">Sign-up</a>';
+                            echo '<a href="signup.php">Cadastro</a>';
                         } ?>
                     </div>
                     
