@@ -17,8 +17,38 @@
         transform: translate(-50%, -50%);
     }
 
-    .section-half {
-        padding: 60px 0;
+    .section-half .container .row {
+        padding: 95px 0;
+    }
+
+    .col-gr {
+        color: #718928;
+    }
+
+    .hov_underline {
+        display: inline-block;
+        position: relative;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+
+    .hov_underline:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        color: #808080;
+        background-color: #808080;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    .hov_underline:hover:after{
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 </style>
 <body style="background-color: rgb(250, 238, 221);">
@@ -74,15 +104,14 @@
 
     <section class="section-half">
         <div class="container">
-            <div class="wrap-text-about pos-absolute">
-                <span class="f-glitten fs-60">Quem </span>
-                <span><i class="f-glitten fs-60">Somos?</i></span>
+            <div class="wrap-text-about pos-absolute p-t-15">
+                <span><i class="f-glitten fs-60 col-gr">Quem </i></span>
+                <span class="f-glitten fs-60 col-gr">SOMOS?</span>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, esse aliquid. Et at iusto dolorem sunt, obcaecati repudiandae recusandae ad eveniet saepe a dignissimos praesentium provident sint dolore dolor ut. <br>
-                    
+                    <span class="hov_underline">Descobrir mais</span>
                 </div>
                 <div class="col-md-6">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint sed quaerat delectus fuga beatae molestias? Totam sequi voluptatem hic magni dolorem omnis reiciendis facere, dignissimos mollitia obcaecati accusamus nisi!
@@ -90,6 +119,45 @@
             </div>
         </div>
     </section>
+
+    <section class="section-divider">
+        <div class="divider-image p-t-150 p-b-150" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;"></div>
+    </section>
+
+    <div class="section-section-news">
+        <div class="container">
+            <div class="row p-t-30 p-b-30">
+                <div class="col-md-6 p-t-60 p-b-60" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                    <a href="">Red Velvet o melhor grupo atualmente ativo... Sinto muito.</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                            </div>
+                            <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                                <!-- conteúdo da segunda div da primeira coluna da segunda metade -->
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                                <!-- conteúdo da primeira div da segunda coluna da segunda metade -->
+                            </div>
+                            <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                                <!-- conteúdo da segunda div da segunda coluna da segunda metade -->
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php include_once 'footer.php' ?>
 </body>
