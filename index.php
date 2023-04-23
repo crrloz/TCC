@@ -22,6 +22,10 @@
     <title>Coletivo Humanos</title>
 </head>
 <style>
+    .sizefull {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     .col-gr_2 {
         color: #2A3A1E;
     }
@@ -185,27 +189,28 @@
         <!-- Notícias -->
         <div class="container">
             <div class="row p-t-30 p-b-30">
-                <div class="col-md-6 p-t-120" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                <div class="col-md-6 p-t-250 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
                     <a href="">Hmmm</a>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
-                                <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                    <a href="">Seulgi we freaking luv u likee..........</a>
                                 </div>
-                                <div class="col-md-12 p-t-30 p-b-60" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
-                                    <!-- conteúdo da segunda div da primeira coluna da segunda metade -->
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                    <a href="">Idk</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row">
-                                <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
-                                    <!-- conteúdo da primeira div da segunda coluna da segunda metade -->
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                    <a href="">Why am I so good at everything I do</a>
                                 </div>
-                                <div class="col-md-12 p-t-30 p-b-30" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg); background-size: cover; background-repeat: no repeat;">
-                                    <!-- conteúdo da segunda div da segunda coluna da segunda metade -->
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                    <a href="">Like i rlly lms sm</a>
                                 </div>
                             </div>
                         </div>
