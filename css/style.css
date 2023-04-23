@@ -299,6 +299,12 @@ menu ul li a {
   height: 100vh;
 }
 
+.item-divider {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .wrap-content {
   position: absolute;
   color: #dcd7be;
@@ -385,9 +391,6 @@ menu ul li a {
 }
 
 .btn3{
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: black;
   background: none;
   border: black solid 0.1rem;
