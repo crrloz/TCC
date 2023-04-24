@@ -85,14 +85,11 @@
         font: inherit;
         font-size: 1.125rem;
         padding: .25rem 0;
-        &:focus, &:valid {
-            outline: 0;
-            border-bottom-color: #6658d3;
-            &+.input-label {
-                color: #6658d3;
-                transform: translateY(-1.5rem);
-            }
-        }
+    }
+
+    .input-field:focus, .input-field:valid {
+        outline: 0;
+        border-bottom: 0.1rem solid black;
     }
 
     .action {
@@ -143,13 +140,31 @@
                     <div class="signup-form m-t-120 t-center">
                         <h2>Cadastre-se Agora!</h2>
                         <form action="includes/signup.inc.php" method="post">
-                            <input type="text" name="name" placeholder="Nome completo" class="input-field">
-                            <input type="text" name="email" placeholder="E-mail" class="input-field">
-                            <input type="text" name="uid" placeholder="Usuário" class="input-field">
-                            <input type="password" name="pwd" placeholder="Senha" class="input-field">
-                            <input type="password" name="pwdrepeat" placeholder="Repetir senha" class="input-field">
-
-                            <input type="submit" value="Cadastrar-se">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="text" name="name" placeholder="Nome completo" class="input-field">
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" name="email" placeholder="E-mail" class="input-field">
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" name="uid" placeholder="Usuário" class="input-field">
+                                    </div>
+                                </div>
+                                <div class="row m-t-10">
+                                    <div class="col-4">
+                                        <input type="password" name="pwd" placeholder="Senha" class="input-field">
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="password" name="pwdrepeat" placeholder="Repetir senha" class="input-field">
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="submit" name="submit" value="Cadastrar-se" class="btn3">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
 
                             <a href="login.php">Já possui um cadastro? Clique aqui!</a>
                         </form>
@@ -172,38 +187,5 @@
                 </div>
             </div>
         </div>
-
-        <div class="container">
-	<!-- code here -->
-	<div class="card">
-		<div class="card-image">	
-			<h2 class="card-heading">
-				Get started
-				<small>Let us create your account</small>
-			</h2>
-		</div>
-		<form class="card-form">
-			<div class="input">
-				<input type="text" class="input-field" value="Alexander Parkinson" required/>
-				<label class="input-label">Full name</label>
-			</div>
-						<div class="input">
-				<input type="text" class="input-field" value="vlockn@gmail.com" required/>
-				<label class="input-label">Email</label>
-			</div>
-						<div class="input">
-				<input type="password" class="input-field" required/>
-				<label class="input-label">Password</label>
-			</div>
-			<div class="action">
-				<button class="action-button">Get started</button>
-			</div>
-		</form>
-		<div class="card-info">
-			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
-		</div>
-	</div>
-</div>
-
     </section>
 </body>
