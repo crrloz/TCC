@@ -22,10 +22,32 @@
     <title>Coletivo Humanos</title>
 </head>
 <style>
+    .hov-img-zoom {
+        display: block;
+        overflow: hidden;
+    }
+
+    .hov-img-zoom img{
+        width: 100%;
+        -webkit-transition: all 0.6s;
+        -o-transition: all 0.6s;
+        -moz-transition: all 0.6s;
+        transition: all 0.6s;
+    }
+
+    .hov-img-zoom:hover img {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
     .sizefull {
         background-size: cover;
         background-repeat: no-repeat;
     }
+
     .col-gr_2 {
         color: #2A3A1E;
     }
@@ -105,6 +127,13 @@
         text-transform: uppercase;
         padding: 0.25rem 1rem;
         cursor: pointer;
+    }
+
+    .full-star-home {
+        z-index: 10;
+        position: absolute;
+        left: 81%;
+        top: -10%;
     }
 </style>
 <body style="background-color: rgb(250, 238, 221);">
@@ -224,7 +253,7 @@
 
     </section>
 
-    <section class="section-signup p-t-60 bg-col-gr_2">
+    <section class="section-signup p-t-60 bg-col-gr_2" style="overflow: hidden;">
         <div class="row p-l-100">
             <div class="col-lg-6 p-b-30">
                 <div style="line-height: 0.8">
@@ -237,12 +266,12 @@
                     </h3>
                 </div>
 
-                <form class="wrap-form-signup">
+                <form class="wrap-form-signup" method="post" action="signup.php">
                     <div class="row p-l-15 p-r-100">
                         <div class="wrap-input size12 m-t-3 m-b-23">
-                            <input class="p-b-10 p-r-150" type="text" name="name" placeholder="Digite seu e-mail...">
+                            <input class="p-b-10 p-r-150" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
-                            <button type="submit" class="btn4">
+                            <button type="submit" name="submit" class="btn4">
                                 Cadastrar
                             </button>
                         </div>
@@ -250,9 +279,10 @@
                 </form>
             </div>
 
-            <div class="col-lg-6 p-b-30 p-t-18">
-                <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-                    <img src="images/" alt="IMG">
+            <div class="col-lg-6 p-b-60">
+                <img src="images/icons/fullstar.png" alt="IMG-STAR" class="full-star-home">
+                <div class="wrap-pic-signup bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
+                    <img src="images/ated.jpg" alt="IMG">
                 </div>
             </div>
         </div>
