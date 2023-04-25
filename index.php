@@ -271,9 +271,14 @@
                         <div class="wrap-input size12 m-t-3 m-b-23">
                             <input class="p-b-10 p-r-150" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
-                            <button type="submit" name="submit" class="btn4">
+                            <button type="submit" name="submit_home" class="btn4">
                                 Cadastrar
                             </button>
+                            <?php
+                            if(isset($_POST['submit_home'])){
+                                $email_home = $_POST['email_home'];
+                            }
+                            ?>
                         </div>
                     </div>
                 </form>

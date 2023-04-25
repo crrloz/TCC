@@ -146,7 +146,7 @@
                                         <input type="text" name="name" placeholder="Nome completo" class="input-field">
                                     </div>
                                     <div class="col-4">
-                                        <input type="text" name="email" placeholder="E-mail" class="input-field">
+                                        <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php if(isset($_POST['submit_home'])){ echo $email_home; } ?>">
                                     </div>
                                     <div class="col-4">
                                         <input type="text" name="uid" placeholder="Usuário" class="input-field">
