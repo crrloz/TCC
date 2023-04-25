@@ -266,7 +266,7 @@
                     </h3>
                 </div>
 
-                <form class="wrap-form-signup" method="post" action="signup.php">
+                <form class="wrap-form-signup" method="get" action="signup.php">
                     <div class="row p-l-15 p-r-100">
                         <div class="wrap-input size12 m-t-3 m-b-23">
                             <input class="p-b-10 p-r-150" type="text" name="email_home" placeholder="Digite seu e-mail...">
@@ -274,11 +274,6 @@
                             <button type="submit" name="submit_home" class="btn4">
                                 Cadastrar
                             </button>
-                            <?php
-                            if(isset($_POST['submit_home'])){
-                                $email_home = $_POST['email_home'];
-                            }
-                            ?>
                         </div>
                     </div>
                 </form>
