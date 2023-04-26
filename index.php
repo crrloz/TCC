@@ -1,27 +1,12 @@
 <?php
     session_start();
+    include_once 'head.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="images/logo/"/>
-    
-    <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones -->
-    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="themify/themify-icons.css">
-    <script src="https://kit.fontawesome.com/7511bd6378.js" crossorigin="anonymous"></script>
-
-    <!-- ESTILIZAÇÃO PRINCIPAL -->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <title>Coletivo Humanos</title>
+    <title>CAH | Coletivo Artístico Humanos</title>
 </head>
 <style>
+    @media (max-width: 767px) { .m-t-0-40 {margin-top: 40px;}}
+
     .hov-img-zoom {
         display: block;
         overflow: hidden;
@@ -41,15 +26,6 @@
         -ms-transform: scale(1.1);
         -o-transform: scale(1.1);
         transform: scale(1.1);
-    }
-
-    .sizefull {
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    .bg3 {
-        background-color: #2A3A1E;
     }
 
     .entry-shape {
@@ -111,16 +87,6 @@
         width: 100%;
     }
 
-    .btn4 {
-        color: #718928;
-        background: none;
-        border: #718928 solid 0.1rem;
-        border-radius: 50px;
-        text-transform: uppercase;
-        padding: 0.25rem 1rem;
-        cursor: pointer;
-    }
-
     .full-star {
         z-index: 10;
         position: absolute;
@@ -129,31 +95,6 @@
     }
 </style>
 <body style="background-color: rgb(250, 238, 221);">
-    <!-- Sidebar -->
-	<aside class="sidebar trans-0-4">
-		<!-- Button Hide sidebar -->
-		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
-
-		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13">
-				<a href=".html" class="txt19">aaaaa</a>
-			</li>
-
-            <li class="t-center m-b-13">
-				<a href=".html" class="txt19">aaa</a>
-			</li>
-
-			<li class="t-center">
-				<!-- SIGNUP/PROFILE -->
-				<a href="signup.php" class="btn3 ab-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					Cadastrar-se
-				</a>
-			</li>
-		</ul>
-	</aside>
-
-
     <!-- Header -->
     <?php include_once 'header.php' ?>
 
@@ -161,8 +102,8 @@
 	<!-- Entrada -->
     <section class="section-entry">
         <div class="wrap-title-page">
-            <div class="entry-shape">
-                smthing
+            <div class="wrap-title-pic entry-shape">
+                
             </div>
             <div class="item-title-page" style="background-image: url(images/fundoteste.jpg);">
                 <div class="wrap-content">
@@ -195,7 +136,7 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, esse aliquid. Et at iusto dolorem sunt, obcaecati repudiandae recusandae ad eveniet saepe a dignissimos praesentium provident sint dolore dolor ut. <br>
                     <span><a href="about.php" class="hov_underline">Descobrir mais</a></span>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 m-t-0-40">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint sed quaerat delectus fuga beatae molestias? Totam sequi voluptatem hic magni dolorem omnis reiciendis facere, dignissimos mollitia obcaecati accusamus nisi!
                 </div>
             </div>
@@ -273,7 +214,7 @@
                         <div class="wrap-input size12 m-t-3 m-b-23">
                             <input class="p-b-10 p-r-150" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
-                            <button type="submit" name="submit_home" class="btn4">
+                            <button type="submit" name="submit_home" class="btn4 color5 bo-color-0">
                                 Cadastrar
                             </button>
                         </div>

@@ -1,5 +1,5 @@
 <?php include_once 'head.php' ?>
-    <title>Login | ASEUL</title>
+    <title>Login | COLETIVO HUMANOS</title>
 </head>
 <body>
     <?php include_once 'header.php' ?>

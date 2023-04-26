@@ -2225,10 +2225,8 @@
 
 .m-l--6 {margin-left: -6px;}
 
-.m-t-120-39 {margin-top: 120px;}
-
 @media (max-width: 990px) {
-	.m-t-120-39 {margin-top: 39px;}
+	.m-t-0-40 {margin-top: 40px;}
 }
 
 /*[TEXT]*/
@@ -2438,6 +2436,11 @@
 	width: 80%;
 }
 
+.sizefull {
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .w-full {width: 100%;}
 .h-full {height: 100%;}
 .max-w-full {max-width: 100%;}
@@ -2453,7 +2456,7 @@
 .bg1 {background-color: #222222;}
 .bg2 {background-color: #000000;}
 
-.bg3 {color: #2A3A1E;}
+.bg3 {background-color: #2A3A1E;}
 
 /*[CORES]*/
 
@@ -2467,7 +2470,11 @@
 .color6 {color: #718928;}
 .color7 {color: #2A3A1E;}
 
+.color0-hov:hover {color: #ffffff;}
+
 .color5-hov:hover {color: #000000;}
+
+.color6-hov:hover {color: #718928;}
 
 /*[TRANSIÇÃO]*/
 
@@ -2508,6 +2515,8 @@
 
 .bo7 {border: 2px solid #e6e6e6;}
 .bo8 {border: 5px solid white;}
+
+.bo-color-0 {border: #718928;}
 
 /* ------------------------------------ */
 

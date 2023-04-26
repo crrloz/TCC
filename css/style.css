@@ -405,6 +405,15 @@ menu ul li a {
   transition: 0.4s;
 }
 
+.btn4 {
+  background: none;
+  border: solid 0.1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
 /* BTN De volta ao topo */
 
 .btn-back-to-top {
