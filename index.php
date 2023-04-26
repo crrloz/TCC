@@ -48,11 +48,7 @@
         background-repeat: no-repeat;
     }
 
-    .col-gr_2 {
-        color: #2A3A1E;
-    }
-
-    .bg-col-gr_2 {
+    .bg3 {
         background-color: #2A3A1E;
     }
 
@@ -70,10 +66,6 @@
 
     .section-about .container .row {
         padding: 125px 0 95px 0;
-    }
-
-    .col-gr {
-        color: #718928;
     }
 
     .hov_underline {
@@ -129,7 +121,7 @@
         cursor: pointer;
     }
 
-    .full-star-home {
+    .full-star {
         z-index: 10;
         position: absolute;
         left: 81%;
@@ -161,7 +153,10 @@
 		</ul>
 	</aside>
 
+
+    <!-- Header -->
     <?php include_once 'header.php' ?>
+
 
 	<!-- Entrada -->
     <section class="section-entry">
@@ -187,11 +182,13 @@
         </div>
     </section>
 
+
+    <!-- Sobre -->
     <section class="section-about">
         <div class="container">
             <div class="wrap-text-about pos-absolute p-t-30">
-                <span><i class="f-glitten fs-60 col-gr">Quem </i></span>
-                <span class="f-glitten fs-60 col-gr">SOMOS?</span>
+                <span><i class="f-glitten fs-60 color6">Quem </i></span>
+                <span class="f-glitten fs-60 color6">SOMOS?</span>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -205,10 +202,12 @@
         </div>
     </section>
 
+
     <!-- Divisor -->
     <section class="section-divider">
         <div class="item-divider p-t-150 p-b-150" style="background-image: url(images/fundoteste.jpg);"></div>
     </section>
+
 
     <!-- Notícias/Novidades -->
     <section class="section-news">
@@ -248,21 +247,24 @@
             </div>
         </div>
 
+
         <!-- Link/Texto/Sla -->
 
 
     </section>
 
-    <section class="section-signup p-t-60 bg-col-gr_2" style="overflow: hidden;">
+
+    <!-- Cadastro -->
+    <section class="section-signup p-t-60 bg3" style="overflow: hidden;">
         <div class="row p-l-100">
             <div class="col-lg-6 p-b-30">
                 <div style="line-height: 0.8">
                     <span class="t-center fs-45">
-                        <b class="col-gr">MATENHA-SE</b>
+                        <b class="color6">MANTENHA-SE</b>
                     </span>
 
                     <h3 class="m-b-35 m-t-2">
-                        <i class="f-glitten t-center fs-40 col-gr">atualizado</i>
+                        <i class="f-glitten t-center fs-40 color6">atualizado</i>
                     </h3>
                 </div>
 
@@ -280,7 +282,7 @@
             </div>
 
             <div class="col-lg-6 p-b-60">
-                <img src="images/icons/fullstar.png" alt="IMG-STAR" class="full-star-home">
+                <img src="images/icons/fullstar.png" alt="IMG-STAR" class="full-star">
                 <div class="wrap-pic-signup bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
                     <img src="images/ated.jpg" alt="IMG">
                 </div>
@@ -288,6 +290,8 @@
         </div>
     </section>
 
+
+    <!-- Footer -->
     <?php include_once 'footer.php' ?>
 </body>
 </html>

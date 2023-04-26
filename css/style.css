@@ -251,18 +251,7 @@ menu ul li a {
   border-bottom: 2px solid rgb(250, 238, 221);;
 }
 
-.btn-user {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background: none;
-  border: white solid 0.1rem;
-  border-radius: 50px;
-  text-transform: uppercase;
-  padding: 0.25rem 1rem;
-  cursor: pointer;
-}
+
 
 .btn-user:hover{
   color: black;
@@ -297,6 +286,16 @@ menu ul li a {
   background-repeat: no-repeat;
   background-position: center center;
   height: 100vh;
+}
+
+.bg-title-page {
+  width: 100%;
+  min-height: 545px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
 }
 
 .item-divider {

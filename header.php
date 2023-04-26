@@ -5,7 +5,6 @@
                 <nav class="menu">
                     <div class="list-section">
                         <ul>
-                            <li><a href="about.php" style="color: white;">Quem Somos</a></li>
                             <li><a href="contact.php" style="color: white;">Contato</a></li>
                             <li><a href="<?php 
                                 if(isset($_SESSION["useruid"])){
@@ -21,13 +20,16 @@
                             <img src="images/logo/Irene&Seulgi LOGO BRANCO.png">
                         </a>
                     </div>
-                    <div class="btn-user">
-                    <?php 
-                        if(isset($_SESSION["useruid"])){
-                            echo '<a href="profile.php">Meu Perfil</a>';
-                        } else {
-                            echo '<a href="signup.php">Cadastro</a>';
-                        } ?>
+                    <div class="list-section">
+                        <ul>
+                            <li class="p-t-20"><a href="about.php" style="color: white;">Quem Somos</a></li>
+                            <?php 
+                            if(isset($_SESSION["useruid"])){
+                                echo '<li><a class="btn-user" href="includes/logout.inc.php">Logout</a></li>';
+                            } else {
+                                echo '<li><a class="btn-user" href="signup.php">Cadastro</a></li>';
+                            } ?>
+                        </ul>
                     </div>
                     
                     <button class="btn-show-sidebar m-l-33 trans-0-4"></button>

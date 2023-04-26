@@ -2452,9 +2452,8 @@
 .bg0 {background-color: #cccccc;}
 .bg1 {background-color: #222222;}
 .bg2 {background-color: #000000;}
-.bg3 {background-color: pink;}
 
-.bg3-hotter-hov:hover {background-color: rgb(248, 177, 189);}
+.bg3 {color: #2A3A1E;}
 
 /*[CORES]*/
 
@@ -2464,6 +2463,9 @@
 .color3 {color: #333333;}
 .color4 {color: #222222;}
 .color5 {color: #000000}
+
+.color6 {color: #718928;}
+.color7 {color: #2A3A1E;}
 
 .color5-hov:hover {color: #000000;}
 
