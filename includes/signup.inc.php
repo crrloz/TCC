@@ -9,8 +9,6 @@ $pwdRepeat = $_POST['pwdrepeat'];
 require_once 'dbh.inc.php';
 require_once 'functions.inc.php';
 
-// deixar as msg de erro em portugues
-
 if(emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false){
     header("location: ../signup.php?error=emptyinput");
     exit();
@@ -36,4 +34,5 @@ if(uidExists($conn, $username, $email) !== false){
     exit();
 }
 
+sendEmail($email, "Cadastro finalizado. Seja bem vindo!", "Aaaaaaaaaaaaaaaaaaaaaaaaa");
 createUser($conn, $name, $email, $username, $pwd);

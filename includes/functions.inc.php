@@ -1,5 +1,7 @@
 <?php
 
+// FUNÇÕES DE CADASTRO
+
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
@@ -92,10 +94,8 @@ function emptyInputLogin($username, $pwd){
     return $result;
 }
 
-// Função que verifica se um usuário com o username especificado existe no banco de dados
+// FUNÇÕES DE LOGIN
 
-
-// Função que faz o login de um usuário
 function loginUser($conn, $username, $pwd) {
     $uidExists = uidExists($conn, $username, $pwd);
 
@@ -118,3 +118,19 @@ function loginUser($conn, $username, $pwd) {
         exit();
     }
 }
+
+function sendEmail($to, $subject, $message, $from = 'noreply@example.com', $cc = '', $bcc = '') {
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: $from" . "\r\n";
+    
+    if (!empty($cc)) {
+       $headers .= "Cc: $cc" . "\r\n";
+    }
+    
+    if (!empty($bcc)) {
+       $headers .= "Bcc: $bcc" . "\r\n";
+    }
+    
+    return mail($to, $subject, $message, $headers);
+ }

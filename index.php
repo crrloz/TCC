@@ -195,6 +195,23 @@
     </section>
 
 
+    <?php if(isset($_SESSION["useruid"])){ ?>
+    <!-- Agenda -->
+    <section class="section-schedule-home bg3" style="overflow: hidden;">
+        <div class="row">
+            <div class="col-lg-6 p-b-30 p-t-30">
+                <div class="wrap-pic-schedule bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
+                    <img src="images/ated.jpg" alt="IMG">
+                </div>
+            </div>
+
+            <div class="col-lg-6 p-b-60">
+                Olá, <?php  ?>
+            </div>
+        </div>
+    </section>
+
+    <?php } else { ?>
     <!-- Cadastro -->
     <section class="section-signup p-t-60 bg3" style="overflow: hidden;">
         <div class="row p-l-100">
@@ -230,6 +247,7 @@
             </div>
         </div>
     </section>
+    <?php }; ?>
 
 
     <!-- Footer -->

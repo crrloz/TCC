@@ -5,7 +5,8 @@
     <title>Agenda | COLETIVO HUMANOS</title>
 </head>
 <body>
-<?php include_once 'header.php' ?>
+    <!-- Header -->
+    <?php include_once 'header.php' ?>
 
 
     <!-- Title Page -->

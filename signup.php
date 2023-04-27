@@ -13,54 +13,6 @@
         border-radius: 0;
         font-family: "DM Sans", sans-serif;
         line-height: 1.5;
-    }
-
-    .card {
-        margin: 2rem auto;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 425px;
-        background-color: #FFF;
-        border-radius: 10px;
-        box-shadow: 0 10px 20px 0 rgba(#999, .25);
-        padding: .75rem;
-    }
-
-    .card-image {
-        border-radius: 8px;
-        overflow: hidden;
-        padding-bottom: 65%;
-        background-image: url('https://assets.codepen.io/285131/coffee_1.jpg');
-        background-repeat: no-repeat;
-        background-size: 150%;
-        background-position: 0 5%;
-        position: relative;
-    }
-
-    .card-heading {
-        position: absolute;
-        left: 10%;
-        top: 15%;
-        right: 10%;
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #735400;
-        line-height: 1.222;
-    }
-
-    .card-heading small {
-		display: block;
-		font-size: .75em;
-		font-weight: 400;
-		margin-top: .25em;
-	}
-
-    .card-form {
-        padding: 2rem 1rem 0;
-    }
-
-    .input {
         display: flex;
         flex-direction: column-reverse;
         position: relative;
@@ -89,59 +41,12 @@
         border-bottom: 0.1rem solid black;
     }
 
-    .action {
-        margin-top: 2rem;
-    }
-
-    .action-button {
-        font: inherit;
-        font-size: 1.25rem;
-        padding: 1em;
-        width: 100%;
-        font-weight: 500;
-        background-color: #6658d3;
-        border-radius: 6px;
-        color: #FFF;
-        border: 0;
-    }
-
-    .action-button:focus {
-        outline: 0;
-    }
-
-    .card-info {
-        padding: 1rem 1rem;
-        text-align: center;
-        font-size: .875rem;
-        color: #8597a3;
-    }
-
-    .card-info a {
-		display: block;
-		color: #6658d3;
-		text-decoration: none;
-	}
-
-    .btn-user {
-        color: white;
-        background: none;
-        border: white solid 0.1rem;
-        border-radius: 50px;
-        text-transform: uppercase;
-        padding: 0.375rem 1rem;
-        cursor: pointer;
-    }
-
-    .overlay-title-page {
-        background-color: rgba(0,0,0,0.5);
-    }
-
 </style>
 <body style="background-color: rgb(250, 238, 221);">
     <?php include_once 'header.php' ?>
 
 
-    <!-- TITLE PAGE -->
+    <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/fundoteste.jpg);">
         <h2 class="t-center f-glitten color0 fs-80">
             CADASTRO
@@ -149,7 +54,7 @@
 	</section>
 
 
-    <!-- SEÇÃO DE CADASTRO -->
+    <!-- Seção de Cadastro -->
     <section class="section-signup">
         <div class="signup-form m-t-120 t-center">
             <h2>Cadastre-se Agora!</h2>
@@ -157,7 +62,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
-                            <input type="text" name="name" placeholder="Nome completo" class="input-field">
+                            <input type="text" name="name" placeholder="Primeiro nome" class="input-field">
                         </div>
                         <div class="col-4">
                             <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php echo $_GET['email_home'] ?? '';?>">
@@ -183,18 +88,16 @@
                 <a href="login.php">Já possui um cadastro? Clique aqui!</a>
             </form>
             <?php
-                if(isset($_GET["error"])){
-                    if(isset($_GET["error"]) == "emptyinput"){
-                        echo "<p>Preencha todos os campos!</p>";
-                    } else if(isset($_GET["error"]) == "invaliduid"){
-                        echo "<p>Usuário inválido.</p>";
-                    } else if(isset($_GET["error"]) == "invalidemail"){
-                        echo "<p>Endereço de e-mail inválido.</p>";
-                    } else if(isset($_GET["error"]) == "thepassdontmatch"){
-                        echo "<p>As senham não batem.</p>";
-                    } else if(isset($_GET["error"]) == "usernametaken"){
-                        echo "<p>Nome de usuário já utilizado.</p>";
-                    }
+                if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
+                    echo "<p>Preencha todos os campos!</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "invaliduid"){
+                    echo "<p>Usuário inválido.</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "invalidemail"){
+                    echo "<p>Endereço de e-mail inválido.</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "thepassdontmatch"){
+                    echo "<p>As senham não batem.</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "usernametaken"){
+                    echo "<p>Nome de usuário já utilizado.</p>";
                 }
             ?>
         </div>
