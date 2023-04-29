@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="images/logo/"/>
 
-    <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones -->
+    <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones, Animações -->
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="themify/themify-icons.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
     <script src="https://kit.fontawesome.com/7511bd6378.js" crossorigin="anonymous"></script>
 
     <!-- ESTILIZAÇÃO PRINCIPAL -->

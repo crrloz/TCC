@@ -9,6 +9,11 @@
 
     .bo-color-0 {border-color: #718928;}
 
+    .bg1-pattern {
+        background-image: url(images/patterns/pattern1.jpg);
+        background-repeat: repeat;
+    }
+
     .color6 {color: #718928;}
 
     .hov-img-zoom {
@@ -98,7 +103,7 @@
         top: -10%;
     }
 </style>
-<body style="background-color: rgb(250, 238, 221);">
+<body class="animsition" style="background-color: rgb(250, 238, 221);">
     <!-- Header -->
     <?php include_once 'header.php' ?>
 
