@@ -2450,13 +2450,23 @@
 
 .h-half {height: 50%;}
 
-/*[CORES DE FUNDO]*/
+/*[CORES E PADRÕES DE FUNDO]*/
 
 .bg0 {background-color: #cccccc;}
 .bg1 {background-color: #222222;}
 .bg2 {background-color: #000000;}
 
 .bg3 {background-color: #2A3A1E;}
+.bg4 {background-color: #FAEEDD;}
+
+.bg1-pattern {
+	background-image: url(../images/patterns/pattern1.jpg);
+  	background-repeat: repeat;
+}
+.bg2-pattern {
+	background-image: url(../images/patterns/pattern2.jpg);
+  	background-repeat: repeat;
+}
 
 /*[CORES]*/
 
@@ -2471,9 +2481,7 @@
 .color7 {color: #2A3A1E;}
 
 .color0-hov:hover {color: #ffffff;}
-
 .color5-hov:hover {color: #000000;}
-
 .color6-hov:hover {color: #718928;}
 
 /*[TRANSIÇÃO]*/
@@ -2562,6 +2570,7 @@
 .pointer{
 	cursor: pointer;
 }
+
 
 /* [POSIÇÃO] */
 

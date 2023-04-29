@@ -7,6 +7,10 @@
 <style>
     @media (max-width: 767px) { .m-t-0-40 {margin-top: 40px;}}
 
+    .bo-color-0 {border-color: #718928;}
+
+    .color6 {color: #718928;}
+
     .hov-img-zoom {
         display: block;
         overflow: hidden;
@@ -125,7 +129,7 @@
 
 
     <!-- Sobre -->
-    <section class="section-about">
+    <section class="section-about bg2-pattern">
         <div class="container">
             <div class="wrap-text-about pos-absolute p-t-30">
                 <span><i class="f-glitten fs-60 color6">Quem </i></span>
@@ -206,17 +210,18 @@
             </div>
 
             <div class="col-lg-6 p-b-60">
-                Olá, <?php  ?>
+                Olá, <?php echo $_SESSION['useruid'] ?>!
             </div>
         </div>
     </section>
+    
 
     <?php } else { ?>
     <!-- Cadastro -->
-    <section class="section-signup p-t-60 bg3" style="overflow: hidden;">
-        <div class="row p-l-100">
-            <div class="col-lg-6 p-b-30">
-                <div style="line-height: 0.8">
+    <section class="section-signup p-t-60 bg1-pattern" style="overflow: hidden;">
+        <div class="row">
+            <div class="col-lg-6 p-b-30 p-l-100 p-t-120">
+                <div class="wrap-text-signup" style="line-height: 0.8;">
                     <span class="t-center fs-45">
                         <b class="color6">MANTENHA-SE</b>
                     </span>
@@ -231,7 +236,7 @@
                         <div class="wrap-input size12 m-t-3 m-b-23">
                             <input class="p-b-10 p-r-150" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
-                            <button type="submit" name="submit_home" class="btn4 color5 bo-color-0">
+                            <button type="submit" name="submit_home" class="btn4 color6 bo-color-0">
                                 Cadastrar
                             </button>
                         </div>
