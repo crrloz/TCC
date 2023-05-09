@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="images/logo/"/>
+    <link rel="icon" type="image/jpg" href="images/logo/favicon.png"/>
 
     <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones, Animações -->
     <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">

@@ -23,17 +23,10 @@
 
     .hov-img-zoom img{
         width: 100%;
-        -webkit-transition: all 0.6s;
-        -o-transition: all 0.6s;
-        -moz-transition: all 0.6s;
         transition: all 0.6s;
     }
 
     .hov-img-zoom:hover img {
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        -o-transform: scale(1.1);
         transform: scale(1.1);
     }
 
@@ -45,8 +38,18 @@
         text-align: center;
         position: absolute;
         top: 50%;
-        left: 25%;
+        left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 900px){
+        .entry-shape {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 300px
+        }
     }
 
     .section-about .container .row {
@@ -109,24 +112,29 @@
 
 
 	<!-- Entrada -->
-    <section class="section-entry">
-        <div class="wrap-title-page">
-            <div class="wrap-title-pic entry-shape">
-                
+    <section class="section-entry" style="background-image: url(images/fundoteste.jpg); overflow: hidden;">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="entry-shape">
+
+                </div>
             </div>
-            <div class="item-title-page" style="background-image: url(images/fundoteste.jpg);">
-                <div class="wrap-content">
-                    <span class="f-glitten">
-                        COLETIVO
-                    </span>
 
-                    <h2 class="fs-100">
-                        <i class="f-glitten">Artístico</i>
-                    </h2>
+            <div class="col-lg-6">
+                <div class="item-title-page">
+                    <div class="wrap-content">
+                        <span class="f-glitten">
+                            COLETIVO
+                        </span>
 
-                    <span class="f-glitten">
-                        HUMANOS
-                    </span>
+                        <h2 class="fs-100">
+                            <i class="f-glitten">Artístico</i>
+                        </h2>
+
+                        <span class="f-glitten">
+                            HUMANOS
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -214,8 +222,21 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 p-b-60">
-                Olá, <?php echo $_SESSION['useruid'] ?>!
+            <div class="col-lg-6 p-b-60 color6">
+                <div class="wrap-welcome-title fs-90 p-t-70" style="line-height: 0.8;">
+                    <span class="f-glitten">Bem-vindo, </span><?php echo $_SESSION['useruid'] ?>!
+                </div>
+                
+                <div class="wrap-description-text p-t-30">
+                    <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas exercitationem alias perferendis magni illum sint ad impedit eveniet, ipsam adipisci deserunt molestiae illo officia non nulla aliquam obcaecati amet? Vel.</span>
+                </div>
+
+                <div class="wrap-sched-button p-t-15">
+                    <!-- Botão -->
+                    <button onclick="location.href='schedule.php'" class="btn4 color6 bo-color-0">
+                        #Cookie Jar
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -225,21 +246,21 @@
     <!-- Cadastro -->
     <section class="section-signup p-t-60 bg1-pattern" style="overflow: hidden;">
         <div class="row">
-            <div class="col-lg-6 p-b-30 p-l-100 p-t-120">
+            <div class="col-lg-6 p-b-30 p-l-100 p-t-100">
                 <div class="wrap-text-signup" style="line-height: 0.8;">
-                    <span class="t-center fs-45">
+                    <span class="t-center fs-60">
                         <b class="color6">MANTENHA-SE</b>
                     </span>
 
                     <h3 class="m-b-35 m-t-2">
-                        <i class="f-glitten t-center fs-40 color6">atualizado</i>
+                        <i class="f-glitten t-center fs-60 color6">atualizado</i>
                     </h3>
                 </div>
 
                 <form class="wrap-form-signup" method="get" action="signup.php">
                     <div class="row p-l-15 p-r-100">
                         <div class="wrap-input size12 m-t-3 m-b-23">
-                            <input class="p-b-10 p-r-150" type="text" name="email_home" placeholder="Digite seu e-mail...">
+                            <input class="p-b-10 p-r-150 color6" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
                             <button type="submit" name="submit_home" class="btn4 color6 bo-color-0">
                                 Cadastrar
