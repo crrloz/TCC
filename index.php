@@ -7,14 +7,22 @@
 <style>
     @media (max-width: 767px) { .m-t-0-40 {margin-top: 40px;}}
 
-    .bo-color-0 {border-color: #718928;}
+    .bo-color-0 {border-color: #7F4AA4;}
+
+    .bo-color-1 {border-color: rgb(217,158,7);}
 
     .bg1-pattern {
         background-image: url(images/patterns/pattern1.jpg);
         background-repeat: repeat;
     }
 
-    .color6 {color: #718928;}
+    .bg1 {
+        background-color: #7F4AA4;
+    }
+
+    .color6 {color: #7F4AA4;}
+
+    .color7 {color: rgb(217,158,7);}
 
     .hov-img-zoom {
         display: block;
@@ -83,7 +91,7 @@
     }
 
     .wrap-input {
-        border-bottom: 0.1rem solid #718928;
+        border-bottom: 0.1rem solid rgb(217,158,7);
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
@@ -104,6 +112,11 @@
         position: absolute;
         left: 81%;
         top: -10%;
+    }
+    
+    .section-entry {
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
@@ -234,7 +247,7 @@
                 <div class="wrap-sched-button p-t-15">
                     <!-- Botão -->
                     <button onclick="location.href='schedule.php'" class="btn4 color6 bo-color-0">
-                        #Cookie Jar
+                        AAAA
                     </button>
                 </div>
             </div>
@@ -244,25 +257,25 @@
 
     <?php } else { ?>
     <!-- Cadastro -->
-    <section class="section-signup p-t-60 bg1-pattern" style="overflow: hidden;">
+    <section class="section-signup p-t-60 bg1" style="overflow: hidden;">
         <div class="row">
             <div class="col-lg-6 p-b-30 p-l-100 p-t-100">
                 <div class="wrap-text-signup" style="line-height: 0.8;">
                     <span class="t-center fs-60">
-                        <b class="color6">MANTENHA-SE</b>
+                        <b class="color7">MANTENHA-SE</b>
                     </span>
 
                     <h3 class="m-b-35 m-t-2">
-                        <i class="f-glitten t-center fs-60 color6">atualizado</i>
+                        <i class="f-glitten t-center fs-60 color7">atualizado</i>
                     </h3>
                 </div>
 
                 <form class="wrap-form-signup" method="get" action="signup.php">
                     <div class="row p-l-15 p-r-100">
                         <div class="wrap-input size12 m-t-3 m-b-23">
-                            <input class="p-b-10 p-r-150 color6" type="text" name="email_home" placeholder="Digite seu e-mail...">
+                            <input class="p-b-10 p-r-150 color7" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
-                            <button type="submit" name="submit_home" class="btn4 color6 bo-color-0">
+                            <button type="submit" name="submit_home" class="btn4 color7 bo-color-1">
                                 Cadastrar
                             </button>
                         </div>
@@ -273,7 +286,7 @@
             <div class="col-lg-6 p-b-60">
                 <img src="images/icons/fullstar.png" alt="IMG-STAR" class="full-star">
                 <div class="wrap-pic-signup bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
-                    <img src="images/ated.jpg" alt="IMG">
+                    <img src="https://static.vecteezy.com/ti/vetor-gratis/p3/10881861-padrao-sem-costura-em-maravilhosas-cores-violetas-e-roxas-aconchegantes-para-xadrez-tecido-textil-roupas-toalha-de-mesa-e-outras-coisas-imagemial-2-vetor.jpg" alt="IMG">
                 </div>
             </div>
         </div>
