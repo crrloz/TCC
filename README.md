@@ -7,7 +7,7 @@ pretendemos/objetivos:
 ter um sistema de cadastro e login (feito)
 apresentar o coletivo ao público
 disponibilizar uma agenda de apresentações de dança
-criar um sistema de envio de email a usuarios
+criar um sistema de envio de email a usuarios (feito)
 
 cogitamos/possibilidades:
 

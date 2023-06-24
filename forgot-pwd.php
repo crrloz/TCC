@@ -31,26 +31,21 @@
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/fundoteste.jpg);">
         <h2 class="t-center f-glitten color0 fs-80">
-            LOGIN
+            ESQUECEU SENHA
         </h2>
     </section>
 
 
-    <!-- Seção de Login -->
+    <!-- Seção de [...] -->
     <section class="section-login m-t-120 p-b-30 t-center">
         <h2>Login</h2>
-        <form action="includes/login.inc.php" method="post">
-            <input type="text" name="uid" placeholder="Usuário/E-mail" class="input-field">
-            <input type="password" name="pwd" placeholder="Senha" class="input-field"> <br><br>
+        <form action="includes/reset-request.inc.php" method="post">
+            <input type="text" name="email_reset" placeholder="E-mail da conta" class="input-field">
 
-            <input type="submit" name="submit" value="Logar" class="btn3"><br><br>
-
-            <a href="reset.php" class="color5 m-b-15">Esqueceu sua senha? Clique aqui!</a>
+            <input type="submit" name="submit_reset" value="Logar">
 
             <?php
-            if(isset($_GET["error"]) && $_GET["error"] == "wronglogin"){
-                echo "<p>Dados incorretos.</p>";
-            } else if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
+            if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
                 echo "<p>Preencha todos os campos!</p>";
             }
             ?>

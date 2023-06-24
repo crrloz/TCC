@@ -34,5 +34,9 @@ if(uidExists($conn, $username, $email) !== false){
     exit();
 }
 
-sendEmail($email, "Cadastro finalizado. Seja bem vindo!", "Aaaaaaaaaaaaaaaaaaaaaaaaa");
+$message = '<p>Olá, '.$username.'. Seu cadastro no site do Coletivo Artístico Humanos foi finalizado. Explore nosso site!</p>';
+
+$subject = 'Cadastro finalizado. Seja bem vindo(a)!';
+
+sendEmail($message, $subject, $email);
 createUser($conn, $name, $email, $username, $pwd);

@@ -3,6 +3,13 @@
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+    .bg2 {background-color: #9267b0}
+
+    .color6 {color: #7F4AA4;}
+
+    .color7 {color: rgb(217,158,7);}
+    
     .row, .container {
         padding: 0;
         margin: 0;
@@ -47,7 +54,7 @@
 
 
     <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/fundoteste.jpg);">
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15 bg2">
         <h2 class="t-center f-glitten color0 fs-80">
             CADASTRO
         </h2>
@@ -56,13 +63,13 @@
 
     <!-- Seção de Cadastro -->
     <section class="section-signup">
-        <div class="signup-form m-t-120 t-center">
+        <div class="signup-form m-t-80 t-center ab-m">
             <h2>Cadastre-se Agora!</h2>
-            <form action="includes/signup.inc.php" method="post">
+            <form action="includes/signup.inc.php" method="post" class="m-t-25">
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
-                            <input type="text" name="name" placeholder="Primeiro nome" class="input-field">
+                            <input type="text" name="name" placeholder="Nome completo" class="input-field">
                         </div>
                         <div class="col-4">
                             <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php echo $_GET['email_home'] ?? '';?>">
@@ -71,21 +78,21 @@
                             <input type="text" name="uid" placeholder="Usuário" class="input-field">
                         </div>
                     </div>
-                    <div class="row m-t-10">
+                    <div class="row" style="margin-top: 10px;">
                         <div class="col-4">
                             <input type="password" name="pwd" placeholder="Senha" class="input-field">
                         </div>
                         <div class="col-4">
                             <input type="password" name="pwdrepeat" placeholder="Repetir senha" class="input-field">
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 t-center">
                             <input type="submit" name="submit" value="Cadastrar-se" class="btn3">
                         </div>
                     </div>
                 </div>
                 <br>
 
-                <a href="login.php">Já possui um cadastro? Clique aqui!</a>
+                <a href="login.php" class="color5 m-b-15">Já possui um cadastro? Clique aqui!</a>
             </form>
             <?php
                 if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
@@ -100,6 +107,6 @@
                     echo "<p>Nome de usuário já utilizado.</p>";
                 }
             ?>
-        </div>
+        </div><br><br><br>
     </section>
 </body>

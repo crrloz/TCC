@@ -1,5 +1,8 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 // FUNÇÕES DE CADASTRO
 
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
@@ -119,18 +122,26 @@ function loginUser($conn, $username, $pwd) {
     }
 }
 
-function sendEmail($to, $subject, $message, $from = 'noreply@example.com', $cc = '', $bcc = '') {
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: $from" . "\r\n";
-    
-    if (!empty($cc)) {
-       $headers .= "Cc: $cc" . "\r\n";
-    }
-    
-    if (!empty($bcc)) {
-       $headers .= "Bcc: $bcc" . "\r\n";
-    }
-    
-    return mail($to, $subject, $message, $headers);
- }
+// OUTRAS
+
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
+
+function sendEmail($message, $subject, $email){
+    $mail = new PHPMailer(true);
+
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'eklipsing@gmail.com';
+    $mail->Password = 'jsnelhjugrwiygpp';
+    $mail->Port = 465;
+    $mail->SMTPSecure = 'ssl';
+    $mail->isHTML(true);
+    $mail->setFrom('comunicacaoprohu@gmail.com', 'Coletivo Artístico Humanos');
+    $mail->addAddress($email);
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+    $mail->send();
+}

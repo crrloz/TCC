@@ -9,16 +9,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 @font-face {
-  font-family: Montserrat-Regular;
-  src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
-}
-
-@font-face {
   font-family: Century-Gothic;
   src: url('../fontes/Century\ Gothic.ttf') format('truetype');
 }
