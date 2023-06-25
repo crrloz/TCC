@@ -120,6 +120,10 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .wrap-content {
+        color: white;
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <!-- Header -->
@@ -127,7 +131,7 @@
 
 
 	<!-- Entrada -->
-    <section class="section-entry bg2" style="overflow: hidden;">
+    <section class="section-entry bg2" style="background-image: url(images/dança.jpg); overflow: hidden;">
         <div class="row">
             <div class="col-lg-6">
                 <div class="entry-shape">
@@ -165,11 +169,11 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, esse aliquid. Et at iusto dolorem sunt, obcaecati repudiandae recusandae ad eveniet saepe a dignissimos praesentium provident sint dolore dolor ut. <br>
+                O Coletivo Artístico Humanos é um grupo de dança situado em Arraial do Cabo, dedicado a representar e celebrar a rica cultura afro-brasileira por meio da expressão corporal. Criado e dirigido por seu talentoso fundador, LUAN, o Coletivo tem como objetivo proporcionar um espaço inclusivo e acolhedor onde a arte negra possa florescer e se manifestar de forma poderosa. <br>
                     <span><a href="about.php" class="hov_underline">Descobrir mais</a></span>
                 </div>
                 <div class="col-md-6 m-t-0-40">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sint sed quaerat delectus fuga beatae molestias? Totam sequi voluptatem hic magni dolorem omnis reiciendis facere, dignissimos mollitia obcaecati accusamus nisi!
+                Nosso Coletivo acredita no poder transformador da dança como uma forma de expressão artística e como uma ferramenta para promover a consciência, o diálogo e a igualdade. Nossos artistas, habilmente treinados pelo próprio criador, trazem para o palco uma fusão de estilos contemporâneos e tradicionais, em coreografias que evocam histórias, emoções e a força da identidade negra.
                 </div>
             </div>
         </div>
@@ -178,7 +182,7 @@
 
     <!-- Divisor -->
     <section class="section-divider">
-        <div class="item-divider p-t-150 p-b-150 bg2"></div>
+        <div class="item-divider p-t-150 p-b-150" style="background-image: url(images/dança2.jpg);"></div>
     </section>
 
 
@@ -190,27 +194,27 @@
         <!-- Notícias -->
         <div class="container">
             <div class="row p-t-30 p-b-30">
-                <div class="col-md-6 p-t-250 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                <div class="col-md-6 p-t-250 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
                     <a href="">Hmmm</a>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
                                     <a href="">AAAAA</a>
                                 </div>
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
                                     <a href="">A</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-mdAA-6">
                             <div class="row">
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
                                     <a href="">AAA</a>
                                 </div>
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/aaliyahkindabirthedcontemporaryrnbwhenyouthinkaboutit.jpg);">
+                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
                                     <a href="">AAAAAAAAAA</a>
                                 </div>
                             </div>

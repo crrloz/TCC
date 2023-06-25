@@ -25,7 +25,7 @@
     }
 
     .wrap-input {
-        border-bottom: 0.1rem solid #718928;
+        border-bottom: 0.1rem solid #9267b0;
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
@@ -42,24 +42,27 @@
     }
 
     input[name="email_home"]{
-        color: #718928;
+        color: #9267b0;
     }
 
     ::-webkit-input-placeholder {
-        color: #718928;
+        color: #9267b0;
     }
 
     .section-wrap-input {
         padding: 0 30%;
     }
 
+    .color10 {color: #9267b0;}
+
+    .bo-color-2 {border-color: #9267b0;}
 </style>
-<body>
+<body style="background-color: rgb(250, 238, 221);">
     <?php include_once 'header.php' ?>
 
 
     <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/fundoteste.jpg);">
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/dança4.jpg);">
         <h2 class="t-center f-glitten color0 fs-80">
             SENHA
         </h2>
@@ -74,7 +77,7 @@
             <div class="wrap-input size12 m-t-3 m-b-23">
                 <input class="p-b-10 color6" type="text" name="email_reset" placeholder="Digite seu e-mail...">
                 <!-- Botão -->
-                <button type="submit" name="submit_reset" value="Receber" class="btn4 color6 bo-color-0">
+                <button type="submit" name="submit_reset" value="Receber" class="btn4 color10 bo-color-0">
                     Receber
                 </button>
             </div>
@@ -82,9 +85,9 @@
 
             <?php
             if(isset($_GET["error"]) && $_GET["error"] == "none"){
-                echo "<p>Cheque seu e-mail.</p>";
+                echo "<p style='padding-bottom: 20px;'>Cheque seu e-mail.</p>";
             } else if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
-                echo "<p>Preencha o campo de e-mail!</p>";
+                echo "<p style='padding-bottom: 20px;'>Preencha o campo de e-mail!</p>";
             }
             ?>
     </section>

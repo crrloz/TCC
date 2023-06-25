@@ -18,7 +18,6 @@
     input {
         appearance: none;
         border-radius: 0;
-        font-family: "DM Sans", sans-serif;
         line-height: 1.5;
         display: flex;
         flex-direction: column-reverse;
@@ -45,7 +44,7 @@
 
     .input-field:focus, .input-field:valid {
         outline: 0;
-        border-bottom: 0.1rem solid black;
+        border-bottom: 0.1rem solid #9267b0;
     }
 
 </style>
@@ -54,7 +53,7 @@
 
 
     <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15 bg2">
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/dança3.jpg);">
         <h2 class="t-center f-glitten color0 fs-80">
             CADASTRO
         </h2>
@@ -92,21 +91,21 @@
                 </div>
                 <br>
 
-                <a href="login.php" class="color5 m-b-15">Já possui um cadastro? Clique aqui!</a>
+                <a href="login.php" class="color5" style="padding-bottom: 20px;">Já possui um cadastro? Clique aqui!</a>
             </form>
             <?php
                 if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
-                    echo "<p>Preencha todos os campos!</p>";
+                    echo "<p class='p-b-20'>Preencha todos os campos!</p>";
                 } else if(isset($_GET["error"]) && $_GET["error"] == "invaliduid"){
-                    echo "<p>Usuário inválido.</p>";
+                    echo "<p class='p-b-20'>Usuário inválido.</p>";
                 } else if(isset($_GET["error"]) && $_GET["error"] == "invalidemail"){
-                    echo "<p>Endereço de e-mail inválido.</p>";
+                    echo "<p class='p-b-20'>Endereço de e-mail inválido.</p>";
                 } else if(isset($_GET["error"]) && $_GET["error"] == "thepassdontmatch"){
-                    echo "<p>As senham não batem.</p>";
+                    echo "<p class='p-b-20'>As senham não batem.</p>";
                 } else if(isset($_GET["error"]) && $_GET["error"] == "usernametaken"){
-                    echo "<p>Nome de usuário já utilizado.</p>";
+                    echo "<p class='p-b-20'>Nome de usuário já utilizado.</p>";
                 }
             ?>
-        </div><br><br><br>
+        </div>
     </section>
 </body>

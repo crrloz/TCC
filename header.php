@@ -14,7 +14,7 @@
                     if(isset($_SESSION["useruid"])){
                         echo 'schedule.php';
                     } else {
-                        echo 'signup.php';
+                        echo 'signup.php?logged=false';
                     } ?>" class="color5 txt19">Agenda</a>
                 </li>
 
@@ -44,8 +44,8 @@
                                 if(isset($_SESSION["useruid"])){
                                     echo 'schedule.php';
                                 } else {
-                                    echo 'signup.php';
-                                } ?>" style="color: white;">Agenda</a></li>
+                                    echo 'signup.php?logged=false';
+                                } ?>">Agenda</a></li>
                         </ul>
                     </div>
                     <div class="logo t-center">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="list-section">
                         <ul>
-                            <li class="p-t-20"><a href="about.php" style="color: white;">Quem Somos</a></li>
+                            <li class="p-t-20"><a href="about.php">Quem Somos</a></li>
                             <?php 
                             if(isset($_SESSION["useruid"])){
                                 echo '<li><a class="btn-user m-l-10" href="includes/logout.inc.php">Logout</a></li>';

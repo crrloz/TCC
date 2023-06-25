@@ -46,7 +46,7 @@
 
             <?php
             if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
-                echo "<p>Preencha todos os campos!</p>";
+                echo "<p>Preencha o campo!</p>";
             }
             ?>
         </form>
