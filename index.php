@@ -292,7 +292,7 @@
             <div class="col-lg-6 p-b-60">
                 <img src="images/icons/fullstar.png" alt="IMG-STAR" class="full-star">
                 <div class="wrap-pic-signup bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
-                    <img src="https://static.vecteezy.com/ti/vetor-gratis/p3/10881861-padrao-sem-costura-em-maravilhosas-cores-violetas-e-roxas-aconchegantes-para-xadrez-tecido-textil-roupas-toalha-de-mesa-e-outras-coisas-imagemial-2-vetor.jpg" alt="IMG">
+                    <img src="images/rosto.jpg" alt="IMG">
                 </div>
             </div>
         </div>

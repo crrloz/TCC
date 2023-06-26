@@ -27,6 +27,8 @@
 
     .color9 {color: #ff9f00;}
 
+    .color10 {color: #9267b0;}
+
     .wrap-about-title > span > p {
         line-height: 0.9;
         color: #ff9f00;
@@ -46,7 +48,7 @@
 
 
     <!-- Seção ... -->
-    <section class="section-hum p-t-60 bg4-pattern">
+    <section class="section-hum p-t-60">
         <div class="wrap-about-title p-l-200 p-b-50">
             <span class="fs-50">
                 <p><b>A Arte Negra</b></p>
@@ -56,7 +58,7 @@
         </div>
 
         <div class="wrap-about-sum">
-            <div class="row p-b-50 color9" style="margin: 0">
+            <div class="row p-b-50" style="margin: 0">
                 <div class="col-lg-6 p-l-200">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo amet, sed odio quis molestiae odit, nobis fugiat, necessitatibus reiciendis nostrum sint ullam eum aliquid et pariatur ab totam sapiente quibusdam!<br><br>
 
@@ -66,30 +68,6 @@
                 <div class="col-lg-6 p-r-200">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati minima atque hic dignissimos. Modi veritatis fugiat ex corrupti doloremque non quia, quasi possimus laudantium consectetur repellat obcaecati. Voluptatem, dolorem ducimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium veritatis quisquam itaque aperiam sapiente blanditiis maiores quidem, sequi libero ullam omnis sit ipsum eum explicabo alias recusandae. Nulla, illum laudantium!
 
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Divisor -->
-    <section class="section-divider">
-        <div class="item-divider-pattern p-t-50 p-b-50 bg2-pattern"></div>
-    </section>
-
-
-    <!-- Seção ... -->
-    <section class="section-hum p-t-60 p-b-200 bg1-pattern">
-        <div class="wrap-about-sum">
-            <div class="row color9" style="margin: 0">
-                <div class="col-lg-6 p-l-200">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo amet, sed odio quis molestiae odit, nobis fugiat, necessitatibus reiciendis nostrum sint ullam eum aliquid et pariatur ab totam sapiente quibusdam!<br><br>
-
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure ab dolore magni animi, suscipit totam necessitatibus assumenda sequi nostrum dignissimos recusandae voluptas autem, a nisi ea quos fugit! Saepe, expedita.
-                </div>
-
-                <div class="col-lg-6 t-center">
-                    <img src="images/arteafricanaquadrado.jpg" alt="">
                 </div>
             </div>
         </div>
