@@ -1,6 +1,7 @@
 <?php include_once 'head.php' ?>
     <title>Cadastro | COLETIVO HUMANOS</title>
 </head>
+<?php require_once "css/style.php" ?>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
@@ -8,14 +9,14 @@
 
     .color6 {color: #7F4AA4;}
 
-    .color7 {color: rgb(217,158,7);}
+    .color7 {color: #D99E07;}
     
     .row, .container {
         padding: 0;
         margin: 0;
     }
 
-    input {
+    input[type="text"] {
         appearance: none;
         border-radius: 0;
         line-height: 1.5;
@@ -45,6 +46,10 @@
     .input-field:focus, .input-field:valid {
         outline: 0;
         border-bottom: 0.1rem solid #9267b0;
+    }
+
+    .input-field::-webkit-input-placeholder {
+        color: #9D6EBE;
     }
 
 </style>

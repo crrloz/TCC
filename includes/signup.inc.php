@@ -6,6 +6,12 @@ $username = $_POST['uid'];
 $pwd = $_POST['pwd'];
 $pwdRepeat = $_POST['pwdrepeat'];
 
+if(isset($_POST['admin'])){
+    $admin = true;
+} else {
+    $admin = false;
+}
+
 require_once 'dbh.inc.php';
 require_once 'functions.inc.php';
 

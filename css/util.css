@@ -2477,14 +2477,15 @@
 .color4 {color: #222222;}
 .color5 {color: #000000}
 
-.color6 {color: #718928;}
-.color7 {color: #2A3A1E;}
-
+.color6 {color: #7F4AA4;}
+.color7 {color: #D99E07;}
 .color8 {color: #FAEEDD;}
+.color9 {color: #ff9f00;}
+.color10 {color: #9267b0;}
 
 .color0-hov:hover {color: #ffffff;}
 .color5-hov:hover {color: #000000;}
-.color6-hov:hover {color: #718928;}
+.color6-hov:hover {color: #7F4AA4;}
 
 /*[TRANSIÇÃO]*/
 
@@ -2517,6 +2518,7 @@
 
 .bo1 {border: 1px solid #ebebeb;}
 .bo2 {border: 1px solid #d9d9d9;}
+.bo3 {border: 1px solid #9267b0;}
 
 .bo5-b {border-bottom: 1px solid #e6e6e6;}
 .bo5-r {border-right: 1px solid #e6e6e6;}

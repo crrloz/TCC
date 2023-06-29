@@ -1,9 +1,7 @@
-<?php
-    session_start();
-    include_once 'head.php';
-?>
+<?php include_once 'head.php'; ?>
     <title>Agenda | COLETIVO HUMANOS</title>
 </head>
+<?php require_once "css/style.php" ?>
 <style>
     h2 {
         font-family: Glitten;
@@ -28,7 +26,7 @@ td {
 }
 
 th,td:hover {
-    color: rgb(217,158,7);;
+    color: #D99E07;;
 }
 
 td {

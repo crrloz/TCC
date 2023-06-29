@@ -1,128 +1,12 @@
-<?php
-    session_start();
-    include_once 'head.php';
-?>
+<?php include_once 'head.php';?>
     <title>CAH | Coletivo Artístico Humanos</title>
 </head>
+<?php require_once "css/style.php" ?>
 <style>
     @media (max-width: 767px) { .m-t-0-40 {margin-top: 40px;}}
 
-    .bo-color-0 {border-color: #7F4AA4;}
-
-    .bo-color-1 {border-color: rgb(217,158,7);}
-
-    .bg1-pattern {
-        background-image: url(images/patterns/pattern1.jpg);
-        background-repeat: repeat;
-    }
-
-    .bg1 {background-color: #7F4AA4;}
-
-    .bg2 {background-color: #9267b0}
-
-    .color6 {color: #7F4AA4;}
-
-    .color7 {color: rgb(217,158,7);}
-
-    .hov-img-zoom {
-        display: block;
-        overflow: hidden;
-    }
-
-    .hov-img-zoom img{
-        width: 100%;
-        transition: all 0.6s;
-    }
-
-    .hov-img-zoom:hover img {
-        transform: scale(1.1);
-    }
-
-    .entry-shape {
-        height: 85vh;
-        width: 60vh;
-        border-radius: 15rem;
-        background-color: black;
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    @media (max-width: 900px){
-        .entry-shape {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            margin-top: 300px
-        }
-    }
-
-    .section-about .container .row {
-        padding: 125px 0 95px 0;
-    }
-
-    .hov_underline {
-        display: inline-block;
-        position: relative;
-        font-size: 15px;
-        margin-top: 5px;
-        color: #808080;
-    }
-
-    .hov_underline:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        transform: scaleX(1);
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background-color: #808080;
-        transform-origin: bottom left;
-        transition: transform 0.25s ease-out;
-    }
-
-    .hov_underline:hover:after{
-        transform: scaleX(0);
-        transform-origin: bottom right;
-    }
-
-    .wrap-input {
-        border-bottom: 0.1rem solid rgb(217,158,7);
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 5px;
-    }
-
-    .wrap-input input[type="text"] {
-        background: none;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        padding: 5px;
-        width: 100%;
-    }
-
-    .full-star {
-        z-index: 10;
-        position: absolute;
-        left: 81%;
-        top: -10%;
-    }
-
-    ::-webkit-input-placeholder { color: rgb(217,158,7); }
-    
-    .section-entry {
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .wrap-content {
-        color: white;
+    ::-webkit-input-placeholder {
+        color: #9D6EBE;
     }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
@@ -134,9 +18,6 @@
     <section class="section-entry bg2" style="background-image: url(images/dança.jpg); overflow: hidden;">
         <div class="row">
             <div class="col-lg-6">
-                <div class="entry-shape">
-
-                </div>
             </div>
 
             <div class="col-lg-6">
@@ -202,20 +83,20 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">AAAAA</a>
+                                    <a href="">Notícia</a>
                                 </div>
                                 <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">A</a>
+                                    <a href="">Notícia</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-mdAA-6">
+                        <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">AAA</a>
+                                    <a href="">Notícia</a>
                                 </div>
                                 <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">AAAAAAAAAA</a>
+                                    <a href="">Notícia</a>
                                 </div>
                             </div>
                         </div>
@@ -233,7 +114,7 @@
 
     <?php if(isset($_SESSION["useruid"])){ ?>
     <!-- Agenda -->
-    <section class="section-schedule-home bg3" style="overflow: hidden;">
+    <section class="section-schedule-home" style="overflow: hidden; background-color: #d39ff8;">
         <div class="row">
             <div class="col-lg-6 p-b-30 p-t-30">
                 <div class="wrap-pic-schedule bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">

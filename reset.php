@@ -1,6 +1,7 @@
 <?php include_once 'head.php' ?>
     <title>Login | COLETIVO HUMANOS</title>
 </head>
+<?php require_once "css/style.php" ?>
 <style>
     .input {
         display: flex;

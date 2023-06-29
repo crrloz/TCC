@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
@@ -255,7 +256,7 @@ menu ul li a {
 .btn-user:hover{
   color: white;
   background: #D99E07;
-  border: #D99E07;
+  border-color: #D99E07;
   transition: 0.4s;
 }
 
@@ -376,7 +377,7 @@ menu ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: black;
   border: black solid 0.1rem;
   border-radius: 50px;
@@ -395,9 +396,9 @@ menu ul li a {
 }
 
 .btn3{
-  color: black;
+  color: #7F4AA4;
   background: none;
-  border: black solid 0.1rem;
+  border: #7F4AA4 solid 0.1rem;
   border-radius: 50px;
   text-transform: uppercase;
   padding: 0.25rem 1rem;
@@ -405,8 +406,8 @@ menu ul li a {
 }
 
 .btn3:hover{
-  color: rgb(255, 255, 255);
-  background: black;
+  color: white;
+  background: #7F4AA4;
   transition: 0.4s;
 }
 
@@ -508,7 +509,26 @@ menu ul li a {
   padding: 22px 20px;
 }
 
-/** ----------- **/
+/** --------------- **/
+
+/*[CORES]*/
+
+.color0 {color: #ffffff;}
+.color1 {color: #cccccc;}
+.color2 {color: #666666;}
+.color3 {color: #333333;}
+.color4 {color: #222222;}
+.color5 {color: #000000}
+
+.color6 {color: #7F4AA4;}
+.color7 {color: #D99E07;}
+.color8 {color: #FAEEDD;}
+.color9 {color: #ff9f00;}
+.color10 {color: #9267b0;}
+
+.color0-hov:hover {color: #ffffff;}
+.color5-hov:hover {color: #000000;}
+.color6-hov:hover {color: #7F4AA4;}
 
 .bo-color-0 {border-color: #7F4AA4;}
 
@@ -522,10 +542,6 @@ menu ul li a {
     .bg1 {background-color: #7F4AA4;}
 
     .bg2 {background-color: #9267b0}
-
-    .color6 {color: #7F4AA4;}
-
-    .color7 {color: #D99E07;}
 
     .hov-img-zoom {
         display: block;
@@ -616,8 +632,6 @@ menu ul li a {
         left: 81%;
         top: -10%;
     }
-
-    ::-webkit-input-placeholder { color: #D99E07; }
     
     .section-entry {
         background-repeat: no-repeat;
@@ -627,3 +641,56 @@ menu ul li a {
     .wrap-content {
         color: white;
     }
+
+    /** CONTACT **/
+
+    .bo3 {border: 1px solid #9267b0;}
+
+	.input-contact::-webkit-input-placeholder, .textarea-contact::-webkit-input-placeholder {color: #9267b0;}
+
+	.input-contact:focus {
+		outline: #D99E07;
+		border: none;
+        color: #D99E07;
+		transition: 0.3s;
+    }
+
+	.textarea-contact:focus {
+		outline: none;
+        color: #D99E07;
+		transition: 0.3s;
+	}
+
+    /* */
+
+
+    .bg1-pattern {
+        background-image: url(images/patterns/pattern1.jpg);
+        background-repeat: repeat;
+    }
+
+    .bg3-pattern {
+        background-image: url(images/patterns/pattern3.jpg);
+        background-repeat: repeat;
+    }
+
+    .bg4-pattern {
+        background-image: url(images/patterns/pattern4.jpg);
+        background-repeat: repeat;
+    }
+
+
+
+
+    .parallax0 {
+    background-attachment: fixed;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay0-parallax {
+    background-color: rgba(0,0,0,0.5);
+    min-height: 616px;
+}
+</style>

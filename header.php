@@ -51,7 +51,7 @@
                     <div class="logo t-center">
                         <!-- Logo -->
                         <a href="index.php">
-                            <img src="images/logo/favicon.png">
+                            <img src="images/logo/logo-branca.png">
                         </a>
                     </div>
                     <div class="list-section">
