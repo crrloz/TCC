@@ -36,13 +36,17 @@
         <div class="wrap-about-sum">
             <div class="row p-b-80" style="margin: 0">
                 <div class="col-lg-6 p-l-200">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo amet, sed odio quis molestiae odit, nobis fugiat, necessitatibus reiciendis nostrum sint ullam eum aliquid et pariatur ab totam sapiente quibusdam!<br><br>
+					Em uma sociedade permeada pela persistência do racismo e pela escassez de representatividade negra em posições de destaque nas artes e na sociedade, desponta o Coletivo Artístico Humanos. Em meio a um cenário pandêmico no ano de 2020, Luan Canellas decidiu tomar uma iniciativa para contornar a problemática da ausência de corpos negros nos grupos de dança, que majoritariamente eram compostos por indivíduos brancos. Dessa forma, o coletivo emergiu com a proposta de valorizar o corpo negro nas artes cênicas, enfatizando sua excelência técnica no balé, na dança contemporânea, no jazz, entre outras formas de expressão, sem jamais objetificar essas corporalidades.<br><br>
 
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure ab dolore magni animi, suscipit totam necessitatibus assumenda sequi nostrum dignissimos recusandae voluptas autem, a nisi ea quos fugit! Saepe, expedita.
+					O Coletivo Artístico Humanos, além de se dedicar à valorização da cultura negra, busca promover a inclusão de artistas e ativistas negras na sociedade, especialmente no universo das artes cênicas.
                 </div>
 
                 <div class="col-lg-6 p-r-200">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati minima atque hic dignissimos. Modi veritatis fugiat ex corrupti doloremque non quia, quasi possimus laudantium consectetur repellat obcaecati. Voluptatem, dolorem ducimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium veritatis quisquam itaque aperiam sapiente blanditiis maiores quidem, sequi libero ullam omnis sit ipsum eum explicabo alias recusandae. Nulla, illum laudantium!
+					A arte negra no contexto do balé brasileiro ganha uma relevância ímpar, uma vez que reflete a diversidade cultural de nossa nação e a importância de assegurar a representatividade racial no âmbito artístico. <br><br>
+
+					Embora enfrentem inúmeras dificuldades e obstáculos nesse meio, os artistas negros encontram no Coletivo Artístico Humanos um espaço dedicado à promoção do corpo negro nas artes cênicas, ao fortalecimento da cultura negra e à necessidade de proporcionar um ambiente seguro e acolhedor para artistas e ativistas negras.
+
+					O objetivo primordial do Coletivo é criar um ambiente inclusivo, diversificado e propício para o avanço do balé brasileiro, com a participação ativa de artistas e ativistas negros. Nessa perspectiva, o Coletivo Artístico Humanos assume um papel fundamental não apenas para o balé brasileiro, mas para todo o universo das artes cênicas, representando uma organização cultural de grande relevância.
 
                 </div>
             </div>
