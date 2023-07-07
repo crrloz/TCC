@@ -41,6 +41,15 @@
         $(ovlSideBar).removeClass('show-overlay-sidebar');
     })
 
+    /*[MOSTRAR/ESCONDER POPUP]
+    ===========================================================*/
+    var btnHidePopup = $('.btn-hide-popup');
+    var popup = $('.section-overlay');
+
+    $(btnHidePopup).on('click', function(){
+        $(popup).css('display','none');
+    })
+
     /*[PAUSAR/RODAR VÍDEO]
 	===========================================================*/
 

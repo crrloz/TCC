@@ -1,4 +1,8 @@
-<?php include_once 'head.php';?>
+<?php
+    include_once 'head.php';
+    include_once 'includes/dbh.inc.php';
+    include_once 'includes/functions.inc.php';
+?>
     <title>CAH | Coletivo Artístico Humanos</title>
 </head>
 <?php require_once "css/style.php" ?>
@@ -8,8 +12,46 @@
     ::-webkit-input-placeholder {
         color: #9D6EBE;
     }
+
+    .section-overlay {
+        position: fixed;
+        z-index: 1001;
+        width: 100%;
+        bottom: 0;
+        background-color: rgb(250, 238, 221);
+        text-align: center;
+    }
+
+    .content {
+        padding: 0 20%;
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
+    <?php if(isset($_GET['loggedin'])){ ?>
+        <!-- POP-UP: Cadastro realizado -->
+        <aside class="section-overlay shadow1">
+            <!-- Pop-up -->
+            <div class="popup" style="display: block;">
+                <!-- Botão Esconder Popup -->
+                <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+                <!-- Conteúdo -->
+                <div class="popup-content">
+                    <div class="img-box m-b-15 m-t-15">
+                        <img src="images/logo/favicon.png" alt="IMG-LOGO">
+                    </div>
+
+                    <div class="content">
+                        <h3 class="f-glitten m-b-10">Bem vindo ao CAH!</h3>
+                        <p>Olá, <?php echo $_SESSION['useruid'] ?>. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aperiam dolorem officiis a, molestias beatae voluptatum aliquid doloremque eius voluptatibus vel amet reiciendis cum omnis, officia nam. Illum, vero magnam!</p>
+                        <button class="btn3 m-b-40 m-t-20" id="btnClose">Entendi</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    <?php } ?>
+
+
     <!-- Header -->
     <?php include_once 'header.php' ?>
 
@@ -50,11 +92,11 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                O Coletivo Artístico Humanos é um grupo de dança situado em Arraial do Cabo, dedicado a representar e celebrar a rica cultura afro-brasileira por meio da expressão corporal. Criado e dirigido por seu talentoso fundador, LUAN, o Coletivo tem como objetivo proporcionar um espaço inclusivo e acolhedor onde a arte negra possa florescer e se manifestar de forma poderosa. <br>
+                    O Coletivo Artístico Humanos é um grupo de dança situado em Arraial do Cabo, dedicado a representar e celebrar a rica cultura afro-brasileira por meio da expressão corporal. Criado e dirigido por seu talentoso fundador, LUAN, o Coletivo tem como objetivo proporcionar um espaço inclusivo e acolhedor onde a arte negra possa florescer e se manifestar de forma poderosa. <br>
                     <span><a href="about.php" class="hov_underline">Descobrir mais</a></span>
                 </div>
                 <div class="col-md-6 m-t-0-40">
-                Nosso Coletivo acredita no poder transformador da dança como uma forma de expressão artística e como uma ferramenta para promover a consciência, o diálogo e a igualdade. Nossos artistas, habilmente treinados pelo próprio criador, trazem para o palco uma fusão de estilos contemporâneos e tradicionais, em coreografias que evocam histórias, emoções e a força da identidade negra.
+                    Nosso Coletivo acredita no poder transformador da dança como uma forma de expressão artística e como uma ferramenta para promover a consciência, o diálogo e a igualdade. Nossos artistas, habilmente treinados pelo próprio criador, trazem para o palco uma fusão de estilos contemporâneos e tradicionais, em coreografias que evocam histórias, emoções e a força da identidade negra.
                 </div>
             </div>
         </div>
@@ -69,37 +111,33 @@
 
     <!-- Notícias/Novidades -->
     <section class="section-news">
-        <!-- Texto -->
-
-
-        <!-- Notícias -->
         <div class="container">
+            <!-- Texto -->
+            <div class="wrap-text-news p-t-30">
+                <span class="f-glitten fs-60 color6">NOTÍCIAS</span>
+            </div>
+
+            <!-- Notícias -->
             <div class="row p-t-30 p-b-30">
                 <div class="col-md-6 p-t-250 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
                     <a href="">Hmmm</a>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">Notícia</a>
-                                </div>
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">Notícia</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">Notícia</a>
-                                </div>
-                                <div class="col-md-12 p-t-125 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                                    <a href="">Notícia</a>
-                                </div>
-                            </div>
-                        </div>
+                    <?php
+                    $sql = "SELECT * FROM news ORDER BY newsId DESC LIMIT 4";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $title = $row['newsName'];
+                            $image = "data:image/jpeg;base64," . base64_encode($row['newsPic']);
+
+                            echo '<div class="col-md-12 p-t-125 sizefull" style="background-image: url(' . $image . ');">';
+                            echo '<a href="">' . $title . '</a>';
+                            echo '</div>';
+                        }
+                    } ?>
                     </div>
                 </div>
             </div>
@@ -183,5 +221,28 @@
 
     <!-- Footer -->
     <?php include_once 'footer.php' ?>
+    <script>
+        (function ($) {
+            "use strict";
+
+            /*[ESCONDER POPUP]
+            ===========================================================*/
+            var btnHidePopup = $('.btn-hide-popup');
+            var popup = $('.section-overlay');
+
+            $(btnHidePopup).on('click', function(){
+                $(popup).css('display','none');
+            })
+
+            /*[DIRECIONAR PARA PÁGINA]
+            ===========================================================*/
+            $(document).ready(function() {
+                $('.btn-profile').on('click', function() {
+                    var url = $(this).data('url');
+                    window.location.href = url;
+                });
+            });
+        })(jQuery);
+    </script>
 </body>
 </html>

@@ -47,13 +47,13 @@ function pwdMatch($pwd, $pwdRepeat){
 }
 
 function uidExists($conn, $username, $email) {
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ? UNION SELECT * FROM admins WHERE adminsUid = ? OR adminsEmail = ?;";
+    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../login.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt, "ssss", $username, $username, $username, $username);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $username);
     mysqli_stmt_execute($stmt);
 
     $resultData = mysqli_stmt_get_result($stmt);
@@ -81,25 +81,6 @@ function createUser($conn, $name, $email, $username, $pwd){
     mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-
-    header("location: ../index.php?error=nenhum");
-    exit();
-}
-
-function createAdmin($conn, $name, $email, $username, $pwd){
-    $sql = "INSERT INTO admins (adminsName, adminsEmail, adminsUid, adminsPwd) VALUES (?, ?, ? , ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../signup.php?error=statementfailed");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $pwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    header("location: ../index.php?error=nenhum");
-    exit();
 }
 
 function emptyInputLogin($username, $pwd){
@@ -133,58 +114,110 @@ function loginUser($conn, $username, $pwd) {
         session_start();
         $_SESSION["userid"] = $uidExists["usersId"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
-        header("location: ../index.php");
-        exit();
-    }
-}
 
-function loginAdmin($conn, $username, $pwd){
-    $adminExists = uidExists($conn, $username, $pwd);
+        $userId = $_SESSION["userid"];
 
-    if ($adminExists === false) {
-        header("location: ../login.php?error=wronglogin");
-        exit();
-    }
-
-    $sql = "SELECT adminsPwd FROM admins WHERE adminsUid = $username";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../login.php?error=statementfailed");
-        exit();
-    }
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($resultado) {
-        $line = mysqli_fetch_assoc($result);
-        $storedPwd = $line['adminsPwd'];
-
-        if (password_verify($pwd, $storedPwd)) {
-            session_start();
-            $_SESSION["adminid"] = $uidExists["adminsId"];
-            $_SESSION["adminuid"] = $uidExists["adminsUid"];
-            header("location: ../index.php");
-            exit();
-        } else {
-            header("location: ../login.php?error=wronglogin");
-            exit();
+        $sql = "SELECT usersPic FROM users WHERE usersId = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (mysqli_stmt_prepare($stmt, $sql)) {
+            mysqli_stmt_bind_param($stmt, "i", $userId);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $profilePic);
+            mysqli_stmt_fetch($stmt);
+        
+            if ($profilePic !== null) {
+                $_SESSION['imagesrc'] = "data:image/jpeg;base64," . base64_encode($profilePic);
+            } else {
+                $_SESSION['imagesrc'] = "images/patterns/pattern1.jpg";
+            }
+            mysqli_stmt_close($stmt);
         }
-    } else if ($checkPwd === true) {
-        session_start();
-        $_SESSION["adminid"] = $adminExists["adminsId"];
-        $_SESSION["adminuid"] = $adminExists["adminsUid"];
-        header("location: ../index.php");
+
+        $sql = "SELECT usersName FROM users WHERE usersId = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (mysqli_stmt_prepare($stmt, $sql)) {
+            mysqli_stmt_bind_param($stmt, "i", $userId);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $usersName);
+            mysqli_stmt_fetch($stmt);
+
+            $arrayName = explode(" ", $usersName);
+            $firstName = ucfirst($arrayName[0]);
+
+            $_SESSION['username'] = ucwords($firstName);
+            mysqli_stmt_close($stmt);
+        }
+
+        $sql = "SELECT isAdmin FROM users WHERE usersId = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (mysqli_stmt_prepare($stmt, $sql)) {
+            mysqli_stmt_bind_param($stmt, "i", $userId);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $isAdmin);
+            mysqli_stmt_fetch($stmt);
+
+            if($isAdmin == 1){
+                $_SESSION['isadmin'] = true;
+            }
+            
+            mysqli_stmt_close($stmt);
+        }
+
+        header("location: ../index.php?loggedin");
         exit();
     }
 }
 
 // OUTRAS
 
-require '../PHPMailer/src/Exception.php';
-require '../PHPMailer/src/PHPMailer.php';
-require '../PHPMailer/src/SMTP.php';
+function deleteUser($conn, $id){
+    $sql = "DELETE FROM users WHERE usersId = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    
+    $rowsAffected = mysqli_stmt_affected_rows($stmt);
+    
+    if ($rowsAffected > 0) {
+        $result = true;
+        return $result;
+    } else {
+        $result = false;
+        return $result;
+    }
+    
+    mysqli_stmt_close($stmt);
+}
+
+function showPurchases($conn, $id){
+    $sql = "SELECT * FROM sales WHERE usersId = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed_sales");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    $purchases = array();
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $purchases[] = $row;
+    }
+
+    return $purchases;
+}
 
 function sendEmail($message, $subject, $email){
+    require '../PHPMailer/src/Exception.php';
+    require '../PHPMailer/src/PHPMailer.php';
+    require '../PHPMailer/src/SMTP.php';
+
     $mail = new PHPMailer(true);
 
     $mail->isSMTP();
@@ -201,3 +234,4 @@ function sendEmail($message, $subject, $email){
     $mail->Body = $message;
     $mail->send();
 }
+

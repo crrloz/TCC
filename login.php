@@ -52,8 +52,6 @@
 
             <input type="submit" name="submit" value="Logar" class="btn3"><br><br>
 
-            <input type="checkbox" name="admin"> É admin?<br><br>
-
             <a href="reset.php" class="color5 m-b-15">Esqueceu sua senha? Clique aqui!</a>
 
             <?php

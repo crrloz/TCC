@@ -46,3 +46,4 @@ $subject = 'Cadastro finalizado. Seja bem vindo(a)!';
 
 sendEmail($message, $subject, $email);
 createUser($conn, $name, $email, $username, $pwd);
+loginUser($conn, $username, $pwd);

@@ -11,12 +11,12 @@
 
 @font-face {
   font-family: Century-Gothic;
-  src: url('../fontes/Century\ Gothic.ttf') format('truetype');
+  src: url('../fonts/Century\ Gothic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: Glitten;
-  src: url('../fontes/Glitten-Regular.ttf');
+  src: url('../fonts/Glitten-Regular.ttf');
 }
 
 .f-glitten {
@@ -95,6 +95,68 @@ video {
 }
 
 /* ------------------------------------ */
+
+
+/*[OVERLAY/POPUP]*/
+
+.popup-file {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 150;
+}
+
+.popup-file-content {
+  position: relative;
+  padding: 40px 30px;
+  background-color: rgb(250, 238, 221);
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 22%);
+}
+
+@media (max-width: 767px) {
+  .popup-file-content {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .popup-file-content input {
+    margin: 10px 0px;
+  }
+
+}
+
+/* ------------------------------------ */
+
+.btn-hide-popup {
+  position: absolute;
+  font-size: 20px;
+  color: #111111;
+  padding: 10px;
+  top: 20px;
+  right: 20px;
+}
+
+/* ------------------------------------ */
+
+.overlay{
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 100;
+}
 
 /*[NAVBAR]*/
 
@@ -228,6 +290,11 @@ menu ul li a {
   vertical-align: middle;
 }
 
+.wrap-cir-pic {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 /* Botões */
 
 .btn-show-sidebar {
@@ -256,8 +323,14 @@ menu ul li a {
 .btn-user:hover{
   color: white;
   background: #D99E07;
-  border-color: #D99E07;
+  border: #D99E07 solid 0.1rem;
   transition: 0.4s;
+}
+
+.btn-profile {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 @media (max-width: 980px){
@@ -529,6 +602,7 @@ menu ul li a {
 .color0-hov:hover {color: #ffffff;}
 .color5-hov:hover {color: #000000;}
 .color6-hov:hover {color: #7F4AA4;}
+.color7-hov:hover {color: #D99E07;}
 
 .bo-color-0 {border-color: #7F4AA4;}
 

@@ -255,7 +255,7 @@ menu ul li a {
 .btn-user:hover{
   color: white;
   background: #D99E07;
-  border: #D99E07;
+  border: #D99E07 solid 0.1rem;
   transition: 0.4s;
 }
 

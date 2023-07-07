@@ -59,7 +59,9 @@
                             <li class="p-t-20"><a href="about.php">Quem Somos</a></li>
                             <?php 
                             if(isset($_SESSION["useruid"])){
-                                echo '<li><a class="btn-user m-l-10" href="includes/logout.inc.php">Logout</a></li>';
+                                $imageSrc = $_SESSION['imagesrc'];
+                                echo '<li><a class="btn-user m-l-10" href="includes/logout.inc.php">Logout</a></li>'
+                                    .'<li class="wrap-cir-pic btn-profile sizefull m-l-15" style="background-image: url('. $imageSrc .');" data-url=profile.php><li>';
                             } else {
                                 echo '<li><a class="btn-user m-l-10" href="signup.php">Cadastro</a></li>';
                             } ?>

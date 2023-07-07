@@ -8,8 +8,8 @@
     <link rel="icon" type="image/jpg" href="images/logo/favicon.png"/>
 
     <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones, Animações -->
-    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="themify/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
     <script src="https://kit.fontawesome.com/7511bd6378.js" crossorigin="anonymous"></script>
 
     <!-- ESTILIZAÇÃO PRINCIPAL -->
