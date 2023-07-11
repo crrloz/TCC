@@ -119,34 +119,50 @@
 
             <!-- Notícias -->
             <div class="row p-t-30 p-b-30">
-                <div class="col-md-6 p-t-250 sizefull" style="background-image: url(images/patterns/pattern4.jpg);">
-                    <a href="">Hmmm</a>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                    <?php
-                    $sql = "SELECT * FROM news ORDER BY newsId DESC LIMIT 4";
-                    $result = mysqli_query($conn, $sql);
+                <?php
+                $sql = "SELECT * FROM news ORDER BY newsId DESC LIMIT 5";
+                $result = mysqli_query($conn, $sql);
+                $count = 1;
 
-                    if ($result && mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $title = $row['newsName'];
-                            $image = "data:image/jpeg;base64," . base64_encode($row['newsPic']);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $title = $row['newsName'];
+                        $image = "data:image/jpeg;base64," . base64_encode($row['newsPic']);
+                        $url = $row['newsUrl'];
+                        
+                        if($count == 1){ ?>
+                            <div class="col-md-6 p-t-250 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                            </div>
+                        <?php } else if($count == 2){ ?>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                        <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                    </div>
+                        <?php } else if($count == 3){ ?>
+                                    <div class="col-md-6 p-t-125" style="background-image: url(<?php echo $image ?>);">
+                                        <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                    </div>
+                                </div>
+                        <?php } else if($count == 4){ ?>
+                                <div class="row">
+                                    <div class="col-md-6 p-t-125" style="background-image: url(<?php echo $image ?>);">
+                                    <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                    </div>
+                        <?php } else if($count == 5){ ?>
+                                    <div class="col-md-6 p-t-125" style="background-image: url(<?php echo $image ?>);">
+                                        <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
+                        $count++;
+                    }
+                } ?>
 
-                            echo '<div class="col-md-12 p-t-125 sizefull" style="background-image: url(' . $image . ');">';
-                            echo '<a href="">' . $title . '</a>';
-                            echo '</div>';
-                        }
-                    } ?>
-                    </div>
-                </div>
             </div>
         </div>
-
-
-        <!-- Link/Texto/Sla -->
-
-
     </section>
 
 

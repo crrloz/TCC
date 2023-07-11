@@ -31,7 +31,7 @@
         color: #9D6EBE;
     }
 </style>
-<body style="background-color: rgb(250, 238, 221);">
+<body class="animsition" style="background-color: rgb(250, 238, 221);">
     <?php include_once 'header.php' ?>
 
 
@@ -63,4 +63,8 @@
             ?>
         </form>
     </section>
+
+
+    <!-- Footer -->
+    <?php include_once 'footer.php' ?>
 </body>

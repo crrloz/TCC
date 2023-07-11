@@ -537,6 +537,22 @@ menu ul li a {
   }
 }
 
+/* BTN Edit */
+
+.btn-edit {
+  position: absolute;
+  top: 100px;
+  left: 10%;
+  width: 40px;
+  height: 40px;
+  <?php if(isset($darkenedUserColor)){ 
+    echo "background-color: ".$darkenedUserColor.";";
+  } ?>
+  color: white;
+  border-radius: 50%;
+}
+
+
 .wrap-description {
   margin: 0.75rem 0;
   word-break: break-all;

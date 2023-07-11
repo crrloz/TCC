@@ -1,15 +1,13 @@
-eventualmente eu vou apagar esse repositório ou sla então... err... sla se vc quiser roubar alguma coisa baixe-o enquanto puder <3
+Esse é o nosso projeto de TCC para o IFRJ de Arraial do Cabo. Nosso grupo se une no intuito de criar um site para o Coletivo Artístico Humanos, também de Arraial, apresentando-o para o público, juntamente de suas funcionalidades.
 
-esse projeto é basicamente o projeto de tcc do grupo que participo que consiste na criação de um site para o coletivo artístico humanos, de arraial do cabo.
+PRETENDEMOS/OBJETIVOS:
 
-pretendemos/objetivos:
+Ter um sistema de cadastro e login (feito)
+Apresentar o coletivo ao público
+Disponibilizar uma agenda de apresentações de dança
+Criar um sistema de envio de email a usuarios (feito)
 
-ter um sistema de cadastro e login (feito)
-apresentar o coletivo ao público
-disponibilizar uma agenda de apresentações de dança
-criar um sistema de envio de email a usuarios (feito)
+COGITAMOS/POSSIBILIDADES:
 
-cogitamos/possibilidades:
-
-sistema de pagamento (boleto, pix ou ambos)
-agendamento
+Sistema de pagamento (boleto, pix ou ambos)
+Agendamento

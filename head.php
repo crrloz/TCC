@@ -10,7 +10,7 @@
     <!-- ESTILIZAÇÃO SECUNDÁRIA: Ícones, Animações -->
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
-    <script src="https://kit.fontawesome.com/7511bd6378.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 
     <!-- ESTILIZAÇÃO PRINCIPAL -->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">

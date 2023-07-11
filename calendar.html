@@ -1,4 +1,18 @@
-<!-- HTML do seu calendário -->
+<style>
+	.clickable-date {
+		cursor: pointer;
+		background-color: yellow;
+	}
+	
+	td {
+		text-align: center;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+	}
+</style>
+
+
 <!-- Calendário -->
 <section class="wrap-calendar" style="padding: 70px;">
     <div id="calendar"></div>
@@ -62,43 +76,49 @@
 	  var totalCells = daysInMonth + firstDayOfWeek;
   
 	  // Cria as células do calendário
-	  for (var day = 1; day <= totalCells; day++) {
-	    if ((day - 1) % 7 === 0) {
-	      // Cria uma nova linha no início de cada semana
-	      var row = document.createElement('tr');
-	    }
-  
-	    var cell = document.createElement('td');
-	    if (day > firstDayOfWeek) {
-	      // Define o número do dia para células além do primeiro dia da semana
-	      cell.textContent = day - firstDayOfWeek;
-	      cell.id = currentYear + '-' + (currentMonth + 1).toString().padStart(2, '0') + '-' + (day - firstDayOfWeek).toString().padStart(2, '0');
-	      cell.classList.add('clickable-date'); // Adiciona uma classe para facilitar a estilização das datas clicáveis
-	    }
-  
-	    // Adiciona a célula à linha atual
-	    row.appendChild(cell);
-  
-	    if (day % 7 === 0 || day === totalCells) {
-	      // Adiciona a linha à tabela no final de cada semana ou no final do calendário
-	      table.appendChild(row);
-	    }
-	  }
+	for (var day = 1; day <= totalCells; day++) {
+	if ((day - 1) % 7 === 0) {
+		// Cria uma nova linha no início de cada semana
+		var row = document.createElement('tr');
+	}
+
+	var cell = document.createElement('td');
+	if (day > firstDayOfWeek) {
+		// Define o número do dia para células além do primeiro dia da semana
+		cell.textContent = day - firstDayOfWeek;
+		var date = currentYear + '-' + (currentMonth + 1).toString().padStart(2, '0') + '-' + (day - firstDayOfWeek).toString().padStart(2, '0');
+		var url = findUrlByDate(date, dates);
+		if (url) {
+		cell.id = date;
+		cell.classList.add('clickable-date'); // Adiciona a classe apenas se houver uma URL correspondente
+		}
+	}
+
+  // Adiciona a célula à linha atual
+  row.appendChild(cell);
+
+  if (day % 7 === 0 || day === totalCells) {
+    // Adiciona a linha à tabela no final de cada semana ou no final do calendário
+    table.appendChild(row);
+  }
+}
   
 	  // Adiciona a tabela ao contêiner do calendário
 	  calendarContainer.appendChild(table);
   
 	  // Adiciona o comportamento de clique às datas clicáveis
 	  var clickableDates = document.getElementsByClassName('clickable-date');
-	  for (var i = 0; i < clickableDates.length; i++) {
-	    clickableDates[i].addEventListener('click', function(event) {
-	      var clickedDate = event.target.id;
-	      var url = findUrlByDate(clickedDate, dates);
-	      if (url) {
-	        window.location.href = url; // Redireciona para a URL associada à data
-	      }
-	    });
-	  }
+		for (var i = 0; i < clickableDates.length; i++) {
+		if (clickableDates[i].id) { // Verifica se a célula tem um ID
+			clickableDates[i].addEventListener('click', function(event) {
+			var clickedDate = event.target.id;
+			var url = findUrlByDate(clickedDate, dates);
+			if (url) {
+				window.location.href = url; // Redireciona para a URL associada à data
+			}
+			});
+		}
+		}
     }
     
     // Função para pesquisar a URL associada à data
