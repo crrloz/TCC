@@ -163,6 +163,11 @@ function loginUser($conn, $username, $pwd) {
             mysqli_stmt_close($stmt);
         }
 
+        if (!isset($_COOKIE["User"]) || !isset($_COOKIE["Senha"])) {
+            setcookie("User", $username, time()+60*60*24*364);
+            setcookie("Senha", $pwd, time()+60*60*24*364);
+        }
+        
         header("location: ../index.php?loggedin");
         exit();
     }
@@ -171,26 +176,48 @@ function loginUser($conn, $username, $pwd) {
 // OUTRAS
 
 function deleteUser($conn, $id){
-    $sql = "DELETE FROM users WHERE usersId = ?";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../profile.php?error=stmtfailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt, "i", $id);
-    mysqli_stmt_execute($stmt);
+    if(is_array($id)){
+        if (empty($id)) {
+            header("location: ../profile.php?emptyarray");
+            exit();
+        }
     
-    $rowsAffected = mysqli_stmt_affected_rows($stmt);
+        $placeholders = implode(',', array_fill(0, count($id), '?'));
     
-    if ($rowsAffected > 0) {
-        $result = true;
-        return $result;
+        $sql = "DELETE FROM users WHERE usersEmail IN ($placeholders)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../profile.php?stmtfailed");
+            exit();
+        }
+    
+        $types = str_repeat('s', count($id));
+        mysqli_stmt_bind_param($stmt, $types, ...$id);
+    
+        $result = mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
     } else {
-        $result = false;
-        return $result;
-    }
+        $sql = "DELETE FROM users WHERE usersId = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../profile.php?error=stmtfailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
     
-    mysqli_stmt_close($stmt);
+        $rowsAffected = mysqli_stmt_affected_rows($stmt);
+        
+        if ($rowsAffected > 0) {
+            $result = true;
+        } else {
+            $result = false;
+        }
+
+        mysqli_stmt_close($stmt);
+    }
+
+    return $result;
 }
 
 function showPurchases($conn, $id){
@@ -213,11 +240,27 @@ function showPurchases($conn, $id){
     return $purchases;
 }
 
-function sendEmail($message, $subject, $email){
-    require '../PHPMailer/src/Exception.php';
-    require '../PHPMailer/src/PHPMailer.php';
-    require '../PHPMailer/src/SMTP.php';
+function showAllUsers($conn, $admin){
+    $sql = "SELECT * FROM users WHERE isAdmin = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "i", $admin);
+    mysqli_stmt_execute($stmt);
 
+    $result = mysqli_stmt_get_result($stmt);
+    $users = array();
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $users[] = $row;
+    }
+    
+    return $users;
+}
+
+function sendEmail($message, $subject, $email){
     $mail = new PHPMailer(true);
 
     $mail->isSMTP();
@@ -232,6 +275,13 @@ function sendEmail($message, $subject, $email){
     $mail->addAddress($email);
     $mail->Subject = $subject;
     $mail->Body = $message;
-    $mail->send();
+
+    try {
+        $mail->send();
+    } catch (PHPMailerException $e) {
+        echo "Erro ao enviar o email: " . $e->errorMessage();
+    } catch (Exception $e) {
+        echo "Erro ao enviar o email: " . $e->getMessage();
+    }
 }
 

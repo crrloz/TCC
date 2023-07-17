@@ -1,5 +1,5 @@
 <?php include_once 'head.php' ?>
-    <title>Login | COLETIVO HUMANOS</title>
+    <title>Troca de Senha | COLETIVO HUMANOS</title>
 </head>
 <style>
     .input {
@@ -31,7 +31,7 @@
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/fundoteste.jpg);">
         <h2 class="t-center f-glitten color0 fs-80">
-            SENHA
+            MUDE SUA SENHA
         </h2>
     </section>
 
@@ -46,7 +46,7 @@
             echo "Oops! Não conseguimos validar seu requerimento (request)...";
         } else if (ctype_xdigit($validator) !== false && ctype_xdigit($selector) !== false) { ?>
 
-        <form action="includes/reset.inc.php" method="post">
+        <form action="includes/reset-password.inc.php" method="post">
             <input type="hidden" name=selector value="<?php echo $selector;?>">
             <input type="hidden" name=validator value="<?php echo $validator;?>">
 

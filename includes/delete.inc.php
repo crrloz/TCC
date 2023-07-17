@@ -1,10 +1,9 @@
 <?php
+session_start();
+require_once "dbh.inc.php";
+require_once "functions.inc.php";
 
 if(isset($_POST['delete_user'])){
-    session_start();
-    require_once "dbh.inc.php";
-    require_once "functions.inc.php";
-
     $id = $_SESSION['userid'];
     $result = deleteUser($conn, $id);
 

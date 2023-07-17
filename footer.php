@@ -1,4 +1,79 @@
-    <!-- De volta ao topo -->
+<footer class="bg4">
+	<div class="bg2">
+		<div class="container">
+			<div class="flex-sb-m flex-w p-t-22 p-b-22">
+				<div class="p-t-5 p-b-5">
+					<a href="#" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
+					<a href="#" class="fs-15 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
+				</div>
+
+				<div class="txt17 p-r-20 p-t-5 p-b-5">
+					Me when i SLAY
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container p-t-40">
+		<div class="row">
+			<div class="col-sm-6 col-md-4 p-t-50">
+				<!-- - -->
+				<h4 class="txt13 m-b-33">
+					Contate-nos
+				</h4>
+
+				<ul class="m-b-70">
+					<li class="txt14 m-b-14">
+						<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
+						+55 (22) 96716-6879
+					</li>
+
+					<li class="txt14 m-b-14">
+						<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
+						coletivo@gmail.com
+					</li>
+
+					<li class="m-t-20 m-b-14">
+						<a href="contact.php" class="btn3">CONTATAR</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="col-sm-6 col-md-4 p-t-50">
+				<!-- - -->
+				<h4 class="txt13 m-b-33">
+					Serviços para Clientes
+				</h4>
+
+				<div class="m-b-25">
+					<ul class="m-b-70">
+						<li class="m-b-14">
+							<a href="" class="txt14 color4">Política de Proteção e Privacidade</a>
+						</li>
+
+						<li class="m-b-14">
+							<a href="" class="txt14 color4">Ética e Sei Lá</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-6 col-md-4 p-t-50">
+				<!-- - -->
+				<h4 class="txt13 m-b-38">
+					He's The One That's Living In My System BABY
+				</h4>
+
+				<!-- - -->
+				<div class="">
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- De volta ao topo -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
 			<i class="fa fa-angle-up" aria-hidden="true"></i>
@@ -7,6 +82,9 @@
 
     <script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+	<script type="text/javascript" src="vendor/daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
     <script src="js/main.js"></script>
@@ -26,7 +104,6 @@
 				loading: true,
 				loadingParentElement: 'html',
 				loadingClass: 'animsition-loading-1',
-				loadingInner: '<div class="cp-spinner cp-meter"></div>',
 				timeout: false,
 				timeoutCountdown: 5000,
 				onLoadEvent: true,

@@ -32,6 +32,7 @@
     }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
+	<!-- Header -->
     <?php include_once 'header.php' ?>
 
 

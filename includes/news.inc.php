@@ -11,11 +11,11 @@ if(isset($_POST["submit_news"])){
         if(!mysqli_stmt_prepare($stmt, $sql)){
             header("location: ../news.php?error=statementfailed");
             exit();
-        } else {
-            mysqli_stmt_bind_param($stmt, "sss", $title, $url, $image);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);
         }
+        
+        mysqli_stmt_bind_param($stmt, "sss", $title, $url, $image);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
     
         header("location: ../news.php?error=none");
         exit();

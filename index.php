@@ -13,7 +13,7 @@
         color: #9D6EBE;
     }
 
-    .section-overlay {
+    .section-overlay-welcome {
         position: fixed;
         z-index: 1001;
         width: 100%;
@@ -27,9 +27,9 @@
     }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
-    <?php if(isset($_GET['loggedin'])){ ?>
+    <?php if(isset($_GET['loggedin']) && !isset($_SESSION['popupappeared'])){ ?>
         <!-- POP-UP: Cadastro realizado -->
-        <aside class="section-overlay shadow1">
+        <aside class="section-overlay-welcome shadow1">
             <!-- Pop-up -->
             <div class="popup" style="display: block;">
                 <!-- Botão Esconder Popup -->
@@ -49,7 +49,8 @@
                 </div>
             </div>
         </aside>
-    <?php } ?>
+    <?php 
+    $_SESSION['popupappeared'] = 1; } ?>
 
 
     <!-- Header -->
@@ -182,13 +183,13 @@
                 </div>
                 
                 <div class="wrap-description-text p-t-30">
-                    <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas exercitationem alias perferendis magni illum sint ad impedit eveniet, ipsam adipisci deserunt molestiae illo officia non nulla aliquam obcaecati amet? Vel.</span>
+                    <span>Aproveite para conferir nossa página de agenda, repleta de eventos imperdíveis. Não perca essa oportunidade única de estar por dentro de tudo o que está acontecendo. Faça parte desse momento especial e descubra experiências incríveis. Acesse agora mesmo e garanta seu lugar.</span>
                 </div>
 
                 <div class="wrap-sched-button p-t-15">
                     <!-- Botão -->
                     <button onclick="location.href='schedule.php'" class="btn4 color6 bo-color-0">
-                        AAAA
+                        Conferir
                     </button>
                 </div>
             </div>
@@ -244,11 +245,16 @@
             /*[ESCONDER POPUP]
             ===========================================================*/
             var btnHidePopup = $('.btn-hide-popup');
-            var popup = $('.section-overlay');
+            var btnClosePopup = $('#btnClose');
+            var popup = $('.section-overlay-welcome');
 
             $(btnHidePopup).on('click', function(){
                 $(popup).css('display','none');
-            })
+            });
+
+            $(btnClose).on('click', function(){
+                $(popup).css('display','none');
+            });
 
             /*[DIRECIONAR PARA PÁGINA]
             ===========================================================*/

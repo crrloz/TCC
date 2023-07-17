@@ -2,6 +2,28 @@
 (function ($) {
     "use strict";
 
+    /*[CARREGAR PÁGINA]
+    ===========================================================*/
+    $(".animsition").animsition({
+        inClass: 'fade-in',
+        outClass: 'fade-out',
+        inDuration: 1500,
+        outDuration: 800,
+        linkElement: '.animsition-link',
+        loading: true,
+        loadingParentElement: 'html',
+        loadingClass: 'animsition-loading-1',
+        loadingInner: '<div class="cp-spinner cp-meter"></div>',
+        timeout: false,
+        timeoutCountdown: 5000,
+        onLoadEvent: true,
+        browser: [ 'animation-duration', '-webkit-animation-duration'],
+        overlay : false,
+        overlayClass : 'animsition-overlay-slide',
+        overlayParentElement : 'html',
+        transition: function(url){ window.location.href = url; }
+    });
+
     /*[DE VOLTA AO TOPO]
     ===========================================================*/
     var windowH = $(window).height()/2;
@@ -29,17 +51,17 @@
     $(btnShowSidebar).on('click', function(){
         $(sidebar).addClass('show-sidebar');
         $(ovlSideBar).addClass('show-overlay-sidebar');
-    })
+    });
 
     $(btnHideSidebar).on('click', function(){
         $(sidebar).removeClass('show-sidebar');
         $(ovlSideBar).removeClass('show-overlay-sidebar');
-    })
+    });
 
     $(ovlSideBar).on('click', function(){
         $(sidebar).removeClass('show-sidebar');
         $(ovlSideBar).removeClass('show-overlay-sidebar');
-    })
+    });
 
     /*[MOSTRAR/ESCONDER POPUP]
     ===========================================================*/
@@ -48,11 +70,10 @@
 
     $(btnHidePopup).on('click', function(){
         $(popup).css('display','none');
-    })
+    });
 
     /*[PAUSAR/RODAR VÍDEO]
 	===========================================================*/
-
     var my_video = document.querySelector(".my_video");
     var isPlaying = false;
     
@@ -97,4 +118,13 @@
         }
         
     });
+
+    /*[DIRECIONAR PARA PÁGINA]
+    ===========================================================*/
+    $(document).ready(function() {
+        $('.btn-url-direct').on('click', function() {
+            var url = $(this).data('url');
+            window.location.href = url;
+        });
+    })
 })(jQuery);

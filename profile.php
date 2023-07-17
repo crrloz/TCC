@@ -6,20 +6,7 @@
     if(!isset($_SESSION['userid'])){
         header("location: login.php?error=notlogged");
         exit();
-    }
-
-    $userColor = sscanf($_SESSION['usercolor'], "rgb(%d, %d, %d)");
-
-    function darkenColor($rgb, $percentage) {
-        $r = round($rgb[0] * (1 - $percentage/100));
-        $g = round($rgb[1] * (1 - $percentage/100));
-        $b = round($rgb[2] * (1 - $percentage/100));
-        return [$r, $g, $b];
-    }
-
-    $darkenedColor = darkenColor($userColor, 20);
-    $darkenedUserColor = sprintf("#%02x%02x%02x", $darkenedColor[0], $darkenedColor[1], $darkenedColor[2]);
-?>
+    } ?>
     <title>Seu Perfil | COLETIVO HUMANOS</title>
 </head>
 <?php require_once "css/style.php" ?>
@@ -37,44 +24,77 @@
         width: 300px;
     }
 
-    .user-banner, .bg-user {
-        background-color: <?php echo $darkenedUserColor;?>;
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 15px;
+        width: 15px;
+        background-color: #eee;
+        border-radius: 2px;
     }
 
-    .color-user {
-        color: <?php echo $darkenedUserColor;?>;
+    .checkbox-container {
+        display: block;
+        position: relative;
     }
 
-    .bo-color-user {
-        border-color: <?php echo $darkenedUserColor;?>;
+    .checkbox-container > input {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+    }
+
+    .checkbox-container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    .checkbox-container input:checked ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    .checkbox-container .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 5px;
+        top: 1px;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .checkbox-container input:checked ~ .checkmark:after {
+        display: block;
     }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
-    <?php
-    if(isset($_GET['changeimg'])){ ?>
-        <!-- POP-UP: Mudar imagem -->
-        <aside class="section-overlay">
-            <div class="overlay" style="display: block;">
+    <!-- POP-UP: Mudar imagem -->
+    <aside class="section-overlay-file">
+        <div class="overlay" style="display: block;">
+        </div>
+
+        <!-- Pop-up -->
+        <div class="popup-file" style="display: block;">
+            <!-- Botão Esconder Popup -->
+            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+            <!-- Conteúdo -->
+            <div class="popup-file-content">
+                <form action="includes/change-image-request.inc.php" method="post" enctype="multipart/form-data">
+                    <h3 class="m-b-10">Selecione um arquivo</h3><br>
+                    <input type="file" name="imageFile"><br><br>
+
+                    <input type="submit" value="Upload" name="submit_img" class="btn3">
+                    <button type="submit" class="hov_underline m-l-10 tt-up">Cancelar</button>
+                </form>
             </div>
-
-            <!-- Pop-up -->
-            <div class="popup-file" style="display: block;">
-                <!-- Botão Esconder Popup -->
-                <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
-
-                <!-- Conteúdo -->
-                <div class="popup-file-content">
-                    <form action="includes/change-image-request.inc.php" method="post" enctype="multipart/form-data">
-                        <h3 class="m-b-10">Selecione um arquivo</h3><br>
-                        <input type="file" name="imageFile"><br><br>
-
-                        <input type="submit" value="Upload" name="submit_img" class="btn3">
-                        <button type="submit" class="hov_underline m-l-10 tt-up">Cancelar</button>
-                    </form>
-                </div>
-            </div>
-        </aside>
-    <?php } ?>
+        </div>
+    </aside>
 
 
     <!-- Header -->
@@ -84,8 +104,9 @@
     <!-- Seção Usuário -->
     <section class="section-user">
         <!-- Banner -->
-        <div class="user-banner h-half"></div>
+        <div class="user-banner h-half bg-user"></div>
 
+        <!--  -->
         <div class="container">
             <div class="row">
                 <!-- Dados e Comandos -->
@@ -95,7 +116,7 @@
 
                     <div class="wrap-profile pos-relative">
                         <div class="wrap-cir-pic user-photo sizefull m-l-r-auto ab-c-m" style="background-image: url(<?php echo $imageSrc; ?>);"></div>
-                        <button class="btn-edit" onclick="window.location.href = '?changeimg'"><i class="fa fa-edit symbol-btn-edit"></i></button>
+                        <button class="btn-edit bg-user"><i class="fa fa-edit symbol-btn-edit"></i></button>
                     </div>
                     
                     <!-- Comandos e Botões -->
@@ -124,27 +145,56 @@
                             <?php
                                 $id = $_SESSION['userid'];
                                 $purchases = showPurchases($conn, $id); ?>
-
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID do Evento</th>
-                                        <th scope="col">ID do User</th>
-                                        <th scope="col">ID da Compra</th>
-                                        <th scope="col">Quantidade</th>
-                                        <th scope="col">Data</th>
-                                    </tr>
-                                </thead>
-
+                                
                                 <tbody>
-                                    <?php foreach ($purchases as $purchase): ?>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"># Evento</th>
+                                            <th scope="col"># Compra</th>
+                                            <th scope="col">Nome do Evento</th>
+                                            <th scope="col">Quantidade</th>
+                                            <th scope="col">Data da Compra</th>
+                                            <th scope="col">Data do Evento</th>
+                                        </tr>
+                                    </thead> <?php 
+                                    if(!empty($purchases)){
+                                    foreach ($purchases as $purchase): ?>
                                     <tr>
                                         <th scope="row"><?php echo $purchase['eventsId']; ?></th>
-                                        <td><?php echo $purchase['usersId']; ?></td>
-                                        <td><?php echo $purchase['eventsId']; ?></td>
+                                        <td><?php echo $purchase['salesId']; ?></td>
+
+                                        <?php $sql = "SELECT eventsName FROM events WHERE eventsId = ?;";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        
+                                        if (mysqli_stmt_prepare($stmt, $sql)) {
+                                            mysqli_stmt_bind_param($stmt, "i", $purchase['eventsId']);
+                                            mysqli_stmt_execute($stmt);
+                                            $result = mysqli_stmt_get_result($stmt);
+                                            $eventsName = mysqli_fetch_assoc($result)['eventsName'];
+                                        } ?>
+
+                                        <td><?php echo $eventsName; ?></td>
                                         <td><?php echo $purchase['salesQnt']." ingressos"; ?></td>
-                                        <td><?php echo $purchase['salesDate']; ?></td>
+                                        <td><?php 
+                                        $dateComponents = explode('-', $purchase['salesDate']);
+                                        $salesDate = $dateComponents[2] . '/' . $dateComponents[1] . '/' . $dateComponents[0];
+                                        
+                                        echo $salesDate; ?></td>
+
+                                        <?php $sql = "SELECT eventsDate FROM events WHERE eventsId = ?;";
+                                        if (mysqli_stmt_prepare($stmt, $sql)) {
+                                            mysqli_stmt_bind_param($stmt, "i", $purchase['eventsId']);
+                                            mysqli_stmt_execute($stmt);
+                                            $result = mysqli_stmt_get_result($stmt);
+                                            $row = mysqli_fetch_assoc($result);
+                                            $eventsDate = $row['eventsDate'];
+                                            $dateComponents = explode('-', $eventsDate);
+                                            $eventsDate = $dateComponents[2] . '/' . $dateComponents[1] . '/' . $dateComponents[0];
+                                        } ?>
+
+                                        <td><?php echo $eventsDate; ?></td>
                                     </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach; } else { echo "<p>Você não realizou nenhuma compra! Verifique nossa <a href='schedule.php' class='color-user'>Agenda</a> caso esteja interessado.</p>";} ?>
                                 </tbody>
                             </table>
                         </div>
@@ -154,6 +204,100 @@
         </div>
     </section>
 
+    <!-- Seção de Administração -->
+    <?php if(isset($_SESSION['isadmin'])){ ?>
+    <!-- Seção de Administração de Usuários -->
+    <section class="section-signed-users m-r-45 m-l-45 p-b-20">
+        <div class="wrap-text-purchases p-t-30">
+            <div class="wrap-text-about p-t-30">
+                <span><i class="f-glitten fs-60 color-user">Usuários </i></span>
+                <span class="f-glitten fs-60 color-user">CADASTRADOS</span>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Usuários Cadastrados -->
+        <div class="table-responsive">
+            <form action="includes/email.inc.php" method="post">
+                <table class="table m-0">
+                <?php
+                    $users = showAllUsers($conn, 0); ?>
+                    
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th scope="col"># Usuário</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Foto</th>
+                            </tr>
+                        </thead> <?php 
+                        if(!empty($users)){
+                        foreach ($users as $user): ?>
+                        <tr>
+                            <th scope="row"><?php echo $user['usersId']; ?></th>
+                            <td><?php echo $user['usersUid']; ?></td>
+                            <td><?php echo $user['usersName']; ?></td>
+                            <td><?php echo $user['usersEmail']; ?></td>
+                            <td><?php
+                            if($user['usersPic'] !== null){
+                                echo "<div class='wrap-cir-pic sizefull' style='background-image: url(data:image/jpeg;base64,".base64_encode($user['usersPic'])."); width: 30px; height: 30px;'></div>";
+                            } ?>
+                            <label class="checkbox-container">
+                                <input type="checkbox" class="checkbox-email" name="email[]" value="<?php echo $user['usersEmail']; ?>">
+                                <span class="checkmark"></span>
+                            </label>
+                            </td>
+                        </tr>
+                        <?php endforeach; } else { echo "<p>Parece que não há nenhum usuário não administrador cadastrado no site...";} ?>
+                    </tbody>
+                </table>
+                <div class="wrap-admin-commands p-t-15">
+                    <button type="button" class="btn4 color0 bg-user bo-color-user m-r-10" id="btn-send-all">
+                        Enviar E-mail<span class="fs-7"> (todos)</span>
+                    </button>
+                    <button type="button" class="btn4 color-user bo-color-user m-r-10" id="btn-send-selected">
+                        Enviar E-mail<span class="fs-7"> (selecionados)</span>
+                    </button>
+
+                    <!-- POP-UP: Enviar E-mail -->
+                    <aside class="section-overlay-email">
+                        <div class="overlay-email" style="display: block;">
+                        </div>
+
+                        <!-- Pop-up -->
+                        <div class="popup-email" style="display: block;">
+                            <!-- Botão Esconder Popup -->
+                            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+                            <!-- Conteúdo -->
+                            <div class="popup-email-content">
+                                <h3 class="m-b-10">Digite o cabeçário</h3><br>
+                                <input type="text" name="subject">
+
+                                <h3 class="m-b-10">Digite a menssagem</h3><br>
+                                <input type="text" name="message"><br><br>
+
+                                <div id="selected-input">
+                                    <input type="submit" name="email_selected" value="Enviar">
+                                </div>
+                                <div id="all-input">
+                                    <input type="submit" name="email_all" value="Enviar">
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <button class="btn-delete-users btn4 color-user bo-color-user m-r-10" type="submit" name="delete_users">
+                        Deletar Usuários<span class="fs-7"> (selecionados)</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <?php } ?>
 
     <!-- Footer -->
     <?php include_once 'footer.php' ?>
@@ -164,32 +308,59 @@
             /*[MOSTRAR/ESCONDER POPUP]
             ===========================================================*/
             var btnHidePopup = $('.btn-hide-popup');
-            var popup = $('.section-overlay');
-            var overlay = $('.overlay');
+            var btnEdit = $('.btn-edit');
+            var btnSendAll = $('#btn-send-all');
+            var btnSendSelected = $('#btn-send-selected');
+
+            var popupFile = $('.section-overlay-file');
+            var popupEmail = $('.section-overlay-email');
+
+            var overlayFile = $('.overlay-file');
+            var overlayEmail = $('.overlay-email');
 
             $(btnHidePopup).on('click', function(){
-                $(popup).css('display','none');
-                $(overlay).css('display','none');
-            })
+                $(popupFile).css('display','none');
 
-            $(overlay).on('click', function(){
-                $(popup).css('display','none');
-                $(overlay).css('display','none');
-            })
+                $(popupEmail).css('display','none');
+            });
+
+            $(btnSendAll).on('click', function(e){
+                e.preventDefault();
+
+                $(popupEmail).css('display','block');
+                $('#all-input').css('display','block');
+                $('#selected-input').css('display','none');
+            });
+
+            $(btnSendSelected).on('click', function(e){
+                e.preventDefault();
+
+                $(popupEmail).css('display','block');
+                $('#all-input').css('display','none');
+                $('#selected-input').css('display','block');
+            });
+
+            $(overlayFile).on('click', function(){
+                $(popupFile).css('display','none');
+                $(popupEmail).css('display','none');
+            });
+
+            $(overlayEmail).on('click', function(){
+                $(popupEmail).css('display','none');
+            });
+
+            $(btnEdit).on('click', function(){
+                $(popupFile).css('display','block');
+            });
 
             /*[DIRECIONAR PARA PÁGINA]
             ===========================================================*/
-            $(document).ready(function() {
-                $('.btn-profile').on('click', function() {
-                    var url = $(this).data('url');
-                    window.location.href = url;
-                });
+            var btnUrl = $('.btn-url-direct');
 
-                $('.btn-cancel').on('click', function() {
-                    var url = $(this).data('url');
-                    window.location.href = url;
-                });
-            })
+            $(btnUrl).on('click', function() {
+                var url = $(this).data('url');
+                window.location.href = url;
+            });
         })(jQuery);
     </script>
     <script>
@@ -203,9 +374,21 @@
 		const colorThief = new ColorThief();
         const img = new Image();
 
-        function updateBannerColor(color) {
-            const userBanner = document.querySelector('.user-banner');
-            userBanner.style.backgroundColor = color;
+        function updateColor(color, darkenedColor) {
+            const userColor = document.querySelectorAll('.color-user');
+            userColor.forEach(element => {
+                element.style.color = darkenedColor;
+            });
+
+            const bg_user = document.querySelectorAll('.bg-user');
+            bg_user.forEach(element => {
+                element.style.backgroundColor = darkenedColor;
+            });
+
+            const bo_user = document.querySelectorAll('.bo-color-user');
+            bg_user.forEach(element => {
+                element.style.borderColor = darkenedColor;
+            });
         }
 
         const userImage = "<?php echo $imageSrc; ?>";
@@ -216,30 +399,26 @@
             const dominantColor = colorThief.getColor(img);
             const colorString = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
             const darkenedColor = darkenColor(dominantColor, 20);
-            const darkenedColorString = `rgb(${darkenedColor[0]}, ${darkenedColor[1]}, ${darkenedColor[2]})`;
 
-            updateBannerColor(darkenedColorString);
-
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'includes/color.inc.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(`color=${colorString}`);
+            updateColor(colorString, `rgb(${darkenedColor[0]}, ${darkenedColor[1]}, ${darkenedColor[2]})`);
         });
 
-        document.querySelector('form[action="includes/change-image-request.inc.php"]').addEventListener('submit', function() {
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'includes/color.inc.php');
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.success) {
-                            updateBannerColor(response.color);
-                        }
+        document.querySelector('form[action="includes/change-image-request.inc.php"]').addEventListener('submit', function(event) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'includes/change-image-request.inc.php');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        updateColor(response.color);
                     }
-                };
-                xhr.send();
-            });
+                }
+            };
+
+            const formData = new FormData(this);
+
+            xhr.send(formData);
+        });
     </script>
 </body>
 </html>

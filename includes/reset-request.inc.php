@@ -1,8 +1,5 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 require_once 'dbh.inc.php';
 require_once 'functions.inc.php';
 
@@ -15,7 +12,7 @@ if(isset($_POST['submit_reset'])){
         $selector = bin2hex(random_bytes(8));
         $token = random_bytes(32);
 
-        $url = 'http://localhost/TCC/create_new_pass?selector='.$selector.'&validator='.bin2hex($token);
+        $url = 'http://localhost/TCC/create_new_pass.php?selector='.$selector.'&validator='.bin2hex($token);
 
         $expires = date("U") + 1800;
 
@@ -47,6 +44,10 @@ if(isset($_POST['submit_reset'])){
         $message.= '<a href="'.$url.'">'.$url.'</a></p>';
 
         $subject = 'Troca de sua Senha no CAH';
+    
+        require '../vendor/PHPMailer/src/Exception.php';
+        require '../vendor/PHPMailer/src/PHPMailer.php';
+        require '../vendor/PHPMailer/src/SMTP.php';
 
         sendEmail($message, $subject, $userEmail);
 

@@ -3,11 +3,11 @@ Esse é o nosso projeto de TCC para o IFRJ de Arraial do Cabo. Nosso grupo se un
 PRETENDEMOS/OBJETIVOS:
 
 Ter um sistema de cadastro e login (feito)
-Apresentar o coletivo ao público
-Disponibilizar uma agenda de apresentações de dança
-Criar um sistema de envio de email a usuarios (feito)
+Apresentar o coletivo ao público (feito)
+Disponibilizar uma agenda de apresentações de dança (feito)
+Criar um sistema de envio de E-mail a usuarios (feito)
 
 COGITAMOS/POSSIBILIDADES:
 
-Sistema de pagamento (boleto, pix ou ambos)
+Sistema de pagamento (Boleto, PIX ou ambos)
 Agendamento

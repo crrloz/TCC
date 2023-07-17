@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 
     <!-- ESTILIZAÇÃO PRINCIPAL -->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">

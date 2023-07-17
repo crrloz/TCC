@@ -76,7 +76,7 @@
 				<div class="wrap-btn-send flex-c-m m-t-13">
 					<!-- Button3 -->
 					<button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
-						Submit
+						Enviar
 					</button>
 				</div>
 			</form>

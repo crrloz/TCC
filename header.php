@@ -10,12 +10,7 @@
                 </li>
 
                 <li class="t-center m-b-13">
-                    <a href="<?php 
-                    if(isset($_SESSION["useruid"])){
-                        echo 'schedule.php';
-                    } else {
-                        echo 'signup.php?logged=false';
-                    } ?>" class="color5 txt19">Agenda</a>
+                    <a href="schedule.php" class="color5 txt19">Agenda</a>
                 </li>
 
                 <li class="t-center m-b-13">
@@ -40,12 +35,7 @@
                     <div class="list-section">
                         <ul>
                             <li><a href="contact.php" class="color0 m-r-10">Contato</a></li>
-                            <li><a href="<?php 
-                                if(isset($_SESSION["useruid"])){
-                                    echo 'schedule.php';
-                                } else {
-                                    echo 'signup.php?logged=false';
-                                } ?>">Agenda</a></li>
+                            <li><a href="schedule.php">Agenda</a></li>
                         </ul>
                     </div>
                     <div class="logo t-center">
@@ -61,7 +51,7 @@
                             if(isset($_SESSION["useruid"])){
                                 $imageSrc = $_SESSION['imagesrc'];
                                 echo '<li><a class="btn-user m-l-10" href="includes/logout.inc.php">Logout</a></li>'
-                                    .'<li class="wrap-cir-pic btn-profile sizefull m-l-15" style="background-image: url('. $imageSrc .');" data-url=profile.php><li>';
+                                    .'<li class="wrap-cir-pic btn-profile btn-url-direct sizefull m-l-15" style="background-image: url('. $imageSrc .');" data-url=profile.php><li>';
                             } else {
                                 echo '<li><a class="btn-user m-l-10" href="signup.php">Cadastro</a></li>';
                             } ?>

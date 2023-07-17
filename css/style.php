@@ -99,7 +99,12 @@ video {
 
 /*[OVERLAY/POPUP]*/
 
-.popup-file {
+.section-overlay-file,
+.section-overlay-email {
+  display: none;
+}
+
+.popup-file, .popup-email {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -108,7 +113,7 @@ video {
   z-index: 150;
 }
 
-.popup-file-content {
+.popup-file-content, .popup-email-content {
   position: relative;
   padding: 40px 30px;
   background-color: rgb(250, 238, 221);
@@ -129,7 +134,6 @@ video {
   .popup-file-content input {
     margin: 10px 0px;
   }
-
 }
 
 /* ------------------------------------ */
@@ -145,7 +149,7 @@ video {
 
 /* ------------------------------------ */
 
-.overlay{
+.overlay, .overlay-email, .overlay-file{
   position: fixed;
   display: none;
   width: 100%;
@@ -156,7 +160,16 @@ video {
   bottom: 0;
   background-color: rgba(0,0,0,0.7);
   z-index: 100;
+  transition: 0.2s;
 }
+
+/* ------------------------------------ */
+
+.selected-input, .all-input {
+  display: none;
+}
+
+/* ------------------------------------ */
 
 /*[NAVBAR]*/
 
@@ -365,8 +378,6 @@ menu ul li a {
 .bg-title-page {
   width: 100%;
   min-height: 545px;
-  padding-left: 15px;
-  padding-right: 15px;
   background-repeat: no-repeat;
   background-position: center 0;
   background-size: cover;
@@ -545,13 +556,15 @@ menu ul li a {
   left: 10%;
   width: 40px;
   height: 40px;
-  <?php if(isset($darkenedUserColor)){ 
-    echo "background-color: ".$darkenedUserColor.";";
-  } ?>
   color: white;
   border-radius: 50%;
 }
 
+@media (max-width: 767px) {
+  .btn-edit {
+    left: 30%;
+  }
+}
 
 .wrap-description {
   margin: 0.75rem 0;
@@ -747,7 +760,7 @@ menu ul li a {
 
 	.textarea-contact:focus {
 		outline: none;
-        color: #D99E07;
+    color: #D99E07;
 		transition: 0.3s;
 	}
 

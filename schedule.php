@@ -3,126 +3,289 @@
 </head>
 <?php require_once "css/style.php" ?>
 <style>
-    h2 {
-        font-family: Glitten;
-        color: #7F4AA4;;
-        text-transform: uppercase;
-    }
-    #calendar {
-  width: 100%;
-  font-family: Arial, sans-serif;
-}
+	.clickable-date {
+		cursor: pointer;
+		background-color: yellow;
+	}
+	
+	td {
+		position: relative;
+		text-align: center;
+		width: 65px;
+		height: 65px;
+	}
 
-table {
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-}
+	th {
+		padding: 4px;
+		text-align: center;
+	}
 
-th,
-td {
-  text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-th,td:hover {
-    color: #D99E07;;
-}
-
-td {
-    transition: 0.4s;
-    cursor: pointer;
-}
+	.btn-date {
+		position: absolute;
+		background-color: purple;
+		color: white;
+		border-radius: 50%;
+		top: 55%;
+		left: 55%;
+		width: 40px;
+		height: 40px;
+	}
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
-    <!-- Header -->
+	<!-- Header -->
     <?php include_once 'header.php' ?>
 
 
-    <!-- Title Page -->
-    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/fundoteste.jpg);">
+	<!-- Title Page -->
+    <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/inaraemulher.jpg);">
         <h2 class="t-center f-glitten color0 fs-80">
             AGENDA
         </h2>
     </section>
 
-    <!-- Calendário -->
-    <section class="wrap-calendar" style="padding: 70px;">
-        <div id="calendar"></div>
-    </section>
+
+	<!-- Calendário -->
+	<section class="section-calendar t-center">
+		<div class="wrap-calendar flex-c-m">
+			<div id="calendar" class="m-t-80 m-b-40"></div>
+		</div>
+
+		<div class="wrap-calendar-description">
+			<p>As datas em cor <span class="">AA</span> representam as datas com eventos.</p>
+		</div>
+	</section>
 
 
-    <!-- Footer -->
+	<?php if(isset($_SESSION['isadmin'])){ ?>
+	<hr class="m-r-45 m-l-45">
+
+	<!-- Seção do Administrador -->
+	<section class="section-admin-calendar t-center">
+		<form action="includes/events.inc.php" method="post" class="add-event-form">
+			<input class="my-calendar sizefull txt10 p-l-20 bo3" type="text" name="date">
+			<input class="bo3" type="text" name="name" placeholder="Nome">
+
+			<textarea class="textarea-contact bo-rad-10 bo3 txt10 p-l-20 p-t-15 m-b-10 m-t-3 m-r-60 m-l-60" style="width: 80%; min-height: 180px;" name="descri" placeholder="Descrição"></textarea>
+
+			<!-- Button3 -->
+			<div class="wrap-btn-send flex-c-m m-t-13">
+				<input type="submit" placeholder="Adicionar" class="btn3 flex-c-m size36 txt11 trans-0-4">
+			</div>
+		</form>
+	</section>
+	<?php } ?>
+
+
+	<!-- Footer -->
     <?php include_once 'footer.php' ?>
+	<script>
+		/*[DATERANGEPICKER]
+		===========================================================*/
+		/* Aqui eu reconfigurei o DateRangePicker para apresentar as datas em Português.
+		Créditos do código: https://gist.github.com/fernandosavio/680a2549e417befea930*/
+		(function (factory) {
+			if (typeof define === 'function' && define.amd) {
+				define(['moment'], factory); // AMD
+			} else if (typeof exports === 'object') {
+				module.exports = factory(require('../moment')); // Node
+			} else {
+				factory(window.moment); // Browser global
+			}
+		}(function (moment) {
+			return moment.defineLocale('pt-br', {
+				months : 'Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julho_Agosto_Setembro_Outubro_Novembro_Dezembro'.split('_'),
+				monthsShort : 'Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez'.split('_'),
+				weekdays : 'Domingo_Segunda_Terça_Quarta_Quinta_Sexta_Sábado'.split('_'),
+				weekdaysShort : 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
+				weekdaysMin : 'Dom_2ª_3ª_4ª_5ª_6ª_Sáb'.split('_'),
+				longDateFormat : {
+					LT : 'HH:mm',
+					LL : 'D [de] MMMM [de] YYYY',
+					LLL : 'D [de] MMMM [de] YYYY [às] LT',
+					LLLL : 'dddd, D [de] MMMM [de] YYYY [às] LT'
+				}
+			});
+		}));
+
+		$('.my-calendar').daterangepicker({
+			"singleDatePicker": true,
+			"showDropdowns": true,
+			locale: {
+				format: 'DD/MM/YYYY',
+				daysOfWeek: moment.weekdaysMin(),
+        		monthNames: moment.monthsShort()
+			},
+		});
+
+		var myCalendar = $('.my-calendar');
+		var isClick = 0;
+
+		$(window).on('click',function(){ 
+			isClick = 0;
+		});
+
+		$(myCalendar).on('apply.daterangepicker',function(){ 
+			isClick = 0;
+		});
+
+		$('.btn-calendar').on('click',function(e){ 
+			e.stopPropagation();
+
+			if(isClick == 1) isClick = 0;   
+			else if(isClick == 0) isClick = 1;
+
+			if (isClick == 1) {
+				myCalendar.focus();
+			}
+		});
+
+		$(myCalendar).on('click',function(e){ 
+			e.stopPropagation();
+			isClick = 1;
+		});
+
+		$('.daterangepicker').on('click',function(e){ 
+			e.stopPropagation();
+		});
+
+		/*[ADQUIRIR DATAS]
+		===========================================================*/
+		$(document).ready(function() {
+			function getDatesFromServer() {
+				$.ajax({
+				url: 'includes/dates.inc.php',
+				type: 'GET',
+				dataType: 'json',
+				success: function(dates) {
+					renderCalendar(dates);
+				},
+				error: function(xhr, status, error) {
+					console.error('Erro na requisição AJAX');
+				}
+				});
+			}
+
+			function sendDatesToServer(dates) {
+				$.ajax({
+				url: 'schedule.php',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(dates),
+				success: function(response) {
+					console.log('Dados enviados com sucesso para schedule.php');
+				},
+				error: function(xhr, status, error) {
+					console.error('Erro ao enviar os dados para schedule.php');
+				}
+				});
+			}
+
+			function renderCalendar(dates) {
+				var today = new Date();
+				var currentYear = today.getFullYear();
+				var currentMonth = today.getMonth();
+
+				var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+				var header = $('<h2></h2>').text(new Date(currentYear, currentMonth).toLocaleDateString('pt-BR', {
+					month: 'long',
+					year: 'numeric'
+				}));
+
+				var calendarContainer = $('#calendar');
+				calendarContainer.append(header);
+
+				var nextEventDate = findNextEvent(dates);
+				if (nextEventDate) {
+					var nextEventHeader = $('<h3></h3>').text('Próximo Evento: ' + nextEventDate.toLocaleDateString('pt-BR'));
+					calendarContainer.append(nextEventHeader);
+				}
+
+				var table = $('<table></table>');
+
+				var headerRow = $('<tr></tr>');
+				var weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+
+				for (var i = 0; i < weekdays.length; i++) {
+					var th = $('<th></th>').text(weekdays[i]);
+					headerRow.append(th);
+				}
+
+				table.append(headerRow);
+
+				var firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay();
+
+				var totalCells = daysInMonth + firstDayOfWeek;
+
+				for (var day = 1; day <= totalCells; day++) {
+					if ((day - 1) % 7 === 0) {
+						var row = $('<tr></tr>');
+					}
+
+					var cell = $('<td></td>');
+					if (day > firstDayOfWeek) {
+						cell.text(day - firstDayOfWeek);
+						var date = currentYear + '-' + (currentMonth + 1).toString().padStart(2, '0') + '-' + (day - firstDayOfWeek).toString().padStart(2, '0');
+						var url = findUrlByDate(date, dates);
+						if (url) {
+							cell.attr('id', date);
+							cell.addClass('clickable-date');
+
+							var button = $('<button></button>');
+							var icon = $('<i></i>').addClass('fa fa-calendar');
+							button.addClass('btn-date');
+							button.append(icon);
+							cell.append(button);
+						}
+					}
+
+					row.append(cell);
+
+					if (day % 7 === 0 || day === totalCells) {
+						table.append(row);
+					}
+				}
+
+				calendarContainer.append(table);
+
+				$('.clickable-date').on('click', function(event) {
+					var clickedDate = event.target.id;
+					var url = findUrlByDate(clickedDate, dates);
+					if (url) {
+						window.location.href = url;
+					}
+				});
+
+				sendDatesToServer(dates);
+			}
+
+			function findUrlByDate(date, dates) {
+				for (var i = 0; i < dates.length; i++) {
+					if (dates[i].data === date) {
+						return dates[i].url;
+					}
+				}
+
+				return null;
+			}
+
+			function findNextEvent(dates) {
+				var today = new Date();
+				var nextEventDate = null;
+
+				for (var i = 0; i < dates.length; i++) {
+					var currentDate = new Date(dates[i].data + 'T00:00:00');
+
+					if (currentDate >= today && (nextEventDate === null || currentDate < nextEventDate)) {
+						nextEventDate = currentDate;
+					}
+				}
+
+				return nextEventDate;
+			}
+
+			getDatesFromServer();
+		});
+	</script>
 </body>
-<script>
-    function createCalendar() {
-	// Limpa qualquer conteúdo de calendário existente
-	var calendarContainer = document.getElementById('calendar');
-	calendarContainer.innerHTML = '';
-  
-	// Obtém a data atual
-	var today = new Date();
-	var currentYear = today.getFullYear();
-	var currentMonth = today.getMonth();
-  
-	// Obtém a quantidade de dias no mês atual
-	var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  
-	// Cria o cabeçalho do calendário com o mês e ano atual
-	var header = document.createElement('h2');
-	header.textContent = new Date(currentYear, currentMonth).toLocaleDateString('pt-BR', {
-	  month: 'long',
-	  year: 'numeric'
-	});
-	calendarContainer.appendChild(header);
-  
-	// Cria a tabela do calendário
-	var table = document.createElement('table');
-  
-	// Cria a linha do cabeçalho da semana
-	var headerRow = document.createElement('tr');
-	var weekdays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
-	for (var i = 0; i < weekdays.length; i++) {
-	  var th = document.createElement('th');
-	  th.textContent = weekdays[i];
-	  headerRow.appendChild(th);
-	}
-	table.appendChild(headerRow);
-  
-	// Obtém o dia da semana do primeiro dia do mês
-	var firstDayOfWeek = new Date(currentYear, currentMonth, 1).getDay();
-  
-	// Calcula o número de células necessárias no calendário
-	var totalCells = daysInMonth + firstDayOfWeek;
-  
-	// Cria as células do calendário
-	for (var day = 1; day <= totalCells; day++) {
-	  if ((day - 1) % 7 === 0) {
-		// Cria uma nova linha no início de cada semana
-		var row = document.createElement('tr');
-	  }
-  
-	  var cell = document.createElement('td');
-	  if (day > firstDayOfWeek) {
-		// Define o número do dia para células além do primeiro dia da semana
-		cell.textContent = day - firstDayOfWeek;
-	  }
-  
-	  // Adiciona a célula à linha atual
-	  row.appendChild(cell);
-  
-	  if (day % 7 === 0 || day === totalCells) {
-		// Adiciona a linha à tabela no final de cada semana ou no final do calendário
-		table.appendChild(row);
-	  }
-	}
-  
-	// Adiciona a tabela ao contêiner do calendário
-	calendarContainer.appendChild(table);
-  }
-  
-  // Chama a função para criar o calendário
-  createCalendar();
-</script>
-</html>
