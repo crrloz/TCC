@@ -149,8 +149,8 @@
                                 <tbody>
                                     <thead>
                                         <tr>
-                                            <th scope="col"># Evento</th>
                                             <th scope="col"># Compra</th>
+                                            <th scope="col"># Evento</th>
                                             <th scope="col">Nome do Evento</th>
                                             <th scope="col">Quantidade</th>
                                             <th scope="col">Data da Compra</th>
@@ -160,8 +160,8 @@
                                     if(!empty($purchases)){
                                     foreach ($purchases as $purchase): ?>
                                     <tr>
-                                        <th scope="row"><?php echo $purchase['eventsId']; ?></th>
-                                        <td><?php echo $purchase['salesId']; ?></td>
+                                        <th scope="row"><?php echo $purchase['salesId']; ?></th>
+                                        <td><?php echo $purchase['eventsId']; ?></td>
 
                                         <?php $sql = "SELECT eventsName FROM events WHERE eventsId = ?;";
                                         $stmt = mysqli_stmt_init($conn);
@@ -239,7 +239,7 @@
                         <tr>
                             <th scope="row"><?php echo $user['usersId']; ?></th>
                             <td><?php echo $user['usersUid']; ?></td>
-                            <td><?php echo $user['usersName']; ?></td>
+                            <td><?php echo "@".$user['usersName']; ?></td>
                             <td><?php echo $user['usersEmail']; ?></td>
                             <td><?php
                             if($user['usersPic'] !== null){

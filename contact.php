@@ -33,49 +33,49 @@
 				<div class="row">
 					<div class="col-md-4">
 						<!-- Nome -->
-						<span class="txt9">
+						<span>
 							Nome
 						</span>
 
 						<div class="wrap-inputname size12 bo3 m-t-3 m-b-23">
-							<input class="input-contact sizefull txt10 p-l-20" type="text" name="name" placeholder="Nome">
+							<input class="input-contact sizefull p-l-20" type="text" name="name" placeholder="Nome">
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<!-- Email -->
-						<span class="txt9">
+						<span>
 							Email
 						</span>
 
 						<div class="wrap-inputemail size12 bo3 m-t-3 m-b-23">
-							<input class="input-contact sizefull txt10 p-l-20" type="text" name="email" placeholder="Email">
+							<input class="input-contact sizefull p-l-20" type="text" name="email" placeholder="Email">
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<!-- Telefone -->
-						<span class="txt9">
+						<span>
 							Telefone (opcional)
 						</span>
 
 						<div class="wrap-inputphone size12 bo3 m-t-3 m-b-23">
-							<input class="input-contact sizefull txt10 p-l-20" type="text" name="phone" placeholder="Telefone">
+							<input class="input-contact sizefull p-l-20" type="text" name="phone" placeholder="Telefone">
 						</div>
 					</div>
 
 					<div class="col-12">
 						<!-- Mensagem -->
-						<span class="txt9">
+						<span>
 							Mensagem
 						</span>
-						<textarea class="textarea-contact bo-rad-10 size35 bo3 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Mensagem" style="background-color: rgb(250, 238, 221);"></textarea>
+						<textarea class="textarea-contact bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Mensagem" style="background-color: rgb(250, 238, 221);"></textarea>
 					</div>
 				</div>
 
 				<div class="wrap-btn-send flex-c-m m-t-13">
 					<!-- Button3 -->
-					<button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
+					<button type="submit" class="btn3 flex-c-m size36 trans-0-4">
 						Enviar
 					</button>
 				</div>
@@ -90,11 +90,11 @@
 
 
 						<div class="flex-col-l">
-							<span class="txt5 p-b-10">
-								Ligue-nos
+							<span class="p-b-10 tt-up">
+								<b>Ligue-nos</b>
 							</span>
 
-							<span class="txt23 size38">
+							<span class="size38">
 								(22) 99727-7890
 							</span>
 						</div>
@@ -109,12 +109,12 @@
 
 
 						<div class="flex-col-l">
-							<span class="txt5 p-b-10">
-								Horário de Funcionamento
+							<span class="p-b-10 tt-up">
+								<b>Horário de Funcionamento</b>
 							</span>
 
-							<span class="txt23 size38">
-								09:30 AM – 11:00 PM <br/><b>Todo dia</b>
+							<span class="size38">
+								09:30 AM – 11:00 PM <br/>
 							</span>
 						</div>
 					</div>

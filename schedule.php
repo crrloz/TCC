@@ -62,14 +62,14 @@
 	<!-- Seção do Administrador -->
 	<section class="section-admin-calendar t-center">
 		<form action="includes/events.inc.php" method="post" class="add-event-form">
-			<input class="my-calendar sizefull txt10 p-l-20 bo3" type="text" name="date">
+			<input class="my-calendar sizefull p-l-20 bo3" type="text" name="date">
 			<input class="bo3" type="text" name="name" placeholder="Nome">
 
-			<textarea class="textarea-contact bo-rad-10 bo3 txt10 p-l-20 p-t-15 m-b-10 m-t-3 m-r-60 m-l-60" style="width: 80%; min-height: 180px;" name="descri" placeholder="Descrição"></textarea>
+			<textarea class="textarea-contact bo-rad-10 bo3 p-l-20 p-t-15 m-b-10 m-t-3 m-r-60 m-l-60" style="width: 80%; min-height: 180px;" name="descri" placeholder="Descrição"></textarea>
 
 			<!-- Button3 -->
 			<div class="wrap-btn-send flex-c-m m-t-13">
-				<input type="submit" placeholder="Adicionar" class="btn3 flex-c-m size36 txt11 trans-0-4">
+				<input type="submit" placeholder="Adicionar" class="btn3 flex-c-m size36 trans-0-4">
 			</div>
 		</form>
 	</section>

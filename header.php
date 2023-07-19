@@ -6,20 +6,20 @@
             <!-- - -->
             <ul class="menu-sidebar p-t-95 p-b-70">
                 <li class="t-center m-b-13">
-                    <a href="contact.php" class="color5 txt19">Contato</a>
+                    <a href="contact.php" class="color5">Contato</a>
                 </li>
 
                 <li class="t-center m-b-13">
-                    <a href="schedule.php" class="color5 txt19">Agenda</a>
+                    <a href="schedule.php" class="color5">Agenda</a>
                 </li>
 
                 <li class="t-center m-b-13">
-                    <a href="about.php" class="color5 txt19">Quem somos</a>
+                    <a href="about.php" class="color5">Quem somos</a>
                 </li>
 
                 <li class="t-center">
                     <!-- Cadastro -->
-                    <a href="signup.php" class="btn3 ab-c-m size13 txt11 trans-0-4 m-l-r-auto">
+                    <a href="signup.php" class="btn3 ab-c-m size13 trans-0-4 m-l-r-auto">
                         Cadastro
                     </a>
                 </li>

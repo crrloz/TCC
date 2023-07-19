@@ -1,72 +1,75 @@
-<footer class="bg4">
-	<div class="bg2">
-		<div class="container">
-			<div class="flex-sb-m flex-w p-t-22 p-b-22">
-				<div class="p-t-5 p-b-5">
-					<a href="#" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
-					<a href="#" class="fs-15 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
-				</div>
+	<footer class="bg4 m-t-30">
+		<hr class="m-r-45 m-l-45">
 
-				<div class="txt17 p-r-20 p-t-5 p-b-5">
-					Me when i SLAY
-				</div>
-			</div>
-		</div>
-	</div>
+		<div class="container m-t-40">
+			<div class="row">
+				<div class="col-sm-6 col-md-4 p-t-50">
+					<!-- - -->
+					<h4 class="m-b-33">
+						Contate-nos
+					</h4>
 
-	<div class="container p-t-40">
-		<div class="row">
-			<div class="col-sm-6 col-md-4 p-t-50">
-				<!-- - -->
-				<h4 class="txt13 m-b-33">
-					Contate-nos
-				</h4>
-
-				<ul class="m-b-70">
-					<li class="txt14 m-b-14">
-						<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-						+55 (22) 96716-6879
-					</li>
-
-					<li class="txt14 m-b-14">
-						<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-						coletivo@gmail.com
-					</li>
-
-					<li class="m-t-20 m-b-14">
-						<a href="contact.php" class="btn3">CONTATAR</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="col-sm-6 col-md-4 p-t-50">
-				<!-- - -->
-				<h4 class="txt13 m-b-33">
-					Serviços para Clientes
-				</h4>
-
-				<div class="m-b-25">
 					<ul class="m-b-70">
 						<li class="m-b-14">
-							<a href="" class="txt14 color4">Política de Proteção e Privacidade</a>
+							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
+							+55 (22) 96716-6879
 						</li>
 
 						<li class="m-b-14">
-							<a href="" class="txt14 color4">Ética e Sei Lá</a>
+							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
+							coletivo@gmail.com
+						</li>
+
+						<li class="m-t-20 m-b-14">
+							<a href="contact.php" class="btn3">CONTATAR</a>
 						</li>
 					</ul>
 				</div>
+
+				<div class="col-sm-6 col-md-4 p-t-50">
+					<!-- - -->
+					<h4 class="m-b-33">
+						Serviços para Clientes
+					</h4>
+
+					<div class="m-b-25">
+						<ul class="m-b-70">
+							<li class="m-b-14">
+								<a href="" class="color4">Política de Proteção e Privacidade</a>
+							</li>
+
+							<li class="m-b-14">
+								<a href="" class="color4">Ética e Sei Lá</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-4 p-t-50">
+					<!-- - -->
+					<h4 class="m-b-38">
+						He's The One That's Living In My System BABY
+					</h4>
+
+					<!-- - -->
+					<div class="">
+
+					</div>
+				</div>
 			</div>
+		</div>
 
-			<div class="col-sm-6 col-md-4 p-t-50">
-				<!-- - -->
-				<h4 class="txt13 m-b-38">
-					He's The One That's Living In My System BABY
-				</h4>
+		<div class="end-footer bg2 bg-user">
+			<div class="container">
+				<div class="flex-sb-m flex-w p-t-22 p-b-22">
+					<div class="p-t-5 p-b-5">
+						<a href="#" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
+						<a href="#" class="fs-15 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
+					</div>
 
-				<!-- - -->
-				<div class="">
-
+					<div class="color0 p-r-20 p-t-5 p-b-5">
+						Me when i SLAY
+					</div>
 				</div>
 			</div>
 		</div>
