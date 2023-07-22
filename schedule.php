@@ -1,4 +1,9 @@
-<?php include_once 'head.php'; ?>
+<?php include_once 'head.php'; 
+if(isset($_GET['event']) && !isset($_SESSION['userid'])){
+	header("location: signup.php?error=notlogged");
+	exit();
+} include_once 'includes/dbh.inc.php'
+?>
     <title>Agenda | COLETIVO HUMANOS</title>
 </head>
 <?php require_once "css/style.php" ?>
@@ -56,6 +61,53 @@
 	</section>
 
 
+	<?php if(isset($_GET['event'])){
+	$eventName = $_GET['event'];
+
+	$sql = "SELECT * FROM events WHERE eventsName = ?;";
+	$stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: schedule.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $eventName);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) { ?>
+	<!-- POP-UP: Evento -->
+	<aside class="section-overlay-event">
+		<div class="overlay-event">
+		</div>
+
+		<!-- Pop-up -->
+		<div class="popup-event">
+			<!-- Botão Esconder Popup -->
+            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+            <!-- Conteúdo -->
+			<div class="popup-event-content t-left">
+				<div class="event-image sizefull" style="background-image: url('data:image/jpeg;base64,<?php echo base64_encode($row['eventsPic']) ?>');">
+
+				</div>
+
+				<div class="event-name m-t-40 m-l-25">
+					<h3 class="fs-50 f-glitten"><?php echo $row['eventsName']; ?></h3>
+				</div>
+
+				<div class="event-description m-l-25">
+					<p class="fs-25"><?php echo $row['eventsDesc']; ?></p>
+				</div>
+			</div>
+			
+		</div>
+	</aside>
+	<?php } 
+
+    mysqli_stmt_close($stmt); } ?>
+	
+	
 	<?php if(isset($_SESSION['isadmin'])){ ?>
 	<hr class="m-r-45 m-l-45">
 
@@ -65,7 +117,7 @@
 			<input class="my-calendar sizefull p-l-20 bo3" type="text" name="date">
 			<input class="bo3" type="text" name="name" placeholder="Nome">
 
-			<textarea class="textarea-contact bo-rad-10 bo3 p-l-20 p-t-15 m-b-10 m-t-3 m-r-60 m-l-60" style="width: 80%; min-height: 180px;" name="descri" placeholder="Descrição"></textarea>
+			<textarea class="textarea-schedule bo-rad-10 bo3 p-l-20 p-t-15 m-b-10 m-t-3 m-r-60 m-l-60" style="width: 80%; min-height: 180px;" name="descri" placeholder="Descrição"></textarea>
 
 			<!-- Button3 -->
 			<div class="wrap-btn-send flex-c-m m-t-13">

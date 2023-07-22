@@ -47,7 +47,7 @@ function pwdMatch($pwd, $pwdRepeat){
 }
 
 function uidExists($conn, $username, $email) {
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?";
+    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../login.php?error=stmtfailed");
@@ -72,13 +72,13 @@ function createUser($conn, $name, $email, $username, $pwd){
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ? , ?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../signup.php?error=statementfailed");
+        header("location: ../signup.php?error=stmtfailed");
         exit();
     }
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
+    mysqli_stmt_bind_param($stmt, "ssss", strtoupper($name), $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
@@ -221,7 +221,7 @@ function deleteUser($conn, $id){
 }
 
 function showPurchases($conn, $id){
-    $sql = "SELECT * FROM sales WHERE usersId = ?";
+    $sql = "SELECT * FROM sales WHERE usersId = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../profile.php?error=stmtfailed_sales");
@@ -241,7 +241,7 @@ function showPurchases($conn, $id){
 }
 
 function showAllUsers($conn, $admin){
-    $sql = "SELECT * FROM users WHERE isAdmin = ?";
+    $sql = "SELECT * FROM users WHERE isAdmin = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../profile.php?error=stmtfailed");

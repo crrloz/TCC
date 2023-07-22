@@ -100,40 +100,87 @@ video {
 /*[OVERLAY/POPUP]*/
 
 .section-overlay-file,
-.section-overlay-email {
+.section-overlay-email,
+.section-overlay-delete {
   display: none;
 }
 
-.popup-file, .popup-email {
+.popup-file, .popup-email, .popup-delete {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
   z-index: 150;
+  display: none;
 }
 
-.popup-file-content, .popup-email-content {
-  position: relative;
+.popup-event {
+  position: fixed;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 150;
+  width: 90%;
+}
+
+.popup-file-content {
   padding: 40px 30px;
-  background-color: rgb(250, 238, 221);
-  border-radius: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.popup-file-content, .popup-event-content, .popup-email-content {
+  background-color: rgb(250, 238, 221);
+  border-radius: 7px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 22%);
 }
 
+.popup-email-content {
+  padding: 40px 30px;
+  width: 600px;
+  min-height: 400px;
+}
+
+.popup-delete-content {
+  width: 600px;
+  height: 400px;
+  display: flex;
+}
+
+.popup-event-content {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  padding: 10px;
+}
+
 @media (max-width: 767px) {
-  .popup-file-content {
+  .popup-file-content, .popup-delete-content {
     flex-direction: column;
+    width: 300px;
     height: auto;
   }
 
   .popup-file-content input {
     margin: 10px 0px;
   }
+
+  .wrap-trash-icon {
+    height: 100px;
+    width: 100px;
+    transform: translateX(100%);
+  }
+
+  .wrap-content {
+    height: auto;
+    text-align: center;
+    padding: 0 20px 20px 20px;
+  }
+}
+
+/* ------------------------------------ */
+
+.wrap-content, .wrap-trash-icon {
+  position: relative;
+  width: 300px;
+  height: 400px;
 }
 
 /* ------------------------------------ */
@@ -149,9 +196,8 @@ video {
 
 /* ------------------------------------ */
 
-.overlay, .overlay-email, .overlay-file{
+.overlay, .overlay-email, .overlay-file, .overlay-delete, .overlay-event {
   position: fixed;
-  display: none;
   width: 100%;
   height: 100%;
   top: 0;
@@ -281,7 +327,7 @@ menu ul li a {
 .header-fixed .wrap-menu-header {
   position: fixed;
   height: 59px;
-  background: #FAEEDD;
+  background: rgba(250, 238, 221, 0.6);
   box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -758,7 +804,7 @@ menu ul li a {
 		transition: 0.3s;
     }
 
-	.textarea-contact:focus {
+  .textarea-contact:focus,.textarea-schedule:focus {
 		outline: none;
     color: #D99E07;
 		transition: 0.3s;

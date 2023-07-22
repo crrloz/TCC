@@ -9,7 +9,7 @@ if(isset($_POST["submit_news"])){
         $sql = "INSERT INTO news (newsName, newsUrl, newsPic) VALUES (?,?,?);";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
-            header("location: ../news.php?error=statementfailed");
+            header("location: ../news.php?error=stmtfailed");
             exit();
         }
         

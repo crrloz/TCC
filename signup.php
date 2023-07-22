@@ -11,17 +11,11 @@
 
     .color7 {color: #D99E07;}
     
-    .row, .container {
-        padding: 0;
-        margin: 0;
-    }
 
     input[type="text"] {
         appearance: none;
         border-radius: 0;
         line-height: 1.5;
-        display: flex;
-        flex-direction: column-reverse;
         position: relative;
         padding-top: 1.5rem;
     }
@@ -41,6 +35,7 @@
         font: inherit;
         font-size: 1.125rem;
         padding: .25rem 0;
+        width: 100%;
     }
 
     .input-field:focus, .input-field:valid {
@@ -54,8 +49,20 @@
 
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
-    <?php include_once 'header.php' ?>
+    <?php include_once 'header.php';
+    
+    
+    if(isset($_GET['error'])){?>
+    <!-- Mensagens de Erro -->
+    <aside class="section-alert m-r-15 m-l-15 m-t-80 pos-fixed">
+        <div class="alert alert-warning">
+            <strong>Oops!</strong> Parece que houve um erro: <strong><?php
+            if($_GET['error'] == "notlogged"){ echo "você precisa estar logado para ver os eventos.";} else if($_GET['error'] == "emptyinput"){ echo "preencha todos os campos."; } else if($_GET['error'] == "invaliduid"){ echo "o nome de usuário é invalído. Insira letras e não símbolos nem números isolados."; } else if($_GET['error'] == "invalidemail"){ echo "endereço de e-mail inválido.";
+            } else if($_GET['error'] == "thepassdontmatch"){ echo "as senhas não batem."; } else if($_GET['error'] == "usernametaken"){ echo "este nome de usuário já está sendo utilizado.";}?></strong>
+        </div>
+    </aside>
 
+    <?php } ?>
 
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/dança3.jpg);">
@@ -67,7 +74,7 @@
 
     <!-- Seção de Cadastro -->
     <section class="section-signup">
-        <div class="signup-form m-t-80 t-center ab-m">
+        <div class="signup-form m-t-80 m-b-40 t-center">
             <h2>Cadastre-se Agora!</h2>
             <form action="includes/signup.inc.php" method="post" class="m-t-25">
                 <div class="container">
@@ -96,7 +103,7 @@
                 </div>
                 <br>
 
-                <a href="login.php" class="color5" style="padding-bottom: 20px;">Já possui um cadastro? Clique aqui!</a>
+                <a href="login.php" class="color5">Já possui um cadastro? Clique aqui!</a>
             </form>
             <?php
                 if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){

@@ -13,7 +13,7 @@ if(isset($_POST['date'])){
     $sql = "INSERT INTO events (eventsName, eventsDate, eventsDesc) VALUES (?,?,?)";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../schedule.php?error=statementfailed");
+        header("location: ../schedule.php?error=stmtfailed");
         exit();
     }
 

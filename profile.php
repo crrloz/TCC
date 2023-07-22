@@ -71,11 +71,26 @@
     .checkbox-container input:checked ~ .checkmark:after {
         display: block;
     }
+
+    .input-field-subject {
+        border: 0;
+        background-color: transparent;
+        border-bottom: 0.5px solid; 
+        font: inherit;
+        font-size: 1.125rem;
+        padding: .25rem 0;
+        width: 100%;
+    }
+
+    .input-field-subject:focus, .input-field-subject:valid {
+        outline: 0;
+        border-bottom: 1px solid;
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <!-- POP-UP: Mudar imagem -->
     <aside class="section-overlay-file">
-        <div class="overlay" style="display: block;">
+        <div class="overlay-file" style="display: block;">
         </div>
 
         <!-- Pop-up -->
@@ -92,6 +107,38 @@
                     <input type="submit" value="Upload" name="submit_img" class="btn3">
                     <button type="submit" class="hov_underline m-l-10 tt-up">Cancelar</button>
                 </form>
+            </div>
+        </div>
+    </aside>
+
+    <!-- POP-UP: Deletar usuário -->
+    <aside class="section-overlay-delete">
+        <div class="overlay-delete" style="display: block;">
+        </div>
+
+        <!-- Pop-up -->
+        <div class="popup-delete" style="display: block;">
+            <!-- Botão Esconder Popup -->
+            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+            <!-- Conteúdo -->
+            <div class="popup-delete-content">
+                <div class="wrap-trash-icon flex-c-m">
+                    <i class="fa fa-trash fs-100 color-user"></i>
+                </div>
+
+                <div class="wrap-content flex-c-m">
+                    <div class="wrap-text-delete m-t-150">
+                        <div class="wrap-title-delete m-b-30">
+                            <span><i class="f-glitten fs-60 color-user">Deletar </i></span>
+                            <span class="f-glitten fs-60 color-user">CONTA?</span>
+                        </div>
+
+                        <p>Tem certeza de que deseja excluir sua conta? Isso removerá seus dados de nosso Banco de Dados, impossibilitando o envio de promoções e outros e-mails.</p>
+
+                        <button></button><button></button>
+                    </div>
+                </div>
             </div>
         </div>
     </aside>
@@ -123,9 +170,9 @@
                     <div class="wrap-user-commands m-t-180 t-center">
                         <?php echo "@".$_SESSION['useruid']." • <span class='tt-up'>".$_SESSION['username']."</span>"?>
                         
-                        <form action="includes/delete.inc.php" method="post">
-                            <input type="submit" value="DELETAR" name="delete_user" class="btn4 color-user bo-color-user m-t-15">
-                        </form>
+                        <div>
+                            <button type="button" id="btn-delete-user" class="btn4 color-user bo-color-user m-t-15">Deletar</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-8 col-lg-9">
@@ -238,8 +285,8 @@
                         foreach ($users as $user): ?>
                         <tr>
                             <th scope="row"><?php echo $user['usersId']; ?></th>
-                            <td><?php echo $user['usersUid']; ?></td>
-                            <td><?php echo "@".$user['usersName']; ?></td>
+                            <td><?php echo "@".$user['usersUid']; ?></td>
+                            <td><?php echo $user['usersName']; ?></td>
                             <td><?php echo $user['usersEmail']; ?></td>
                             <td><?php
                             if($user['usersPic'] !== null){
@@ -255,13 +302,6 @@
                     </tbody>
                 </table>
                 <div class="wrap-admin-commands p-t-15">
-                    <button type="button" class="btn4 color0 bg-user bo-color-user m-r-10" id="btn-send-all">
-                        Enviar E-mail<span class="fs-7"> (todos)</span>
-                    </button>
-                    <button type="button" class="btn4 color-user bo-color-user m-r-10" id="btn-send-selected">
-                        Enviar E-mail<span class="fs-7"> (selecionados)</span>
-                    </button>
-
                     <!-- POP-UP: Enviar E-mail -->
                     <aside class="section-overlay-email">
                         <div class="overlay-email" style="display: block;">
@@ -274,21 +314,34 @@
 
                             <!-- Conteúdo -->
                             <div class="popup-email-content">
-                                <h3 class="m-b-10">Digite o cabeçário</h3><br>
-                                <input type="text" name="subject">
+                                <span>
+                                    Assunto
+                                </span><br>
+                                <input type="text" name="subject" class="input-field-subject color-user  m-b-15">
 
-                                <h3 class="m-b-10">Digite a menssagem</h3><br>
-                                <input type="text" name="message"><br><br>
+                                <span>
+                                    Mensagem (corpo do E-mail)
+                                </span>
+                                <textarea name="message" class="textarea-contact bo-rad-10 size35 bo-color-user color-user p-r-10 p-l-10 p-t-5 m-t-10 bg4"></textarea><br><br>
 
                                 <div id="selected-input">
-                                    <input type="submit" name="email_selected" value="Enviar">
+                                    <input type="submit" name="email_selected" class="btn4 color-user bo-color-user" value="Enviar">
                                 </div>
+
                                 <div id="all-input">
-                                    <input type="submit" name="email_all" value="Enviar">
+                                    <input type="submit" name="email_all" class="btn4 color-user bo-color-user" value="Enviar">
                                 </div>
                             </div>
                         </div>
                     </aside>
+                
+                    <button type="button" class="btn4 color0 bg-user bo-color-user m-r-10" id="btn-send-all">
+                        Enviar E-mail<span class="fs-7"> (todos)</span>
+                    </button>
+                    
+                    <button type="button" class="btn4 color-user bo-color-user m-r-10" id="btn-send-selected">
+                        Enviar E-mail<span class="fs-7"> (selecionados)</span>
+                    </button>
 
                     <button class="btn-delete-users btn4 color-user bo-color-user m-r-10" type="submit" name="delete_users">
                         Deletar Usuários<span class="fs-7"> (selecionados)</span>
@@ -309,19 +362,31 @@
             ===========================================================*/
             var btnHidePopup = $('.btn-hide-popup');
             var btnEdit = $('.btn-edit');
+            var btnDelete = $('#btn-delete-user');
             var btnSendAll = $('#btn-send-all');
             var btnSendSelected = $('#btn-send-selected');
 
             var popupFile = $('.section-overlay-file');
+            var popupDelete = $('.section-overlay-delete');
             var popupEmail = $('.section-overlay-email');
 
             var overlayFile = $('.overlay-file');
+            var overlayDelete = $('.overlay-delete');
             var overlayEmail = $('.overlay-email');
+
 
             $(btnHidePopup).on('click', function(){
                 $(popupFile).css('display','none');
-
                 $(popupEmail).css('display','none');
+                $(popupDelete).css('display','none');
+            });
+
+            $(btnEdit).on('click', function(){
+                $(popupFile).css('display','block');
+            });
+
+            $(btnDelete).on('click', function(){
+                $(popupDelete).css('display','block');
             });
 
             $(btnSendAll).on('click', function(e){
@@ -340,6 +405,7 @@
                 $('#selected-input').css('display','block');
             });
 
+
             $(overlayFile).on('click', function(){
                 $(popupFile).css('display','none');
                 $(popupEmail).css('display','none');
@@ -348,9 +414,9 @@
             $(overlayEmail).on('click', function(){
                 $(popupEmail).css('display','none');
             });
-
-            $(btnEdit).on('click', function(){
-                $(popupFile).css('display','block');
+            
+            $(overlayDelete).on('click', function(){
+                $(popupDelete).css('display','none');
             });
 
             /*[DIRECIONAR PARA PÁGINA]
@@ -386,8 +452,13 @@
             });
 
             const bo_user = document.querySelectorAll('.bo-color-user');
-            bg_user.forEach(element => {
+            bo_user.forEach(element => {
                 element.style.borderColor = darkenedColor;
+            });
+
+            const bo_bottom_user = document.querySelectorAll('.bo-bottom-color-user');
+            bo_bottom_user.forEach(element => {
+                element.style.borderBottomColor = darkenedColor;
             });
         }
 

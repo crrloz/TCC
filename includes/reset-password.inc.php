@@ -41,7 +41,7 @@ if(isset($_POST['submit_new_pwd'])){
                 exit();
             } else if($tokenCheck == true) {
                 $tokenEmail = $row['pwdResetEmail'];
-                $sql = "SELECT * FROM users WHERE usersEmail =?;";
+                $sql = "SELECT * FROM users WHERE usersEmail = ?;";
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)){
                     echo "Ocorreu um erro com o statement.";

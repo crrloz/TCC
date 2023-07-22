@@ -121,7 +121,7 @@
             <!-- Notícias -->
             <div class="row p-t-30 p-b-30">
                 <?php
-                $sql = "SELECT * FROM news ORDER BY newsId DESC LIMIT 5";
+                $sql = "SELECT * FROM news ORDER BY newsId DESC LIMIT 5;";
                 $result = mysqli_query($conn, $sql);
                 $count = 1;
 
@@ -199,7 +199,7 @@
 
     <?php } else { ?>
     <!-- Cadastro -->
-    <section class="section-signup p-t-60 bg1" style="overflow: hidden;">
+    <section class="section-signup p-t-60 bg2" style="overflow: hidden;">
         <div class="row">
             <div class="col-lg-6 p-b-30 p-l-100 p-t-100">
                 <div class="wrap-text-signup" style="line-height: 0.8;">
