@@ -21,7 +21,7 @@
 						</li>
 
 						<li class="m-t-20 m-b-14">
-							<a href="contact.php" class="btn3">CONTATAR</a>
+							<a href="contact.php" class="btn4 bo-color1 color6 bo-color-user color-user">CONTATAR</a>
 						</li>
 					</ul>
 				</div>
@@ -77,7 +77,7 @@
 
 
 	<!-- De volta ao topo -->
-	<div class="btn-back-to-top bg0-hov" id="myBtn">
+	<div class="btn-back-to-top" id="myBtn">
 		<span class="symbol-btn-back-to-top">
 			<i class="fa fa-angle-up" aria-hidden="true"></i>
 		</span>

@@ -35,6 +35,16 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 		width: 40px;
 		height: 40px;
 	}
+
+	.date {
+        width: 100px;
+        height: 100px;
+    }
+
+    .description {
+        height: 100px;
+        width: 90%;
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
 	<!-- Header -->
@@ -49,8 +59,44 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
     </section>
 
 
+	<?php
+		setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese');
+
+		$sql = "SELECT eventsName, eventsDate FROM events WHERE eventsDate >= CURDATE() ORDER BY eventsDate ASC LIMIT 1;";
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
+		} else {
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			if ($row = mysqli_fetch_assoc($result)) {
+				$nextEventDate = $row['eventsDate'];
+				$nextEventName = $row['eventsName'];
+				$nextEventDay = date('d', strtotime($nextEventDate));
+			}
+		}
+		mysqli_stmt_close($stmt);
+	?>
+
+
 	<!-- Calendário -->
-	<section class="section-calendar t-center">
+	<section class="section-calendar t-center m-t-30">
+		<div class="next-event flex-sa-m m-r-30 m-l-30">
+			<div class="date pos-relative bg1 t-center">
+				<?php if ($nextEventDate) { ?>
+					<span class="ab-c-m"><?php echo $nextEventDay; ?></span>
+					<span class="ab-c-b"><?php echo date('D', strtotime($nextEventDate)); ?></span>
+				<?php } ?>
+			</div>
+
+			<div class="description bg2 t-center flex-c-m">
+				<?php if ($nextEventDate) { ?>
+					<span>O próximo evento "<?php echo $nextEventName; ?>" será realizado no dia <?php echo date('d', strtotime($nextEventDate)); ?>, numa <?php echo date('l', strtotime($nextEventDate)); ?>. Agende já o seu ingresso!</span>
+				<?php } else { ?>
+					<span>Nenhum evento agendado.</span>
+				<?php } ?>
+			</div>
+		</div>
+
 		<div class="wrap-calendar flex-c-m">
 			<div id="calendar" class="m-t-80 m-b-40"></div>
 		</div>
@@ -62,47 +108,47 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 
 
 	<?php if(isset($_GET['event'])){
-	$eventName = $_GET['event'];
+		$eventName = $_GET['event'];
 
-	$sql = "SELECT * FROM events WHERE eventsName = ?;";
-	$stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: schedule.php?error=stmtfailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt, "s", $eventName);
-    mysqli_stmt_execute($stmt);
+		$sql = "SELECT * FROM events WHERE eventsName = ?;";
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: schedule.php?error=stmtfailed");
+			exit();
+		}
+		mysqli_stmt_bind_param($stmt, "s", $eventName);
+		mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
+		$result = mysqli_stmt_get_result($stmt);
 
-    if ($row = mysqli_fetch_assoc($result)) { ?>
-	<!-- POP-UP: Evento -->
-	<aside class="section-overlay-event">
-		<div class="overlay-event">
-		</div>
-
-		<!-- Pop-up -->
-		<div class="popup-event">
-			<!-- Botão Esconder Popup -->
-            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
-
-            <!-- Conteúdo -->
-			<div class="popup-event-content t-left">
-				<div class="event-image sizefull" style="background-image: url('data:image/jpeg;base64,<?php echo base64_encode($row['eventsPic']) ?>');">
-
-				</div>
-
-				<div class="event-name m-t-40 m-l-25">
-					<h3 class="fs-50 f-glitten"><?php echo $row['eventsName']; ?></h3>
-				</div>
-
-				<div class="event-description m-l-25">
-					<p class="fs-25"><?php echo $row['eventsDesc']; ?></p>
-				</div>
+		if ($row = mysqli_fetch_assoc($result)) {?>
+		<!-- POP-UP: Evento -->
+		<aside class="section-overlay-event">
+			<div class="overlay-event">
 			</div>
-			
-		</div>
-	</aside>
+
+			<!-- Pop-up -->
+			<div class="popup-event">
+				<!-- Botão Esconder Popup -->
+				<button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+				<!-- Conteúdo -->
+				<div class="popup-event-content t-left">
+					<div class="event-image sizefull" style="background-image: url('data:image/jpeg;base64,<?php echo base64_encode($row['eventsPic']) ?>');">
+
+					</div>
+
+					<div class="event-name m-t-40 m-l-25">
+						<h3 class="fs-50 f-glitten"><?php echo $row['eventsName']; ?></h3>
+					</div>
+
+					<div class="event-description m-l-25">
+						<p class="fs-25"><?php echo $row['eventsDesc']; ?></p>
+					</div>
+				</div>
+				
+			</div>
+		</aside>
 	<?php } 
 
     mysqli_stmt_close($stmt); } ?>

@@ -44,7 +44,7 @@
                     <div class="content">
                         <h3 class="f-glitten m-b-10">Bem vindo ao CAH!</h3>
                         <p>Olá, <?php echo $_SESSION['useruid'] ?>. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aperiam dolorem officiis a, molestias beatae voluptatum aliquid doloremque eius voluptatibus vel amet reiciendis cum omnis, officia nam. Illum, vero magnam!</p>
-                        <button class="btn3 m-b-40 m-t-20" id="btnClose">Entendi</button>
+                        <button class="btn-close-popup btn3 m-b-40 m-t-20">Entendi</button>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@
             /*[ESCONDER POPUP]
             ===========================================================*/
             var btnHidePopup = $('.btn-hide-popup');
-            var btnClosePopup = $('#btnClose');
+            var btnClosePopup = $('btn-close-popup');
             var popup = $('.section-overlay-welcome');
 
             $(btnHidePopup).on('click', function(){

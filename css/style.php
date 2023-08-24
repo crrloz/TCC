@@ -127,7 +127,7 @@ video {
   text-align: center;
 }
 
-.popup-file-content, .popup-event-content, .popup-email-content {
+.popup-file-content, .popup-event-content, .popup-email-content, .popup-delete-content {
   background-color: rgb(250, 238, 221);
   border-radius: 7px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 22%);
@@ -168,7 +168,7 @@ video {
     transform: translateX(100%);
   }
 
-  .wrap-content {
+  .delete-content {
     height: auto;
     text-align: center;
     padding: 0 20px 20px 20px;
@@ -177,7 +177,7 @@ video {
 
 /* ------------------------------------ */
 
-.wrap-content, .wrap-trash-icon {
+.delete-content, .wrap-trash-icon {
   position: relative;
   width: 300px;
   height: 400px;

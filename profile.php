@@ -118,25 +118,27 @@
 
         <!-- Pop-up -->
         <div class="popup-delete" style="display: block;">
-            <!-- Botão Esconder Popup -->
-            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
-
             <!-- Conteúdo -->
             <div class="popup-delete-content">
                 <div class="wrap-trash-icon flex-c-m">
                     <i class="fa fa-trash fs-100 color-user"></i>
                 </div>
 
-                <div class="wrap-content flex-c-m">
-                    <div class="wrap-text-delete m-t-150">
-                        <div class="wrap-title-delete m-b-30">
+                <div class="delete-content flex-c-m">
+                    <div class="wrap-text-delete t-left">
+                        <div class="wrap-title-delete m-b-20" style="line-height: 1;">
                             <span><i class="f-glitten fs-60 color-user">Deletar </i></span>
                             <span class="f-glitten fs-60 color-user">CONTA?</span>
                         </div>
 
-                        <p>Tem certeza de que deseja excluir sua conta? Isso removerá seus dados de nosso Banco de Dados, impossibilitando o envio de promoções e outros e-mails.</p>
+                        <div class="wrap-text-delete p-r-15">
+                            Tem certeza de que deseja excluir sua conta? Isso removerá seus dados de nosso Banco de Dados, impossibilitando o envio de promoções e outros e-mails.
+                        </div>
 
-                        <button></button><button></button>
+                        <div class="wrap-delete-buttons m-t-20">
+                            <button class="btn4 bo-color-user color-user btn-url-direct" data-url="includes/delete.inc.php?delete_user">Excluir</button>
+                            <button class="btn-close-popup btn4 bg-user color0">Cancelar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -221,7 +223,9 @@
                                         } ?>
 
                                         <td><?php echo $eventsName; ?></td>
-                                        <td><?php echo $purchase['salesQnt']." ingressos"; ?></td>
+                                        <td><?php 
+                                        if($purchase['salesQnt'] > 1){$ticketWord = " ingressos";} else {$ticketWord = " ingresso";}
+                                        echo $purchase['salesQnt'].$ticketWord; ?></td>
                                         <td><?php 
                                         $dateComponents = explode('-', $purchase['salesDate']);
                                         $salesDate = $dateComponents[2] . '/' . $dateComponents[1] . '/' . $dateComponents[0];
@@ -361,6 +365,7 @@
             /*[MOSTRAR/ESCONDER POPUP]
             ===========================================================*/
             var btnHidePopup = $('.btn-hide-popup');
+            var btnClosePopup = $('.btn-close-popup');
             var btnEdit = $('.btn-edit');
             var btnDelete = $('#btn-delete-user');
             var btnSendAll = $('#btn-send-all');
@@ -376,6 +381,12 @@
 
 
             $(btnHidePopup).on('click', function(){
+                $(popupFile).css('display','none');
+                $(popupEmail).css('display','none');
+                $(popupDelete).css('display','none');
+            });
+
+            $(btnClosePopup).on('click', function(){
                 $(popupFile).css('display','none');
                 $(popupEmail).css('display','none');
                 $(popupDelete).css('display','none');
@@ -449,16 +460,12 @@
             const bg_user = document.querySelectorAll('.bg-user');
             bg_user.forEach(element => {
                 element.style.backgroundColor = darkenedColor;
+                element.style.borderColor = darkenedColor;
             });
 
             const bo_user = document.querySelectorAll('.bo-color-user');
             bo_user.forEach(element => {
                 element.style.borderColor = darkenedColor;
-            });
-
-            const bo_bottom_user = document.querySelectorAll('.bo-bottom-color-user');
-            bo_bottom_user.forEach(element => {
-                element.style.borderBottomColor = darkenedColor;
             });
         }
 
