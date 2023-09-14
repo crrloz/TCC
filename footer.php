@@ -39,7 +39,7 @@
 							</li>
 
 							<li class="m-b-14">
-								<a href="" class="color4">Ética e Sei Lá</a>
+								<a href="" class="color4">Nossa Ética</a>
 							</li>
 						</ul>
 					</div>
@@ -48,7 +48,7 @@
 				<div class="col-sm-6 col-md-4 p-t-50">
 					<!-- - -->
 					<h4 class="m-b-38">
-						He's The One That's Living In My System BABY
+						
 					</h4>
 
 					<!-- - -->
@@ -68,7 +68,7 @@
 					</div>
 
 					<div class="color0 p-r-20 p-t-5 p-b-5">
-						Me when i SLAY
+						Projeto de TCC
 					</div>
 				</div>
 			</div>

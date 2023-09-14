@@ -102,7 +102,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 		</div>
 
 		<div class="wrap-calendar-description">
-			<p>As datas em cor <span class="">AA</span> representam as datas com eventos.</p>
+			<p>As datas em cor <span class="">Amarela</span> representam as datas com eventos.</p>
 		</div>
 	</section>
 

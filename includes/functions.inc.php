@@ -128,7 +128,7 @@ function loginUser($conn, $username, $pwd) {
             if ($profilePic !== null) {
                 $_SESSION['imagesrc'] = "data:image/jpeg;base64," . base64_encode($profilePic);
             } else {
-                $_SESSION['imagesrc'] = "images/patterns/pattern1.jpg";
+                $_SESSION['imagesrc'] = "images/default_icon.png";
             }
             mysqli_stmt_close($stmt);
         }

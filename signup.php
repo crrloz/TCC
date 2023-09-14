@@ -74,7 +74,7 @@
     <!-- Seção de Cadastro -->
     <section class="section-signup">
         <div class="signup-form m-t-80 m-b-40 t-center">
-            <h2>Cadastre-se Agora!</h2>
+            <h2>CADASTRE-SE</h2>
             <form action="includes/signup.inc.php" method="post" class="m-t-25">
                 <div class="container">
                     <div class="row">

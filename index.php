@@ -43,7 +43,7 @@
 
                     <div class="content">
                         <h3 class="f-glitten m-b-10">Bem vindo ao CAH!</h3>
-                        <p>Olá, <?php echo $_SESSION['useruid'] ?>. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aperiam dolorem officiis a, molestias beatae voluptatum aliquid doloremque eius voluptatibus vel amet reiciendis cum omnis, officia nam. Illum, vero magnam!</p>
+                        <p>Olá, <?php echo $_SESSION['useruid'] ?>. Ao cadastrar e logar-se em nosso site, você desbloqueia funcionabilidades de compra de ingresso e mensagem. Descubra nosso coletivo!</p>
                         <button class="btn-close-popup btn3 m-b-40 m-t-20">Entendi</button>
                     </div>
                 </div>
@@ -127,8 +127,10 @@
 
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $title = $row['newsName'];
-                        $image = "data:image/jpeg;base64," . base64_encode($row['newsPic']);
+                        $title = "FUNÇÃO INDISPONÍVEL";
+                        // $row['newsName'];
+                        $image = "images/manutencao.jpg";
+                        // "data:image/jpeg;base64," . base64_encode($row['newsPic']);
                         $url = $row['newsUrl'];
                         
                         if($count == 1){ ?>
@@ -142,17 +144,17 @@
                                         <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
                                     </div>
                         <?php } else if($count == 3){ ?>
-                                    <div class="col-md-6 p-t-125" style="background-image: url(<?php echo $image ?>);">
+                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
                                         <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
                                     </div>
                                 </div>
                         <?php } else if($count == 4){ ?>
                                 <div class="row">
-                                    <div class="col-md-6 p-t-125" style="background-image: url(<?php echo $image ?>);">
+                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
                                     <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
                                     </div>
                         <?php } else if($count == 5){ ?>
-                                    <div class="col-md-6 p-t-125" style="background-image: url(<?php echo $image ?>);">
+                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
                                         <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
                                     </div>
                                 </div>

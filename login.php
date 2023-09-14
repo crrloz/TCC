@@ -46,7 +46,7 @@
 
     <!-- Seção de Login -->
     <section class="section-login m-t-120 p-b-30 t-center">
-        <h2>Login</h2><br>
+        <h2>LOGIN</h2><br>
         <form action="includes/login.inc.php" method="post">
             <input type="text" name="uid" placeholder="Usuário/E-mail" class="input-field">
             <input type="password" name="pwd" placeholder="Senha" class="input-field"> <br><br>
