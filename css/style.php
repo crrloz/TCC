@@ -11,12 +11,12 @@
 
 @font-face {
   font-family: Century-Gothic;
-  src: url('../fonts/Century\ Gothic.ttf') format('truetype');
+  src: url('fonts/Century\ Gothic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: Glitten;
-  src: url('../fonts/Glitten-Regular.ttf');
+  src: url('fonts/Glitten-Regular.ttf');
 }
 
 .f-glitten {
@@ -327,8 +327,9 @@ menu ul li a {
 .header-fixed .wrap-menu-header {
   position: fixed;
   height: 59px;
-  background: rgba(250, 238, 221, 0.6);
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  background: #7F4AA4;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+  color: black;
 }
 
 /* Logos */
@@ -437,9 +438,9 @@ menu ul li a {
 
 .wrap-content {
   position: absolute;
-  bottom: 70px;
+  bottom: 90px;
   right: 40px;
-  color: #dcd7be;
+  color: white;
   font-size: 100px;
   text-align: right;
   line-height: 0.8;
@@ -785,10 +786,7 @@ menu ul li a {
     .section-entry {
         background-repeat: no-repeat;
         background-size: cover;
-    }
-
-    .wrap-content {
-        color: white;
+        height: 90vh;
     }
 
     /** CONTACT **/
@@ -836,10 +834,11 @@ menu ul li a {
     background-position: center 0;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 70vh;
 }
 
 .overlay0-parallax {
     background-color: rgba(0,0,0,0.5);
-    min-height: 616px;
+    height: 70vh;
 }
 </style>

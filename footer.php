@@ -63,8 +63,8 @@
 			<div class="container">
 				<div class="flex-sb-m flex-w p-t-22 p-b-22">
 					<div class="p-t-5 p-b-5">
-						<a href="#" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
-						<a href="#" class="fs-15 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
+						<a href="#" class="fs-20 c-white"><i class="fa fa-youtube-play m-l-18" aria-hidden="true"></i></a>
+						<a href="#" class="fs-20 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
 					</div>
 
 					<div class="color0 p-r-20 p-t-5 p-b-5">

@@ -62,6 +62,10 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	<?php
 		setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'portuguese');
 
+		$nextEventDate = false;
+		$nextEventName = false;
+		$nextEventDay = false;
+
 		$sql = "SELECT eventsName, eventsDate FROM events WHERE eventsDate >= CURDATE() ORDER BY eventsDate ASC LIMIT 1;";
 		$stmt = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -286,10 +290,15 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 
 				var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-				var header = $('<h2></h2>').text(new Date(currentYear, currentMonth).toLocaleDateString('pt-BR', {
-					month: 'long',
-					year: 'numeric'
-				}));
+				var monthNames = [
+					'Janeiro', 'Fevereiro', 'Março', 'Abril',
+					'Maio', 'Junho', 'Julho', 'Agosto',
+					'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+				];
+
+				var currentMonthName = monthNames[currentMonth];
+
+				var header = $('<h2 class="m-b-20"></h2>').text(currentMonthName + ' de ' + currentYear);
 
 				var calendarContainer = $('#calendar');
 				calendarContainer.append(header);

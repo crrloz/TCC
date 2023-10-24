@@ -6,15 +6,15 @@
             <!-- - -->
             <ul class="menu-sidebar p-t-95 p-b-70">
                 <li class="t-center m-b-13">
-                    <a href="contact.php" class="color5">Contato</a>
+                    <a href="contact.php">Contato</a>
                 </li>
 
                 <li class="t-center m-b-13">
-                    <a href="schedule.php" class="color5">Agenda</a>
+                    <a href="schedule.php">Agenda</a>
                 </li>
 
                 <li class="t-center m-b-13">
-                    <a href="about.php" class="color5">Quem somos</a>
+                    <a href="about.php">Quem somos</a>
                 </li>
 
                 <li class="t-center">
@@ -34,7 +34,7 @@
                 <nav class="menu">
                     <div class="list-section">
                         <ul>
-                            <li><a href="contact.php" class="color0 m-r-10">Contato</a></li>
+                            <li><a href="contact.php" class="m-r-10">Contato</a></li>
                             <li><a href="schedule.php">Agenda</a></li>
                         </ul>
                     </div>

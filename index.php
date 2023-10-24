@@ -49,8 +49,7 @@
                 </div>
             </div>
         </aside>
-    <?php 
-    $_SESSION['popupappeared'] = 1; } ?>
+    <?php $_SESSION['popupappeared'] = 1; } ?>
 
 
     <!-- Header -->
@@ -106,7 +105,15 @@
 
     <!-- Divisor -->
     <section class="section-divider">
-        <div class="item-divider p-t-150 p-b-150" style="background-image: url(images/dança2.jpg);"></div>
+        <div class="item-divider p-t-150 p-b-150" style="background-image: url(images/dança2.jpg);">
+            <div class="container">
+                <div class="row t-center">
+                    <div class="col-md-4">aaaa</div>
+                    <div class="col-md-4">aaaaa</div>
+                    <div class="col-md-4">aaaaaa</div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
