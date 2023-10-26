@@ -19,7 +19,7 @@
 		font-size: 20px;
 		color: #111111;
 		padding: 10px;
-		top: -20%;
+		top: -10%;
 		right: 2.5%;
 	}
 
@@ -118,8 +118,8 @@
 
 									<div class="wrap-dancer-editing t-right">
 										<ul class="dancer-editing">
-											<li id="" class="color7-hov trans-0-4 pointer">Editar</li>
-											<li id="" class="color7-hov trans-0-4 pointer">Excluir</li>
+											<li  class="color7-hov trans-0-4 pointer">Editar</li>
+											<li  class="color7-hov trans-0-4 pointer">Excluir</li>
 										</ul>
 									</div>
 								</div><?php } ?>

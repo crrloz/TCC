@@ -9,6 +9,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 <?php require_once "css/style.php" ?>
 <style>
 	.clickable-date {
+		border-radius: 50%;
 		cursor: pointer;
 		background-color: yellow;
 	}
@@ -23,17 +24,6 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	th {
 		padding: 4px;
 		text-align: center;
-	}
-
-	.btn-date {
-		position: absolute;
-		background-color: purple;
-		color: white;
-		border-radius: 50%;
-		top: 55%;
-		left: 55%;
-		width: 40px;
-		height: 40px;
 	}
 
 	.date {
@@ -87,16 +77,16 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 		<div class="next-event flex-sa-m m-r-30 m-l-30">
 			<div class="date pos-relative bg1 t-center">
 				<?php if ($nextEventDate) { ?>
-					<span class="ab-c-m"><?php echo $nextEventDay; ?></span>
-					<span class="ab-c-b"><?php echo date('D', strtotime($nextEventDate)); ?></span>
+					<span class="ab-c-m f-glitten fs-40 color7"><?php echo $nextEventDay; ?></span>
+					<span class="ab-c-b color0"><?php echo date('D', strtotime($nextEventDate)); ?></span>
 				<?php } ?>
 			</div>
 
 			<div class="description bg2 t-center flex-c-m">
 				<?php if ($nextEventDate) { ?>
-					<span>O próximo evento "<?php echo $nextEventName; ?>" será realizado no dia <?php echo date('d', strtotime($nextEventDate)); ?>, numa <?php echo date('l', strtotime($nextEventDate)); ?>. Agende já o seu ingresso!</span>
+					<span class="color0">O próximo evento "<?php echo $nextEventName; ?>" será realizado no dia <?php echo date('d', strtotime($nextEventDate)); ?>, numa <?php echo date('l', strtotime($nextEventDate)); ?>. Agende já o seu ingresso!</span>
 				<?php } else { ?>
-					<span>Nenhum evento agendado.</span>
+					<span class="color0">Nenhum evento agendado.</span>
 				<?php } ?>
 			</div>
 		</div>
@@ -255,31 +245,32 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 		$(document).ready(function() {
 			function getDatesFromServer() {
 				$.ajax({
-				url: 'includes/dates.inc.php',
-				type: 'GET',
-				dataType: 'json',
-				success: function(dates) {
-					renderCalendar(dates);
-				},
-				error: function(xhr, status, error) {
-					console.error('Erro na requisição AJAX');
-				}
+					url: 'includes/dates.inc.php',
+					type: 'GET',
+					dataType: 'json',
+					success: function(data) {
+						var dates = data.dates;
+						renderCalendar(dates);
+					},
+					error: function(xhr, status, error) {
+						console.error('Erro na requisição AJAX');
+					}
 				});
 			}
 
 			function sendDatesToServer(dates) {
 				$.ajax({
-				url: 'schedule.php',
-				type: 'POST',
-				dataType: 'json',
-				contentType: 'application/json',
-				data: JSON.stringify(dates),
-				success: function(response) {
-					console.log('Dados enviados com sucesso para schedule.php');
-				},
-				error: function(xhr, status, error) {
-					console.error('Erro ao enviar os dados para schedule.php');
-				}
+					url: 'schedule.php',
+					type: 'POST',
+					dataType: 'json',
+					contentType: 'application/json',
+					data: JSON.stringify(dates),
+					success: function(response) {
+						console.log('Dados enviados com sucesso para schedule.php');
+					},
+					error: function(xhr, status, error) {
+						console.error('Erro ao enviar os dados para schedule.php');
+					}
 				});
 			}
 
@@ -291,21 +282,21 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 				var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
 				var monthNames = [
-					'Janeiro', 'Fevereiro', 'Março', 'Abril',
-					'Maio', 'Junho', 'Julho', 'Agosto',
-					'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+					'JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL',
+					'MAIO', 'JUNHO', 'JULHO', 'AGOSTO',
+					'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'
 				];
 
 				var currentMonthName = monthNames[currentMonth];
 
-				var header = $('<h2 class="m-b-20"></h2>').text(currentMonthName + ' de ' + currentYear);
+				var header = $('<h2 class="m-b-20 f-glitten fs-50"></h2>').text(currentMonthName + ' de ' + currentYear);
 
 				var calendarContainer = $('#calendar');
 				calendarContainer.append(header);
 
 				var nextEventDate = findNextEvent(dates);
 				if (nextEventDate) {
-					var nextEventHeader = $('<h3></h3>').text('Próximo Evento: ' + nextEventDate.toLocaleDateString('pt-BR'));
+					var nextEventHeader = $('<h3 class="fs-20 m-b-30"></h3>').text('Próximo Evento: ' + nextEventDate.toLocaleDateString('pt-BR'));
 					calendarContainer.append(nextEventHeader);
 				}
 
@@ -338,12 +329,6 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 						if (url) {
 							cell.attr('id', date);
 							cell.addClass('clickable-date');
-
-							var button = $('<button></button>');
-							var icon = $('<i></i>').addClass('fa fa-calendar');
-							button.addClass('btn-date');
-							button.append(icon);
-							cell.append(button);
 						}
 					}
 

@@ -110,7 +110,7 @@
                 <div class="row t-center">
                     <div class="col-md-4">aaaa</div>
                     <div class="col-md-4">aaaaa</div>
-                    <div class="col-md-4">aaaaaa</div>
+                    <div class="col-md-4 f-glitten fs-30 color0" id="countdown"></div>
                 </div>
             </div>
         </div>
@@ -250,6 +250,39 @@
     <script>
         (function ($) {
             "use strict";
+            $.ajax({
+                url: 'includes/dates.inc.php',
+                dataType: 'json',
+                success: function (data) {
+                console.log(data); 
+
+                var nextEvent = data.nextEvent;
+
+                if (nextEvent.hasOwnProperty('proximaDataHoraEvento')) {
+                    var proximaDataHoraEvento = new Date(nextEvent.proximaDataHoraEvento).getTime();
+                    console.log(proximaDataHoraEvento);
+
+                    function atualizarContagemRegressiva() {
+                        var agora = new Date().getTime();
+                        var tempoRestante = proximaDataHoraEvento - agora;
+
+                        if (tempoRestante > 0) {
+                            var dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+                            var horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
+                            var segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
+
+                            document.getElementById("countdown").innerHTML = dias + "d " + horas + "h " + minutos + "m " + segundos + "s";
+                        } else {
+                            document.getElementById("countdown").innerHTML = "...";
+                        }
+                    }
+
+                    atualizarContagemRegressiva();
+                    setInterval(atualizarContagemRegressiva, 1000);
+                }
+            }
+        });
 
             /*[ESCONDER POPUP]
             ===========================================================*/

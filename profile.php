@@ -26,11 +26,11 @@
 
     .checkmark {
         position: absolute;
-        top: 0;
+        bottom: 70%;
         left: 0;
         height: 15px;
         width: 15px;
-        background-color: #eee;
+        background-color: gray;
         border-radius: 2px;
     }
 
@@ -45,12 +45,8 @@
         height: 0px;
     }
 
-    .checkbox-container:hover input ~ .checkmark {
-        background-color: #ccc;
-    }
-
-    .checkbox-container input:checked ~ .checkmark {
-        background-color: #ccc;
+    .checkbox-container:hover input ~ .checkmark, .checkbox-container input:checked ~ .checkmark {
+        background-color: gray;
     }
 
     .checkbox-container .checkmark:after {
@@ -102,7 +98,9 @@
             <div class="popup-file-content">
                 <form action="includes/change-image-request.inc.php" method="post" enctype="multipart/form-data">
                     <h3 class="m-b-10">Selecione um arquivo</h3><br>
-                    <input type="file" name="imageFile"><br><br>
+                    <input type="file" name="imageFile" id="imageFileInput"><br><br>
+
+                    <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 200px;"><br><br>
 
                     <input type="submit" value="Upload" name="submit_img" class="btn3">
                     <button type="submit" class="hov_underline m-l-10 tt-up">Cancelar</button>
@@ -302,7 +300,11 @@
                             </label>
                             </td>
                         </tr>
-                        <?php endforeach; } else { echo "<p>Parece que não há nenhum usuário não administrador cadastrado no site...";} ?>
+                        <?php endforeach;
+                        echo "<p><b>Total de usuários:</b> ".count($users)."</p>";
+                    } else {
+                        echo "<p>Parece que não há nenhum usuário não administrador cadastrado no site...";
+                    }?>
                     </tbody>
                 </table>
                 <div class="wrap-admin-commands p-t-15">
@@ -357,6 +359,8 @@
     <?php } ?>
 
     <!-- Footer -->
+    <hr class="m-r-45 m-l-45">
+    
     <?php include_once 'footer.php' ?>
     <script>
         (function ($) {
@@ -438,6 +442,25 @@
                 var url = $(this).data('url');
                 window.location.href = url;
             });
+
+            /*[PREVIEW DA FOTO DE PERFIL]
+            ===========================================================*/
+            function previewImage() {
+                var input = $('#imageFileInput')[0];
+                var preview = $('#imagePreview');
+                var file = input.files[0];
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.attr('src', e.target.result).show();
+                };
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            $('#imageFileInput').change(previewImage);
         })(jQuery);
     </script>
     <script>

@@ -1,6 +1,4 @@
-	<footer class="bg4 m-t-30">
-		<hr class="m-r-45 m-l-45">
-
+	<footer class="bg4">
 		<div class="container m-t-40">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 p-t-50">
