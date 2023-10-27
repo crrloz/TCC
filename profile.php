@@ -97,18 +97,28 @@
             <!-- Conteúdo -->
             <div class="popup-file-content">
                 <form action="includes/change-image-request.inc.php" method="post" enctype="multipart/form-data">
-                    <h3 class="m-b-10">Selecione um arquivo</h3><br>
-                    <input type="file" name="imageFile" id="imageFileInput"><br><br>
+                    <div id="imagePreview" class="wrap-image-preview hov-img-zoom flex-c-m m-l-r-auto" style="width: 200px; height: 200px; display: none;">
+                        <img alt="ICON-PREVIEW">
+                    </div>
 
-                    <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 200px;"><br><br>
+                    <div class="file-content flex-c-m">
+                        <div class="wrap-file-form">
+                            <div class="wrap-text-file">
+                                <h3 class="f-glitten fs-60 color-user m-b-10">Selecione uma imagem</h3>
+                            </div>
+                            
+                            <input type="file" name="imageFile" id="imageFileInput"><br><br>
 
-                    <input type="submit" value="Upload" name="submit_img" class="btn3">
-                    <button type="submit" class="hov_underline m-l-10 tt-up">Cancelar</button>
+                            <input type="submit" value="Upload" name="submit_img" class="btn4 bo-color-user color-user">
+                            <button class="btn-close-popup btn4 bg-user color0 m-l-10 tt-up">Cancelar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
     </aside>
 
+    
     <!-- POP-UP: Deletar usuário -->
     <aside class="section-overlay-delete">
         <div class="overlay-delete" style="display: block;">
@@ -446,21 +456,24 @@
             /*[PREVIEW DA FOTO DE PERFIL]
             ===========================================================*/
             function previewImage() {
-                var input = $('#imageFileInput')[0];
-                var preview = $('#imagePreview');
+                var input = document.getElementById('imageFileInput');
+                var previewImg = document.getElementById('imagePreview');
                 var file = input.files[0];
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    preview.attr('src', e.target.result).show();
+                    previewImg.style.display = 'block'; // Mostra o elemento quando uma imagem é selecionada.
+                    previewImg.querySelector('img').src = e.target.result;
                 };
 
                 if (file) {
                     reader.readAsDataURL(file);
+                } else {
+                    previewImg.style.display = 'none'; // Oculta o elemento quando nenhum arquivo está selecionado.
                 }
             }
 
-            $('#imageFileInput').change(previewImage);
+            document.getElementById('imageFileInput').addEventListener('change', previewImage);
         })(jQuery);
     </script>
     <script>

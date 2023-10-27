@@ -30,7 +30,7 @@
         <!-- Header -->
         <header>
             <!-- Header desktop -->
-            <div class="wrap-menu-header trans-0-6">
+            <div class="wrap-menu-header bg-user trans-0-6">
                 <nav class="menu">
                     <div class="list-section">
                         <ul>

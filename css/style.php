@@ -444,6 +444,7 @@ menu ul li a {
   font-size: 100px;
   text-align: right;
   line-height: 0.8;
+  text-shadow: 4px 4px 13px rgba(0,0,0,0.8);
 }
 
 @media (max-width: 980px){
