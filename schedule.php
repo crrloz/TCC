@@ -2,7 +2,7 @@
 if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	header("location: signup.php?error=notlogged");
 	exit();
-} include_once 'includes/dbh.inc.php'
+}
 ?>
     <title>Agenda | COLETIVO HUMANOS</title>
 </head>
@@ -11,7 +11,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	.clickable-date {
 		border-radius: 50%;
 		cursor: pointer;
-		background-color: yellow;
+		background-color: #fdf33e;
 	}
 	
 	td {
@@ -35,8 +35,87 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
         height: 100px;
         width: 90%;
     }
+
+	input {
+		width: 100%;
+		height: 100%;
+		background-color: rgb(250, 238, 221);
+		border: none;
+	}
+
+	.wrap-btn-order {
+		position: absolute;
+		bottom: 0;
+		margin: 2.5% 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
+		background-color: rgb(250, 238, 221);
+	}
+
+	.bg5-hover:hover {background-color: #FDF33E;}
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
+	<!-- POP-UP: Evento -->
+	<?php if(isset($_GET['event'])){
+	$eventName = $_GET['event'];
+
+	$sql = "SELECT * FROM events WHERE eventsName = ?;";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		header("location: schedule.php?error=stmtfailed");
+		exit();
+	}
+	mysqli_stmt_bind_param($stmt, "s", $eventName);
+	mysqli_stmt_execute($stmt);
+
+	$result = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($result)) {
+	$eventsDate = $row['eventsDate'];
+	$dateComponents = explode('-', $eventsDate);
+	$eventsDate = $dateComponents[2] . '/' . $dateComponents[1] . '/' . $dateComponents[0];
+	?>
+	<aside class="section-overlay-event">
+		<div class="overlay-event">
+		</div>
+
+		<!-- Pop-up -->
+		<div class="popup-event">
+			<!-- Botão Esconder Popup -->
+			<button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+
+			<!-- Conteúdo -->
+			<div class="popup-event-content t-left">
+				<?php $eventsPic = "data:image/jpeg;base64,". base64_encode($row['eventsPic'])?>
+				<div class="event-image sizefull m-l-25 m-r-25 m-t-30 p-t-250 bo-rad-4" style="background-image: url('<?php echo $eventsPic?>');">
+				</div>
+
+				<div class="event-name m-t-10 m-l-25">
+					<h3 class="fs-50 f-glitten"><?php echo $row['eventsName']; ?></h3>
+				</div>
+
+				<div class="event-date m-l-25">
+					<p class="fs-25"><?php echo $eventsDate; ?></p>
+				</div>
+
+				<div class="event-description m-l-25 m-t-10">
+					<p class="fs-20 color5"><?php echo $row['eventsDesc']; ?></p>
+				</div>
+
+				<!-- Botão Pedir -->
+				<div class="wrap-btn-order flex-c-m">
+					<!-- Button3 -->
+					<button class="btn3 flex-c-m size36 trans-0-4">
+						AGENDAR
+					</button>
+				</div>
+			</div>
+		</div>
+	</aside>
+	<?php } mysqli_stmt_close($stmt); } ?>
+
+
 	<!-- Header -->
     <?php include_once 'header.php' ?>
 
@@ -73,11 +152,11 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 
 
 	<!-- Calendário -->
-	<section class="section-calendar t-center m-t-30">
+	<section class="section-calendar t-center m-t-30 m-b-40">
 		<div class="next-event flex-sa-m m-r-30 m-l-30">
 			<div class="date pos-relative bg1 t-center">
 				<?php if ($nextEventDate) { ?>
-					<span class="ab-c-m f-glitten fs-40 color7"><?php echo $nextEventDay; ?></span>
+					<span class="ab-c-m f-glitten fs-40 color0"><?php echo $nextEventDay;?></span>
 					<span class="ab-c-b color0"><?php echo date('D', strtotime($nextEventDate)); ?></span>
 				<?php } ?>
 			</div>
@@ -99,69 +178,74 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 			<p>As datas em cor <span class="">Amarela</span> representam as datas com eventos.</p>
 		</div>
 	</section>
-
-
-	<?php if(isset($_GET['event'])){
-		$eventName = $_GET['event'];
-
-		$sql = "SELECT * FROM events WHERE eventsName = ?;";
-		$stmt = mysqli_stmt_init($conn);
-		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header("location: schedule.php?error=stmtfailed");
-			exit();
-		}
-		mysqli_stmt_bind_param($stmt, "s", $eventName);
-		mysqli_stmt_execute($stmt);
-
-		$result = mysqli_stmt_get_result($stmt);
-
-		if ($row = mysqli_fetch_assoc($result)) {?>
-		<!-- POP-UP: Evento -->
-		<aside class="section-overlay-event">
-			<div class="overlay-event">
-			</div>
-
-			<!-- Pop-up -->
-			<div class="popup-event">
-				<!-- Botão Esconder Popup -->
-				<button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
-
-				<!-- Conteúdo -->
-				<div class="popup-event-content t-left">
-					<div class="event-image sizefull" style="background-image: url('data:image/jpeg;base64,<?php echo base64_encode($row['eventsPic']) ?>');">
-
-					</div>
-
-					<div class="event-name m-t-40 m-l-25">
-						<h3 class="fs-50 f-glitten"><?php echo $row['eventsName']; ?></h3>
-					</div>
-
-					<div class="event-description m-l-25">
-						<p class="fs-25"><?php echo $row['eventsDesc']; ?></p>
-					</div>
-				</div>
-				
-			</div>
-		</aside>
-	<?php } 
-
-    mysqli_stmt_close($stmt); } ?>
 	
 	
+	<!-- Seção de Administração -->
 	<?php if(isset($_SESSION['isadmin'])){ ?>
 	<hr class="m-r-45 m-l-45">
 
-	<!-- Seção do Administrador -->
-	<section class="section-admin-calendar t-center">
-		<form action="includes/events.inc.php" method="post" class="add-event-form">
-			<input class="my-calendar sizefull p-l-20 bo3" type="text" name="date">
-			<input class="bo3" type="text" name="name" placeholder="Nome">
+	<section class="section-admin-calendar m-b-40">
+		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+			ADICIONAR EVENTO
+		</h2>
 
-			<textarea class="textarea-schedule bo-rad-10 bo3 p-l-20 p-t-15 m-b-10 m-t-3 m-r-60 m-l-60" style="width: 80%; min-height: 180px;" name="descri" placeholder="Descrição"></textarea>
+		<form action="includes/events.inc.php" method="post" enctype="multipart/form-data" class="wrap-form-event size22 m-l-r-auto">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- Nome -->
+					<span>
+						Nome
+					</span>
 
-			<!-- Button3 -->
+					<div class="wrap-inputname size12 bo3 m-t-3 m-b-23">
+						<input class="input-schedule sizefull p-l-20" type="text" name="name" placeholder="Nome">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<!-- Data -->
+					<span>
+						Data
+					</span>
+
+					<div class="wrap-inputdate size12 bo3 m-t-3 m-b-23">
+						<input class="input-schedule my-calendar sizefull p-l-20" type="text" name="date">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<!-- Horário -->
+					<span>
+						Horário
+					</span>
+
+					<div class="wrap-inputtime size12 bo3 m-t-3 m-b-23">
+						<input class="input-schedule sizefull p-l-20" type="time" name="time">
+					</div>
+				</div>
+
+				<div class="col-12">
+					<!-- Descrição -->
+					<span>
+						Descrição do evento
+					</span>
+					<textarea class="textarea-schedule bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3" name="descri" placeholder="Descrição" style="background-color: rgb(250, 238, 221);"></textarea>
+				</div>
+
+				<div class="col-12 flex-c-m bo-rad-10 bg1 bg5-hover trans-0-4">
+					<!-- Imagem -->
+					<label for="fileInput" class="m-t-10 m-b-10 color0 pointer">
+						<span class="ti-plus"></span> Adicionar foto
+					</label>
+					<input type="file" name="image" id="fileInput" style="display: none;"/>
+				</div>
+			</div>
+
 			<div class="wrap-btn-send flex-c-m m-t-13">
-				<input type="submit" placeholder="Adicionar" class="btn3 flex-c-m size36 trans-0-4">
+				<!-- Button3 -->
+				<button type="submit" class="btn3 flex-c-m size36 trans-0-4">
+					Enviar
+				</button>
 			</div>
 		</form>
 	</section>
@@ -169,6 +253,8 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 
 
 	<!-- Footer -->
+    <hr class="m-r-45 m-l-45">
+    
     <?php include_once 'footer.php' ?>
 	<script>
 		/*[DATERANGEPICKER]

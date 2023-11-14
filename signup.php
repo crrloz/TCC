@@ -122,5 +122,8 @@
 
 
     <!-- Footer -->
+    <hr class="m-r-45 m-l-45">
+    
+    
     <?php include_once 'footer.php' ?>
 </body>

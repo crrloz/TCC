@@ -1,5 +1,5 @@
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
@@ -294,7 +294,7 @@ nav {
   top: 0;
   left: 0;
   font-size: 15px;
-  z-index: 150;
+  z-index: 90;
 }
 
 .menu{
@@ -355,7 +355,7 @@ menu ul li a {
   overflow: hidden;
 }
 
-/* Botões */
+/* BotĆµes */
 
 .btn-show-sidebar {
   width: 26px;
@@ -453,7 +453,7 @@ menu ul li a {
   }
 }
 
-/* [NOTÍCIAS] */
+/* [NOTĆ¨CIAS] */
 
 .item-news-gallery {
   display: block;
@@ -673,7 +673,7 @@ menu ul li a {
 .color6 {color: #7F4AA4;}
 .color7 {color: #D99E07;}
 .color8 {color: #FAEEDD;}
-.color9 {color: #ff9f00;}
+.color9 {color: #d9c564;}
 .color10 {color: #9267b0;}
 
 .color0-hov:hover {color: #ffffff;}
@@ -684,6 +684,8 @@ menu ul li a {
 .bo-color-0 {border-color: #7F4AA4;}
 
     .bo-color-1 {border-color: #D99E07;}
+
+    .bo-color-2 {border-color: #d9c564;}
 
     .bg1-pattern {
         background-image: url(images/patterns/pattern1.jpg);
@@ -794,7 +796,7 @@ menu ul li a {
 
     .bo3 {border: 1px solid #9267b0;}
 
-	.input-contact::-webkit-input-placeholder, .textarea-contact::-webkit-input-placeholder {color: #9267b0;}
+    .input-contact::-webkit-input-placeholder, .textarea-contact::-webkit-input-placeholder, .input-schedule::-webkit-input-placeholder, .textarea-schedule::-webkit-input-placeholder{color: #9267b0;}
 
 	.input-contact:focus {
 		outline: #D99E07;

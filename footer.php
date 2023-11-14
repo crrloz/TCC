@@ -1,4 +1,4 @@
-	<footer class="bg4">
+<footer class="bg4">
 		<div class="container m-t-40">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 p-t-50">
@@ -9,13 +9,35 @@
 
 					<ul class="m-b-70">
 						<li class="m-b-14">
+							<?php
+							$sql = "SELECT elementsText FROM site_element WHERE elementsName = 'telefone_coletivo';";
+							$result = mysqli_query($conn, $sql);
+
+							if ($result) {
+								$row = mysqli_fetch_assoc($result);
+								$phone = $row['elementsText'];
+							} else {
+								$phone = "Erro na consulta SQL";
+							}
+							?>
 							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							+55 (22) 96716-6879
+							<?php echo $phone; ?>
 						</li>
 
 						<li class="m-b-14">
+							<?php
+							$sql = "SELECT elementsText FROM site_element WHERE elementsName = 'email_coletivo';";
+							$result = mysqli_query($conn, $sql);
+
+							if ($result) {
+								$row = mysqli_fetch_assoc($result);
+								$email = $row['elementsText'];
+							} else {
+								$email = "Erro na consulta SQL";
+							}
+							?>
 							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-							coletivo@gmail.com
+							<?php echo $email; ?>
 						</li>
 
 						<li class="m-t-20 m-b-14">

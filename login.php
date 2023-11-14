@@ -46,8 +46,10 @@
 
     <!-- Seção de Login -->
     <section class="section-login m-t-120 p-b-30 t-center">
-        <h2>LOGIN</h2><br>
-        <form action="includes/login.inc.php" method="post">
+        <h2>LOGIN</h2>
+        <p>Digite os dados de sua conta abaixo.</p>
+
+        <form action="includes/login.inc.php" method="post" class="m-t-10">
             <input type="text" name="uid" placeholder="Usuário/E-mail" class="input-field">
             <input type="password" name="pwd" placeholder="Senha" class="input-field"> <br><br>
 
@@ -67,5 +69,7 @@
 
 
     <!-- Footer -->
+    <hr class="m-r-45 m-l-45">
+    
     <?php include_once 'footer.php' ?>
 </body>

@@ -97,8 +97,8 @@
             <!-- Conteúdo -->
             <div class="popup-file-content">
                 <form action="includes/change-image-request.inc.php" method="post" enctype="multipart/form-data">
-                    <div id="imagePreview" class="wrap-image-preview hov-img-zoom flex-c-m m-l-r-auto" style="width: 200px; height: 200px; display: none;">
-                        <img alt="ICON-PREVIEW">
+                    <div id="imagePreview" class="wrap-cir-pic sizefull flex-c-m m-l-r-auto" style="width: 200px; height: 200px; display: none; overflow: hidden;">
+                        <img alt="ICON-PREVIEW" style="width: 200px;">
                     </div>
 
                     <div class="file-content flex-c-m">
@@ -370,7 +370,6 @@
 
     <!-- Footer -->
     <hr class="m-r-45 m-l-45">
-    
     <?php include_once 'footer.php' ?>
     <script>
         (function ($) {
@@ -462,14 +461,14 @@
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    previewImg.style.display = 'block'; // Mostra o elemento quando uma imagem é selecionada.
+                    previewImg.style.display = 'block';
                     previewImg.querySelector('img').src = e.target.result;
                 };
 
                 if (file) {
                     reader.readAsDataURL(file);
                 } else {
-                    previewImg.style.display = 'none'; // Oculta o elemento quando nenhum arquivo está selecionado.
+                    previewImg.style.display = 'none';
                 }
             }
 

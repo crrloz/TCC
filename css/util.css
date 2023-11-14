@@ -2468,6 +2468,8 @@
   	background-repeat: repeat;
 }
 
+.bg5-hover:hover {background-color: #FDF33E;}
+
 /*[CORES]*/
 
 .color0 {color: #ffffff;}

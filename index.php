@@ -25,6 +25,10 @@
     .content {
         padding: 0 20%;
     }
+
+    .t-shadow_divisor {
+        text-shadow: 4px 4px 13px rgba(0,0,0,0.6);
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <?php if(isset($_GET['loggedin']) && !isset($_SESSION['popupappeared'])){ ?>
@@ -108,9 +112,19 @@
         <div class="item-divider p-t-150 p-b-150" style="background-image: url(images/dança2.jpg);">
             <div class="container">
                 <div class="row t-center">
-                    <div class="col-md-4">aaaa</div>
-                    <div class="col-md-4">aaaaa</div>
-                    <div class="col-md-4 f-glitten fs-30 color0" id="countdown"></div>
+                    <?php
+                    $sql = "SELECT elementsNumber FROM site_element WHERE elementsName = 'ja_assistiram';";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result) {
+                        $row = mysqli_fetch_assoc($result);
+                        $watched = $row['elementsNumber'];
+                    } else {
+                        $watched = "Erro na consulta SQL";
+                    }
+                    ?>
+                    <div class="col-md-6 f-glitten fs-50 color0 t-shadow_divisor">Mais de <?php echo $watched;?> presenças</div>
+                    <div class="col-md-6 f-glitten fs-45 color0 t-shadow_divisor" id="countdown"></div>
                 </div>
             </div>
         </div>
@@ -122,11 +136,11 @@
         <div class="container">
             <!-- Texto -->
             <div class="wrap-text-news p-t-30">
-                <span class="f-glitten fs-60 color6">NOTÍCIAS</span>
+                <span class="f-glitten fs-60 color6">NOVIDADES</span>
             </div>
 
-            <!-- Notícias -->
-            <div class="row p-t-30 p-b-30">
+            <!-- Novidades -->
+            <div class="row p-b-60">
                 <?php
                 $sql = "SELECT * FROM news ORDER BY newsId DESC LIMIT 5;";
                 $result = mysqli_query($conn, $sql);
@@ -178,26 +192,30 @@
 
     <?php if(isset($_SESSION["useruid"])){ ?>
     <!-- Agenda -->
-    <section class="section-schedule-home" style="overflow: hidden; background-color: #d39ff8;">
+    <section class="section-schedule-home bg4-pattern" style="overflow: hidden;">
         <div class="row">
             <div class="col-lg-6 p-b-30 p-t-30">
-                <div class="wrap-pic-schedule bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
-                    <img src="https://static.vecteezy.com/ti/vetor-gratis/p3/10881861-padrao-sem-costura-em-maravilhosas-cores-violetas-e-roxas-aconchegantes-para-xadrez-tecido-textil-roupas-toalha-de-mesa-e-outras-coisas-imagemial-2-vetor.jpg" alt="IMG">
+                <div onclick="location.href='schedule.php'" class="wrap-pic-schedule bo-rad-10 hov-img-zoom m-l-r-auto pointer" style="max-width: 390px;">
+                    <img src="images/calendar.jpg" alt="IMG">
                 </div>
             </div>
 
-            <div class="col-lg-6 p-b-60 color6 p-r-70 p-l-50">
-                <div class="wrap-welcome-title fs-90 p-t-70" style="line-height: 0.8;">
-                    <span class="f-glitten">Bem-vindo, </span><?php echo $_SESSION['useruid'] ?>!
+            <div class="col-lg-6 p-b-60 color0 p-r-70 p-l-50">
+                <div class="wrap-welcome-title fs-90 p-t-70 color9" style="line-height: 0.8;">
+                    <span class="f-glitten color0">Bem-vindo, </span><?php echo $_SESSION['useruid'] ?>!
                 </div>
                 
-                <div class="wrap-description-text p-t-30">
-                    <span>Aproveite para conferir nossa página de agenda, repleta de eventos imperdíveis. Não perca essa oportunidade única de estar por dentro de tudo o que está acontecendo. Faça parte desse momento especial e descubra experiências incríveis. Acesse agora mesmo e garanta seu lugar.</span>
+                <div class="wrap-description-text p-t-15">
+                    <span>
+                        Aproveite para conferir nossa página de agenda, repleta de eventos imperdíveis. <br><br>
+                        
+                        Não perca essa oportunidade e descubra experiências incríveis garantindo o seu lugar!
+                    </span>
                 </div>
 
                 <div class="wrap-sched-button p-t-15">
                     <!-- Botão -->
-                    <button onclick="location.href='schedule.php'" class="btn4 color6 bo-color-0">
+                    <button onclick="location.href='schedule.php'" class="btn4 color9 bo-color-2">
                         Conferir
                     </button>
                 </div>
@@ -235,7 +253,6 @@
             </div>
 
             <div class="col-lg-6 p-b-60">
-                <img src="images/icons/fullstar.png" alt="IMG-STAR" class="full-star">
                 <div class="wrap-pic-signup bo-rad-10 hov-img-zoom m-l-r-auto" style="max-width: 390px;">
                     <img src="images/rosto.jpg" alt="IMG">
                 </div>

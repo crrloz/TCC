@@ -74,6 +74,7 @@
     <section class="section-wrap-input m-t-120 m-b-100 t-center">
         <h2>RESETE SUA SENHA!</h2>
         <p>Digite o e-mail da sua conta. Enviaremos as instruções para mudar sua senha.</p>
+        
         <form action="includes/reset-request.inc.php" method="post">
             <div class="wrap-input size12 m-t-3 m-b-23">
                 <input class="p-b-10 color6" type="text" name="email_reset" placeholder="Digite seu e-mail...">
@@ -95,5 +96,7 @@
 
 
     <!-- Footer -->
+    <hr class="m-r-45 m-l-45">
+    
     <?php include_once 'footer.php' ?>
 </body>

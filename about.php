@@ -125,7 +125,7 @@
 								</div><?php } ?>
 
 								<div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-									<img src="images/luaan.jpg" alt="IMG-">
+									<img src="<?php echo $image; ?>" alt="IMG-">
 								</div>
 							</div>
 						</div>
@@ -133,7 +133,7 @@
 						<div class="row p-t-170">
 							<div class="col-md-6 p-b-30">
 								<div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-									<img src="images/luaan.jpg" alt="IMG-">
+									<img src="<?php echo $image; ?>" alt="IMG-">
 								</div>
 							</div>
 
@@ -160,7 +160,81 @@
 	</section>
 
 
+	<!-- Seção de Administração -->
+	<?php if(isset($_SESSION['isadmin'])){ ?>
+	<hr class="m-r-45 m-l-45">
+
+	<section class="section-admin-calendar m-b-40">
+		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+			AMUDAR ISSO AQUI DPS N QUERO QUE FIQUE NESSA ESTRUTURA... OUT ALVEZ SIM?
+		</h2>
+
+		<form action="includes/dancers.inc.php" method="post" enctype="multipart/form-data" class="wrap-form-event size22 m-l-r-auto">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- Nome -->
+					<span>
+						Nome
+					</span>
+
+					<div class="wrap-inputname size12 bo3 m-t-3 m-b-23">
+						<input class="input- sizefull p-l-20" type="text" name="name" placeholder="Nome">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<!-- Data -->
+					<span>
+						Data
+					</span>
+
+					<div class="wrap-inputdate size12 bo3 m-t-3 m-b-23">
+						<input class="input- my-calendar sizefull p-l-20" type="text" name="date">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<!-- Url -->
+					<span>
+						Url do Insta
+					</span>
+
+					<div class="wrap-inputurl size12 bo3 m-t-3 m-b-23">
+						<input class="input- sizefull p-l-20" type="text" name="url">
+					</div>
+				</div>
+
+				<div class="col-12">
+					<!-- Texto -->
+					<span>
+						Texto
+					</span>
+					<input name="text" class="textarea- bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3"  placeholder="Texto do(a) dançarino(a)" style="background-color: rgb(250, 238, 221);"></textarea>
+				</div>
+
+				<div class="col-12 flex-c-m bo-rad-10 bg1 bg5-hover trans-0-4">
+					<!-- Imagem -->
+					<label for="fileInput" class="m-t-10 m-b-10 color0 pointer">
+						<span class="ti-plus"></span> Adicionar foto
+					</label>
+					<input type="file" name="image" id="fileInput" style="display: none;"/>
+				</div>
+			</div>
+
+			<div class="wrap-btn-send flex-c-m m-t-13">
+				<!-- Button3 -->
+				<button type="submit" name="submit_dancers" class="btn3 flex-c-m size36 trans-0-4">
+					Enviar
+				</button>
+			</div>
+		</form>
+	</section>
+	<?php } ?>
+
+
     <!-- Footer -->
+    <hr class="m-r-45 m-l-45">
+    
     <?php include_once 'footer.php' ?>
 </body>
 </html>
