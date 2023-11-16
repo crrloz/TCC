@@ -2,13 +2,18 @@
 if(isset($_POST['submit_dancers'])){
     if($_FILES["image"]["error"] === UPLOAD_ERR_OK) {
         if(isset($_POST['date'])){
-            $name = $_POST['name'];
+            $name = strtoupper($_POST['name']);
 
             $dateParts = explode('/', $_POST['date']);
             $date = $dateParts[2] . '-' . $dateParts[1] . '-' . $dateParts[0];
 
             $text = $_POST['text'];
-            $url = $_POST['url'];
+            if(isset($_POST['url'])){
+                $url = "https://www.instagram.com/".$_POST['url']."/";
+            } else {
+                $url = null;
+            }
+
             $image = file_get_contents($_FILES["image"]["tmp_name"]);
 
             require_once "dbh.inc.php";

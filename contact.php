@@ -8,7 +8,12 @@
 		height: 100%;
 		background-color: rgb(250, 238, 221);
 		border: none;
+		color: #9267b0;
 	}
+
+	::-webkit-input-placeholder {
+		color: #9267b0;
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <?php include_once 'header.php' ?>
@@ -22,14 +27,14 @@
     </section>
 
 
-    <!-- Contact form -->
+    <!-- Formulário de Contato -->
 	<section class="section-contact p-b-113">
 		<div class="container">
-			<h3 class="tit7 t-center p-b-62 p-t-105">
+			<h3 class="tit7 t-center p-b-62 p-t-105 tt-up">
 				Envie-nos uma mensagem!
 			</h3>
 
-			<form class="wrap-form-reservation size22 m-l-r-auto">
+			<form action="includes/contact.inc.php" method="post" class="wrap-form-reservation size22 m-l-r-auto">
 				<div class="row">
 					<div class="col-md-4">
 						<!-- Nome -->

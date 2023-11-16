@@ -33,7 +33,7 @@
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <?php if(isset($_GET['loggedin']) && !isset($_SESSION['popupappeared'])){ ?>
         <!-- POP-UP: Cadastro realizado -->
-        <aside class="section-overlay-welcome shadow1">
+        <aside class="section-overlay section-overlay-welcome shadow1">
             <!-- Pop-up -->
             <div class="popup" style="display: block;">
                 <!-- Botão Esconder Popup -->
@@ -48,7 +48,7 @@
                     <div class="content">
                         <h3 class="f-glitten m-b-10">Bem vindo ao CAH!</h3>
                         <p>Olá, <?php echo $_SESSION['useruid'] ?>. Ao cadastrar e logar-se em nosso site, você desbloqueia funcionabilidades de compra de ingresso e mensagem. Descubra nosso coletivo!</p>
-                        <button class="btn-close-popup btn3 m-b-40 m-t-20">Entendi</button>
+                        <button class="btn-hide-popup btn3 m-b-40 m-t-20">Entendi</button>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
     </section>
 
 
-    <?php if(isset($_SESSION["useruid"])){ ?>
+    <?php if(isset($_SESSION['userid'])){ ?>
     <!-- Agenda -->
     <section class="section-schedule-home bg4-pattern" style="overflow: hidden;">
         <div class="row">
@@ -224,27 +224,31 @@
     </section>
     
 
-    <?php } else { ?>
+    <?php } else { ?> 
     <!-- Cadastro -->
-    <section class="section-signup p-t-60 bg2" style="overflow: hidden;">
+    <section class="section-signup p-t-60 bg4-pattern" style="overflow: hidden;">
         <div class="row">
-            <div class="col-lg-6 p-b-30 p-l-100 p-t-100">
+            <div class="col-lg-6 p-b-30 p-l-100 p-t-75">
                 <div class="wrap-text-signup" style="line-height: 0.8;">
-                    <span class="t-center fs-60">
-                        <b class="color7">MANTENHA-SE</b>
+                    <span class="fs-90 f-glitten color0">
+                        Mantenha-se
                     </span>
 
-                    <h3 class="m-b-35 m-t-2">
-                        <i class="f-glitten t-center fs-60 color7">atualizado</i>
+                    <h3 class="fs-80 color9 m-b-5 m-t-2">
+                        atualizado
                     </h3>
+
+                    <p class="fs-12 color0 m-b-25">
+                        Preencha abaixo com o seu e-mail e crie um cadastro em nosso site!
+                    </p>
                 </div>
 
                 <form class="wrap-form-signup" method="get" action="signup.php">
                     <div class="row p-l-15 p-r-100">
                         <div class="wrap-input size12 m-t-3 m-b-23">
-                            <input class="p-b-10 p-r-150 color7" type="text" name="email_home" placeholder="Digite seu e-mail...">
+                            <input class="p-b-10 p-r-150 color9" type="text" name="email_home" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
-                            <button type="submit" name="submit_home" class="btn4 color7 bo-color-1">
+                            <button type="submit" name="submit_home" class="btn4 color9 bo-color-2">
                                 Cadastrar
                             </button>
                         </div>
@@ -259,7 +263,7 @@
             </div>
         </div>
     </section>
-    <?php }; ?>
+    <?php } ?>
 
 
     <!-- Footer -->
@@ -311,7 +315,7 @@
                 $(popup).css('display','none');
             });
 
-            $(btnClose).on('click', function(){
+            $(btnClosePopup).on('click', function(){
                 $(popup).css('display','none');
             });
 

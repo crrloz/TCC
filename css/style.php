@@ -36,6 +36,7 @@ body, html {
   height: 100%;
   font-family: Montserrat, sans-serif;
   font-weight: 400;
+  word-wrap: break-word;
 }
 
 /* ------------------------------------ */
@@ -763,7 +764,7 @@ menu ul li a {
     }
 
     .wrap-input {
-        border-bottom: 0.1rem solid #D99E07;
+        border-bottom: 0.1rem solid #d9c564;
         display: inline-flex;
         align-items: center;
         justify-content: space-between;
@@ -795,8 +796,6 @@ menu ul li a {
     /** CONTACT **/
 
     .bo3 {border: 1px solid #9267b0;}
-
-    .input-contact::-webkit-input-placeholder, .textarea-contact::-webkit-input-placeholder, .input-schedule::-webkit-input-placeholder, .textarea-schedule::-webkit-input-placeholder{color: #9267b0;}
 
 	.input-contact:focus {
 		outline: #D99E07;
@@ -844,4 +843,12 @@ menu ul li a {
     background-color: rgba(0,0,0,0.5);
     height: 70vh;
 }
+
+<?php if(isset($_SESSION['isadmin'])){ ?>
+.admin-hov:hover {
+  cursor: pointer;
+  color: #D99E07;
+  transition: 0.3s;
+}
+<?php } ?>
 </style>

@@ -616,8 +616,6 @@ menu ul li a {
         left: 81%;
         top: -10%;
     }
-
-    ::-webkit-input-placeholder { color: #D99E07; }
     
     .section-entry {
         background-repeat: no-repeat;

@@ -41,6 +41,11 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 		height: 100%;
 		background-color: rgb(250, 238, 221);
 		border: none;
+		color: #9267b0;
+	}
+
+	::-webkit-input-placeholder {
+		color: #9267b0;
 	}
 
 	.wrap-btn-order {
@@ -51,6 +56,10 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 		transform: translateX(-50%);
 		width: 100%;
 		background-color: rgb(250, 238, 221);
+	}
+
+	.section-admin-schedule {
+		transition: height 0.5s ease-in-out;
 	}
 
 	.bg5-hover:hover {background-color: #FDF33E;}
@@ -76,8 +85,8 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	$dateComponents = explode('-', $eventsDate);
 	$eventsDate = $dateComponents[2] . '/' . $dateComponents[1] . '/' . $dateComponents[0];
 	?>
-	<aside class="section-overlay-event">
-		<div class="overlay-event">
+	<aside class="section-overlay section-overlay-event">
+		<div class="overlay overlay-event">
 		</div>
 
 		<!-- Pop-up -->
@@ -182,9 +191,15 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	
 	<!-- Seção de Administração -->
 	<?php if(isset($_SESSION['isadmin'])){ ?>
-	<hr class="m-r-45 m-l-45">
+	<!-- Botão de Toggle para Administração -->
+	<div class="wrap-toggle-btn flex-c-m">
+		<button id="adminToggleBtn" class="admin-toggle-btn">
+			<span class="ti-angle-down"></span>
+		</button>
+	</div>
 
-	<section class="section-admin-calendar m-b-40">
+
+	<section class="section-admin-schedule m-b-40 dis-none">
 		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
 			ADICIONAR EVENTO
 		</h2>
@@ -232,6 +247,10 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 					<textarea class="textarea-schedule bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3" name="descri" placeholder="Descrição" style="background-color: rgb(250, 238, 221);"></textarea>
 				</div>
 
+				<div class="col-12 t-center m-b-10">
+					<p>Deseja pular uma linha no texto? Digite um "&ltbr&gt" ou dois para pular um parágrafo</p>
+				</div>
+
 				<div class="col-12 flex-c-m bo-rad-10 bg1 bg5-hover trans-0-4">
 					<!-- Imagem -->
 					<label for="fileInput" class="m-t-10 m-b-10 color0 pointer">
@@ -257,6 +276,21 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
     
     <?php include_once 'footer.php' ?>
 	<script>
+		$(document).ready(function () {
+			var adminToggleBtn = $('#adminToggleBtn');
+			var adminSection = $('.section-admin-schedule');
+
+			var arrowIcon = adminToggleBtn.find('.ti-angle-down');
+    		arrowIcon.rotation = 0;
+
+			adminToggleBtn.click(function () {
+				adminSection.slideToggle();
+
+				arrowIcon.rotation += 180;
+				arrowIcon.css('transform', 'rotate(' + arrowIcon.rotation + 'deg)');
+			});
+		});
+
 		/*[DATERANGEPICKER]
 		===========================================================*/
 		/* Aqui eu reconfigurei o DateRangePicker para apresentar as datas em Português.

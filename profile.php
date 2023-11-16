@@ -85,8 +85,8 @@
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <!-- POP-UP: Mudar imagem -->
-    <aside class="section-overlay-file">
-        <div class="overlay-file" style="display: block;">
+    <aside class="section-overlay section-overlay-file">
+        <div class="overlay overlay-file" style="display: block;">
         </div>
 
         <!-- Pop-up -->
@@ -104,7 +104,7 @@
                     <div class="file-content flex-c-m">
                         <div class="wrap-file-form">
                             <div class="wrap-text-file">
-                                <h3 class="f-glitten fs-60 color-user m-b-10">Selecione uma imagem</h3>
+                                <h3 class="f-glitten fs-60 color-user m-t-20 m-b-10">SELECIONE UMA IMAGEM</h3>
                             </div>
                             
                             <input type="file" name="imageFile" id="imageFileInput"><br><br>
@@ -120,8 +120,8 @@
 
     
     <!-- POP-UP: Deletar usuário -->
-    <aside class="section-overlay-delete">
-        <div class="overlay-delete" style="display: block;">
+    <aside class="section-overlay section-overlay-delete">
+        <div class="overlay overlay-delete" style="display: block;">
         </div>
 
         <!-- Pop-up -->
@@ -319,8 +319,8 @@
                 </table>
                 <div class="wrap-admin-commands p-t-15">
                     <!-- POP-UP: Enviar E-mail -->
-                    <aside class="section-overlay-email">
-                        <div class="overlay-email" style="display: block;">
+                    <aside class="section-overlay section-overlay-email">
+                        <div class="overlay overlay-email" style="display: block;">
                         </div>
 
                         <!-- Pop-up -->

@@ -1,6 +1,5 @@
 <?php 
 	include_once 'head.php';
-	include_once 'includes/dbh.inc.php' 
 ?>
     <title>Sobre Nós | COLETIVO HUMANOS</title>
 </head>
@@ -23,10 +22,16 @@
 		right: 2.5%;
 	}
 
-	.dancer-editing {
-		width: 80px;
-		padding: 15px;
-  		box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+	input[type="text"], input[type="date"], input[type="time"] {
+		width: 100%;
+		height: 100%;
+		background-color: rgb(250, 238, 221);
+		border: none;
+		color: #9267b0;
+	}
+
+	::-webkit-input-placeholder {
+		color: #9267b0;
 	}
 </style>
 <body class="animition" style="background-color: rgb(250, 238, 221);">
@@ -41,68 +46,138 @@
 	</section>
 
 
-    <!-- Seção ... -->
-    <section class="section-hum p-t-60">
-        <div class="wrap-about-title p-l-200 p-b-50">
-            <span class="fs-50">
-                <p><b>A Arte Negra</b></p>
-                <p><b>no contexto do</b></p>
-                <p>balé brasileiro</p>
-            </span>
+    <!-- Nossa História -->
+    <section class="section-our_history">
+        <div class="wrap-about-title p-b-50">
+			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+				NOSSA HISTÓRIA
+			</h2>
         </div>
 
-        <div class="wrap-about-sum">
-            <div class="row p-b-80" style="margin: 0">
-                <div class="col-lg-6 p-l-200">
-					Em uma sociedade permeada pela persistência do racismo e pela escassez de representatividade negra em posições de destaque nas artes e na sociedade, desponta o Coletivo Artístico Humanos. Em meio a um cenário pandêmico no ano de 2020, Luan Canellas decidiu tomar uma iniciativa para contornar a problemática da ausência de corpos negros nos grupos de dança, que majoritariamente eram compostos por indivíduos brancos. Dessa forma, o coletivo emergiu com a proposta de valorizar o corpo negro nas artes cênicas, enfatizando sua excelência técnica no balé, na dança contemporânea, no jazz, entre outras formas de expressão, sem jamais objetificar essas corporalidades.<br><br>
+        <div class="wrap-our_history-text">
+            <div class="row p-b-80 p-r-100 p-l-100" style="margin: 0">
+                <div class="col-lg-6">
+					Com objetivo de valorização do corpo negro e suas potencialidades na sociedade, nascemos em circunstâncias pandemicas para movimentar o cenário artístisco do povo negro de Arraial do Cabo e de municípios vizinhos.<br><br>
 
-					O Coletivo Artístico Humanos, além de se dedicar à valorização da cultura negra, busca promover a inclusão de artistas e ativistas negras na sociedade, especialmente no universo das artes cênicas.
+					Criado para valorização do corpo negro na dança, o Coletivo Humanos, hoje apresenta novas áreas de atuações. <b>[colocar o texto que o luan mandou pra malu]</b>
                 </div>
 
-                <div class="col-lg-6 p-r-200">
-					A arte negra no contexto do balé brasileiro ganha uma relevância ímpar, uma vez que reflete a diversidade cultural de nossa nação e a importância de assegurar a representatividade racial no âmbito artístico. <br><br>
+                <div class="col-lg-6">
+					O CAH tem como missão elevar as artes a toda sua potencialidade e alcance tem como propósito inspirar as pessoas com a beleza e vitalidade da mesma.<br><br>
 
-					Embora enfrentem inúmeras dificuldades e obstáculos nesse meio, os artistas negros encontram no Coletivo Artístico Humanos um espaço dedicado à promoção do corpo negro nas artes cênicas, ao fortalecimento da cultura negra e à necessidade de proporcionar um ambiente seguro e acolhedor para artistas e ativistas negras.
+					“Não lutamos por integração ou por separação. Lutamos para sermos reconhecidos como seres humanos.”<br>
+					<p class="t-right">— Malcolm X.</p>
+                </div>
+            </div>
+			
+			<hr style="margin: 0 40%;">
+			
+			<div class="row p-t-80 p-b-80 p-r-100 p-l-100" style="margin: 0">
+                <div class="col-lg-6">
+					O Coletivo Artístico hoje tem como primeiro nome a palavra “RESISTÊNCIA”. Na verdade, ela nasceu desse conceito, muito embora não tivéssemos atentado sobre isso. Com um pequeno percentual de coragem, mas grande percentual de força de vontade e trabalho, a família HUMANOS nasceu em 01 de JULHO de 2021. <br><br>
 
-					O objetivo primordial do Coletivo é criar um ambiente inclusivo, diversificado e propício para o avanço do balé brasileiro, com a participação ativa de artistas e ativistas negros. Nessa perspectiva, o Coletivo Artístico Humanos assume um papel fundamental não apenas para o balé brasileiro, mas para todo o universo das artes cênicas, representando uma organização cultural de grande relevância.
+					O elo e a confiança tornaram-se tão fortes, que o termo “RESISTÊNCIA” surgiu espontaneamente, entre os próprios bailarinos, e desde então, esse tratamento familiar continua a encabeçar o trabalho da CIA e assim oferece alternativas para uma vida mais saudável e ativa, bailarinos conscientes de seu próprio corpo e sensíveis às manifestações artísticas.
+                </div>
+
+                <div class="col-lg-6">
+					Nós acreditamos que a cultura é uma ferramenta de transformação social, alimento de esperança e sonhos de muitas pessoas; 
+					Apoio para ministração de oficinas de artes nas escolas, para assim manifestar e fomentar a mesma dentro do ensino educacional.<br><br>
+
+					“A arte sempre me presenteou com grandes conquistas pessoais e profissionais. Poder construir sonhos e realizá-los, não tem preço.”
+					<p class="t-right">— Luan Canellas, diretor e fundador.</p>
+                </div>
+			</div>
+        </div>
+    </section>
+
+
+	<!-- Banner/Vídeo -->
+    <div class="parallax0 parallax100" style="background-image: url(images/am1-26.JPG); background-position: center 0.166667px;">
+		<div class="overlay0-parallax t-center"></div>
+	</div>
+
+
+	<!-- Conheça Luan -->
+    <section class="section-know_luan">
+        <div class="wrap-luan-title p-b-50">
+			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+				CONHEÇA LUAN CANELLAS
+			</h2>
+
+			<p class="t-center">
+				Diretor e Fundador do CAH
+			</p>
+        </div>
+
+        <div class="wrap-our_history-text">
+            <div class="row p-b-80 p-r-100 p-l-100" style="margin: 0">
+                <div class="col-lg-6">
+					Luan Canellas, cabista, casado, morador do distrito de Arraial do Cabo, ingressou na dança acadêmica aos 14 anos. Gradualmente foi ganhando maiores aceitações a respeito de sua escolha. Mas ainda assim, na época, havia quem persistia e o falava: “Ballet não é coisa de homem”. Luan fez mais, foi e venceu. Por ser plural, se envolveu em diversas modalidades, mas sempre empolgado com o contemporâneo, street dance e danças africanas. Formou-se pelo Ballet Regina Coutinho e Eliza Cunha , sindicalizou-se, estudou bacharelado em Dança pela FATEF, integrou também a Companhia Municipal de Dança de Arraial do Cabo, coreografou e foi premiado em diversos eventos nacionais e internacionais. Atualmente Luan é graduado em Teologia, empreendedor, influencer e produtor cultural.
+                </div>
+
+                <div class="col-lg-6">
+				    <div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
+						<img src="" alt="IMG-LUAN">
+					</div>
                 </div>
             </div>
         </div>
     </section>
 
 
-    <!-- Banner -->
+	<!-- Banner -->
     <div class="parallax0 parallax100" style="background-image: url(images/img.JPG); background-position: center 0.166667px;">
 		<div class="overlay0-parallax t-center"></div>
 	</div>
 
 
-    <!-- ?? -->
-    <section class="p-t-120 p-b-105">
-		<div class="container">
+    <!-- Nossos Artistas/Dançarinos -->
+    <section class="p-b-105">
+		<div class="wrap-about-title p-b-50">
+			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+				NOSSOS ARTISTAS
+			</h2>
+        </div>
+
+		<div class="wrap-artists container">
 			<?php
-			$sql = "SELECT * FROM dancers ORDER BY dancersId;";
+			$sql = "SELECT * FROM dancers WHERE dancersName != 'LUAN CANELLAS' ORDER BY dancersId;";
 			$result = mysqli_query($conn, $sql);
-			$count = 1;
 
 			if ($result && mysqli_num_rows($result) > 0) {
-				while ($row = mysqli_fetch_assoc($result)) {
+				for ($count = 1; $count <= mysqli_num_rows($result); $count++) {
+					$row = mysqli_fetch_assoc($result);
 					$id = $row['dancersId'];
+
 					$name = $row['dancersName'];
+					$nameParts = explode(' ', $name);
+					$firstName = $nameParts[0];
+					if(isset($nameParts[1])){
+						$secondName = $nameParts[1];
+					}
+
+					$date = $row['dancersBirthDate'];
+					$birthDate = new DateTime($date);
+					$currentAge = new DateTime();
+					$diff = $birthDate->diff($currentAge);
+					$age = $diff->y;
+
 					$image = "data:image/jpeg;base64," . base64_encode($row['dancersPic']);
 					$text = $row['dancersText'];
+					$url = $row['dancersUrl'];
 					
 					if($count%2){ ?>
-						<div class="row">
+						<div class="row p-t-100">
 							<div class="col-md-6 p-t-45 p-b-30">
 								<div class="wrap-text- t-center">
-									<span class="t-center fs-50">
-										Alguma
+									<span class="t-center f-glitten fs-50">
+										<?php echo $firstName ?>
 									</span>
 
+									<?php if(isset($secondName)){ ?>
 									<h3 class="t-center m-b-35 m-t-5 f-glitten color7 fs-70">
-										COISA
-									</h3>
+										<?php echo $secondName ?>
+									</h3><?php } ?>
 
 									<p class="t-center m-b-22 m-l-r-auto">
 										<?php echo $text ?>
@@ -112,48 +187,45 @@
 
 							<div class="col-md-6 p-b-30">
 								<?php if(isset($_SESSION['isadmin'])){ ?>
-								<div class="wrap-show-more">
-									<!-- Botão Mostrar Mais -->
-									<button class="btn-show-more ti-more-alt color7-hov trans-0-4"></button>
-
-									<div class="wrap-dancer-editing t-right">
-										<ul class="dancer-editing">
-											<li  class="color7-hov trans-0-4 pointer">Editar</li>
-											<li  class="color7-hov trans-0-4 pointer">Excluir</li>
-										</ul>
-									</div>
-								</div><?php } ?>
+								<?php } ?>
 
 								<div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-									<img src="<?php echo $image; ?>" alt="IMG-">
+									<img src="<?php echo $image; ?>" alt="IMG-<?php echo $firstName ?>">
 								</div>
 							</div>
 						</div>
 					<?php } else { ?>
-						<div class="row p-t-170">
+						<div class="row p-t-100">
 							<div class="col-md-6 p-b-30">
 								<div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-									<img src="<?php echo $image; ?>" alt="IMG-">
+									<img src="<?php echo $image; ?>" alt="IMG-<?php echo $firstName ?>">
 								</div>
 							</div>
 
 							<div class="col-md-6 p-t-45 p-b-30">
 								<div class="wrap-text- t-center">
-									<span class="t-center">
-										Alguma
+									<span class="t-center f-glitten fs-50">
+										<?php echo $firstName ?>
 									</span>
 
-									<h3 class="t-center m-b-35 m-t-5 f-glitten color7">
-										COISA
-									</h3>
+									<?php if(isset($secondName)){ ?>
+									<h3 class="t-center m-t-5 m-b-10 f-glitten fs-50 color7">
+										<?php echo $secondName ?>
+									</h3><?php } ?>
 
-									<p class="t-center m-b-22 size3 m-l-r-auto">
-										Fusce iaculis, quam quis volutpat cursus, tellus quam varius eros, in euismod lorem nisl in ante. Maecenas imperdiet vulputate dui sit amet vestibulum. Nulla quis suscipit nisl.
+									<h6 class="t-center m-b-25">
+										<?php echo $age ?> anos
+									</h6>
+
+									<p class="t-center m-b-22 m-l-r-auto">
+										<?php echo $text ?>
+
+										<a href="<?php echo $url?>"><i class="fa fa-instagram"></i></a>
 									</p>
 								</div>
 							</div>
 						</div>
-					<?php }
+					<?php } $secondName = null;
 				}
 			} ?>
 		</div>
@@ -166,7 +238,7 @@
 
 	<section class="section-admin-calendar m-b-40">
 		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
-			AMUDAR ISSO AQUI DPS N QUERO QUE FIQUE NESSA ESTRUTURA... OUT ALVEZ SIM?
+			ADICIONAR BAILARINO
 		</h2>
 
 		<form action="includes/dancers.inc.php" method="post" enctype="multipart/form-data" class="wrap-form-event size22 m-l-r-auto">
@@ -174,11 +246,11 @@
 				<div class="col-md-4">
 					<!-- Nome -->
 					<span>
-						Nome
+						Nome Artístico
 					</span>
 
 					<div class="wrap-inputname size12 bo3 m-t-3 m-b-23">
-						<input class="input- sizefull p-l-20" type="text" name="name" placeholder="Nome">
+						<input class="input-about sizefull p-l-20" type="text" name="name" placeholder="Nome Artístico">
 					</div>
 				</div>
 
@@ -189,18 +261,18 @@
 					</span>
 
 					<div class="wrap-inputdate size12 bo3 m-t-3 m-b-23">
-						<input class="input- my-calendar sizefull p-l-20" type="text" name="date">
+						<input class="input-about my-calendar sizefull p-l-20" type="text" name="date">
 					</div>
 				</div>
 
 				<div class="col-md-4">
 					<!-- Url -->
 					<span>
-						Url do Insta
+						Usuário do Insta (sem o @)
 					</span>
 
 					<div class="wrap-inputurl size12 bo3 m-t-3 m-b-23">
-						<input class="input- sizefull p-l-20" type="text" name="url">
+						<input class="input-about sizefull p-l-20" type="text" name="url" placeholder="Usuário">
 					</div>
 				</div>
 
@@ -209,7 +281,11 @@
 					<span>
 						Texto
 					</span>
-					<input name="text" class="textarea- bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3"  placeholder="Texto do(a) dançarino(a)" style="background-color: rgb(250, 238, 221);"></textarea>
+					<textarea name="text" class="textarea-about bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3"  placeholder="Texto do(a) dançarino(a)" style="background-color: rgb(250, 238, 221);"></textarea>
+				</div>
+
+				<div class="col-12 t-center m-b-10">
+					<p>Deseja pular uma linha no texto? Digite um "&ltbr&gt" ou dois para pular um parágrafo</p>
 				</div>
 
 				<div class="col-12 flex-c-m bo-rad-10 bg1 bg5-hover trans-0-4">
@@ -236,5 +312,75 @@
     <hr class="m-r-45 m-l-45">
     
     <?php include_once 'footer.php' ?>
+	<script>
+		/*[DATERANGEPICKER]
+		===========================================================*/
+		/* Aqui eu reconfigurei o DateRangePicker para apresentar as datas em Português.
+		Créditos do código: https://gist.github.com/fernandosavio/680a2549e417befea930*/
+		(function (factory) {
+			if (typeof define === 'function' && define.amd) {
+				define(['moment'], factory); // AMD
+			} else if (typeof exports === 'object') {
+				module.exports = factory(require('../moment')); // Node
+			} else {
+				factory(window.moment); // Browser global
+			}
+		}(function (moment) {
+			return moment.defineLocale('pt-br', {
+				months : 'Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julho_Agosto_Setembro_Outubro_Novembro_Dezembro'.split('_'),
+				monthsShort : 'Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez'.split('_'),
+				weekdays : 'Domingo_Segunda_Terça_Quarta_Quinta_Sexta_Sábado'.split('_'),
+				weekdaysShort : 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
+				weekdaysMin : 'Dom_2ª_3ª_4ª_5ª_6ª_Sáb'.split('_'),
+				longDateFormat : {
+					LT : 'HH:mm',
+					LL : 'D [de] MMMM [de] YYYY',
+					LLL : 'D [de] MMMM [de] YYYY [às] LT',
+					LLLL : 'dddd, D [de] MMMM [de] YYYY [às] LT'
+				}
+			});
+		}));
+
+		$('.my-calendar').daterangepicker({
+			"singleDatePicker": true,
+			"showDropdowns": true,
+			locale: {
+				format: 'DD/MM/YYYY',
+				daysOfWeek: moment.weekdaysMin(),
+        		monthNames: moment.monthsShort()
+			},
+		});
+
+		var myCalendar = $('.my-calendar');
+		var isClick = 0;
+
+		$(window).on('click',function(){ 
+			isClick = 0;
+		});
+
+		$(myCalendar).on('apply.daterangepicker',function(){ 
+			isClick = 0;
+		});
+
+		$('.btn-calendar').on('click',function(e){ 
+			e.stopPropagation();
+
+			if(isClick == 1) isClick = 0;   
+			else if(isClick == 0) isClick = 1;
+
+			if (isClick == 1) {
+				myCalendar.focus();
+			}
+		});
+
+		$(myCalendar).on('click',function(e){ 
+			e.stopPropagation();
+			isClick = 1;
+		});
+
+		$('.daterangepicker').on('click',function(e){ 
+			e.stopPropagation();
+		});
+	</script>
 </body>
 </html>

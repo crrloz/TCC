@@ -63,12 +63,17 @@
         $(ovlSideBar).removeClass('show-overlay-sidebar');
     });
 
-    /*[MOSTRAR/ESCONDER POPUP]
+    /*[ESCONDER POPUP]
     ===========================================================*/
     var btnHidePopup = $('.btn-hide-popup');
+    var ovlPopup = $('.overlay');
     var popup = $('.section-overlay');
 
     $(btnHidePopup).on('click', function(){
+        $(popup).css('display','none');
+    });
+
+    $(ovlPopup).on('click', function(){
         $(popup).css('display','none');
     });
 

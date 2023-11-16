@@ -8,37 +8,37 @@
 					</h4>
 
 					<ul class="m-b-70">
-						<li class="m-b-14">
-							<?php
-							$sql = "SELECT elementsText FROM site_element WHERE elementsName = 'telefone_coletivo';";
-							$result = mysqli_query($conn, $sql);
+						<?php
+						$sql = "SELECT elementsText FROM site_element WHERE elementsName = 'telefone_coletivo';";
+						$result = mysqli_query($conn, $sql);
+						$row = mysqli_fetch_assoc($result);
 
-							if ($result) {
-								$row = mysqli_fetch_assoc($result);
-								$phone = $row['elementsText'];
-							} else {
-								$phone = "Erro na consulta SQL";
-							}
-							?>
+						if ($result) { ?>
+						<li class="m-b-14 admin-hov">
 							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							<?php echo $phone; ?>
+							<?php echo $row['elementsText']."</li>";
+						} else { ?>
+						<li class="m-b-14 admin-hov">
+							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
+							Erro na consulta SQL
 						</li>
-
-						<li class="m-b-14">
-							<?php
-							$sql = "SELECT elementsText FROM site_element WHERE elementsName = 'email_coletivo';";
-							$result = mysqli_query($conn, $sql);
-
-							if ($result) {
-								$row = mysqli_fetch_assoc($result);
-								$email = $row['elementsText'];
-							} else {
-								$email = "Erro na consulta SQL";
-							}
-							?>
+						<?php }?>
+							
+						<?php
+						$sql = "SELECT elementsText FROM site_element WHERE elementsName = 'email_coletivo';";
+						$result = mysqli_query($conn, $sql);
+						$row = mysqli_fetch_assoc($result);
+						
+						if ($result) { ?>
+						<li class="m-b-14 admin-hov">
 							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-							<?php echo $email; ?>
+							<?php echo $row['elementsText']."</li>";
+						} else { ?>
+						<li class="m-b-14 admin-hov">
+							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
+							Erro na consulta SQL
 						</li>
+						<?php } ?>
 
 						<li class="m-t-20 m-b-14">
 							<a href="contact.php" class="btn4 bo-color1 color6 bo-color-user color-user">CONTATAR</a>
