@@ -30,9 +30,13 @@
     <!-- Formulário de Contato -->
 	<section class="section-contact p-b-113">
 		<div class="container">
-			<h3 class="tit7 t-center p-b-62 p-t-105 tt-up">
+			<h3 class="tit7 t-center p-b-20 p-t-105 tt-up">
 				Envie-nos uma mensagem!
 			</h3>
+
+			<p class="t-center m-b-50">
+				Deseja se tornar um patrocinador ou nos comunicar sobre algo? Preencha os campos abaixo!
+			</p>
 
 			<form action="includes/contact.inc.php" method="post" class="wrap-form-reservation size22 m-l-r-auto">
 				<div class="row">

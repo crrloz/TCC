@@ -42,7 +42,7 @@
         width: 100%;
     }
 
-    input[name="email_home"]{
+    input[name="email"]{
         color: #9267b0;
     }
 

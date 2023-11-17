@@ -46,7 +46,7 @@
 
     <!-- Seção de Login -->
     <section class="section-login m-t-120 p-b-30 t-center">
-        <h2>LOGIN</h2>
+        <h2 class="p-b-20">LOGIN</h2>
         <p>Digite os dados de sua conta abaixo.</p>
 
         <form action="includes/login.inc.php" method="post" class="m-t-10">

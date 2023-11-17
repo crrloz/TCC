@@ -6,40 +6,33 @@ $username = $_POST['uid'];
 $pwd = $_POST['pwd'];
 $pwdRepeat = $_POST['pwdrepeat'];
 
-if(isset($_POST['admin'])){
-    $admin = true;
-} else {
-    $admin = false;
-}
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception as PHPMailerException;
-
 require_once "dbh.inc.php";
 require_once "functions.inc.php";
 
+$x = "&name=".$name."&email=".$email."&uid=".$username;
+
 if(emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false){
-    header("location: ../signup.php?error=emptyinput");
+    header("location: ../signup.php?error=emptyinput".$x);
     exit();
 }
 
 if(invalidUid($username) !== false){
-    header("location: ../signup.php?error=invaliduid");
+    header("location: ../signup.php?error=invaliduid".$x);
     exit();
 }
 
 if(invalidEmail($email) !== false){
-    header("location: ../signup.php?error=invalidemail");
+    header("location: ../signup.php?error=invalidemail".$x);
     exit();
 }
 
 if(pwdMatch($pwd, $pwdRepeat) !== false){
-    header("location: ../signup.php?error=thepassdontmatch");
+    header("location: ../signup.php?error=thepassdontmatch?".$x);
     exit();
 }
 
 if(uidExists($conn, $username, $email) !== false){
-    header("location: ../signup.php?error=usernametaken");
+    header("location: ../signup.php?error=usernametaken".$x);
     exit();
 }
 

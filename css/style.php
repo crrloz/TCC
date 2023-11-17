@@ -106,7 +106,7 @@ video {
   display: none;
 }
 
-.popup-file, .popup-email, .popup-delete {
+.popup-file, .popup-email, .popup-delete, .popup-dancers {
   position: fixed;
   top: 50%; left: 50%; transform: translate(-50%, -50%);
   z-index: 150;
@@ -128,7 +128,7 @@ video {
   text-align: center;
 }
 
-.popup-file-content, .popup-event-content, .popup-email-content, .popup-delete-content {
+.popup-file-content, .popup-event-content, .popup-email-content, .popup-delete-content, .popup-dancers-content {
   background-color: rgb(250, 238, 221);
   border-radius: 7px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 22%);
@@ -142,6 +142,12 @@ video {
 
 .popup-delete-content {
   width: 600px;
+  height: 400px;
+  display: flex;
+}
+
+.popup-dancers-content {
+  width: 700px;
   height: 400px;
   display: flex;
 }
@@ -163,13 +169,13 @@ video {
     margin: 10px 0px;
   }
 
-  .wrap-trash-icon {
+  .wrap-trash-icon, .wrap-dancers-image {
     height: 100px;
     width: 100px;
     transform: translateX(100%);
   }
 
-  .delete-content {
+  .delete-content, .dancers-content {
     height: auto;
     text-align: center;
     padding: 0 20px 20px 20px;
@@ -178,7 +184,7 @@ video {
 
 /* ------------------------------------ */
 
-.delete-content, .wrap-trash-icon {
+.delete-content, .wrap-trash-icon, .wrap-dancers-image {
   position: relative;
   width: 300px;
   height: 400px;
@@ -607,6 +613,7 @@ menu ul li a {
   height: 40px;
   color: white;
   border-radius: 50%;
+  z-index: 30;
 }
 
 @media (max-width: 767px) {
@@ -839,9 +846,22 @@ menu ul li a {
     height: 70vh;
 }
 
+.parallax1 {
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40vh;
+}
+
 .overlay0-parallax {
-    background-color: rgba(0,0,0,0.5);
-    height: 70vh;
+  background-color: rgba(0,0,0,0.5);
+  height: 70vh;
+}
+
+.overlay1-parallax {
+  background-color: rgba(0,0,0,0.5);
+  height: 40vh;
 }
 
 <?php if(isset($_SESSION['isadmin'])){ ?>

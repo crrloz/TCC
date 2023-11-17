@@ -73,19 +73,20 @@
 
     <!-- Seção de Cadastro -->
     <section class="section-signup">
-        <div class="signup-form m-t-80 m-b-40 t-center">
-            <h2>CADASTRE-SE</h2>
+        <div class="signup-form m-t-120 m-b-40 t-center">
+            <h2 class="p-b-20">CADASTRE-SE</h2>
+            <p>Preencha os dados abaixo corretamente e realize seu cadastro em nosso site!</p>
             <form action="includes/signup.inc.php" method="post" class="m-t-25">
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
-                            <input type="text" name="name" placeholder="Nome completo" class="input-field">
+                            <input type="text" name="name" placeholder="Nome completo" class="input-field" value="<?php echo $_GET['name'] ?? '';?>">
                         </div>
                         <div class="col-4">
-                            <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php echo $_GET['email_home'] ?? '';?>">
+                            <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php echo $_GET['email'] ?? '';?>">
                         </div>
                         <div class="col-4">
-                            <input type="text" name="uid" placeholder="Usuário" class="input-field">
+                            <input type="text" name="uid" placeholder="Usuário" class="input-field" value="<?php echo $_GET['uid'] ?? '';?>">
                         </div>
                     </div>
                     <div class="row" style="margin-top: 10px;">

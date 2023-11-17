@@ -101,7 +101,7 @@
                     </div>
                     <div class="row" style="margin-top: 10px;">
                         <div class="col-4">
-                            <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php echo $_GET['email_home'] ?? '';?>">
+                            <input type="text" name="email" placeholder="E-mail" class="input-field" value="<?php echo $_GET['email'] ?? '';?>">
                         </div>
                         <div class="col-4">
                             <input type="text" name="uid" placeholder="Usuário" class="input-field">

@@ -32,27 +32,27 @@
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <?php if(isset($_GET['loggedin']) && !isset($_SESSION['popupappeared'])){ ?>
-        <!-- POP-UP: Cadastro realizado -->
-        <aside class="section-overlay section-overlay-welcome shadow1">
-            <!-- Pop-up -->
-            <div class="popup" style="display: block;">
-                <!-- Botão Esconder Popup -->
-                <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
+    <!-- POP-UP: Cadastro realizado -->
+    <aside class="section-overlay section-overlay-welcome shadow1">
+        <!-- Pop-up -->
+        <div class="popup" style="display: block;">
+            <!-- Botão Esconder Popup -->
+            <button class="btn-hide-popup ti-close color7-hov trans-0-4"></button>
 
-                <!-- Conteúdo -->
-                <div class="popup-content">
-                    <div class="img-box m-b-15 m-t-15">
-                        <img src="images/logo/favicon.png" alt="IMG-LOGO">
-                    </div>
+            <!-- Conteúdo -->
+            <div class="popup-content">
+                <div class="img-box m-b-15 m-t-15">
+                    <img src="images/logo/favicon.png" alt="IMG-LOGO">
+                </div>
 
-                    <div class="content">
-                        <h3 class="f-glitten m-b-10">Bem vindo ao CAH!</h3>
-                        <p>Olá, <?php echo $_SESSION['useruid'] ?>. Ao cadastrar e logar-se em nosso site, você desbloqueia funcionabilidades de compra de ingresso e mensagem. Descubra nosso coletivo!</p>
-                        <button class="btn-hide-popup btn3 m-b-40 m-t-20">Entendi</button>
-                    </div>
+                <div class="content">
+                    <h3 class="f-glitten m-b-10">Bem vindo ao CAH!</h3>
+                    <p>Olá, <?php echo $_SESSION['useruid'] ?>. Ao cadastrar e logar-se em nosso site, você desbloqueia funcionabilidades de compra de ingresso e mensagem. Descubra nosso coletivo!</p>
+                    <button class="btn-close-popup btn3 m-b-40 m-t-20">Entendi</button>
                 </div>
             </div>
-        </aside>
+        </div>
+    </aside>
     <?php $_SESSION['popupappeared'] = 1; } ?>
 
 
@@ -123,7 +123,7 @@
                         $watched = "Erro na consulta SQL";
                     }
                     ?>
-                    <div class="col-md-6 f-glitten fs-50 color0 t-shadow_divisor">Mais de <?php echo $watched;?> presenças</div>
+                    <div class="col-md-6 f-glitten fs-50 color0 t-shadow_divisor">Mais de <span class="count-number f-glitten"><?php echo $watched;?></span> presenças</div>
                     <div class="col-md-6 f-glitten fs-45 color0 t-shadow_divisor" id="countdown"></div>
                 </div>
             </div>
@@ -148,10 +148,8 @@
 
                 if ($result && mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $title = "FUNÇÃO INDISPONÍVEL";
-                        // $row['newsName'];
-                        $image = "images/manutencao.jpg";
-                        // "data:image/jpeg;base64," . base64_encode($row['newsPic']);
+                        $title = $row['newsName'];
+                        $image = "data:image/jpeg;base64," . base64_encode($row['newsPic']);
                         $url = $row['newsUrl'];
                         
                         if($count == 1){ ?>
@@ -246,7 +244,7 @@
                 <form class="wrap-form-signup" method="get" action="signup.php">
                     <div class="row p-l-15 p-r-100">
                         <div class="wrap-input size12 m-t-3 m-b-23">
-                            <input class="p-b-10 p-r-150 color9" type="text" name="email_home" placeholder="Digite seu e-mail...">
+                            <input class="p-b-10 p-r-150 color9" type="text" name="email" placeholder="Digite seu e-mail...">
                             <!-- Botão -->
                             <button type="submit" name="submit_home" class="btn4 color9 bo-color-2">
                                 Cadastrar
@@ -308,7 +306,7 @@
             /*[ESCONDER POPUP]
             ===========================================================*/
             var btnHidePopup = $('.btn-hide-popup');
-            var btnClosePopup = $('btn-close-popup');
+            var btnClosePopup = $('.btn-close-popup');
             var popup = $('.section-overlay-welcome');
 
             $(btnHidePopup).on('click', function(){
@@ -326,6 +324,32 @@
                     var url = $(this).data('url');
                     window.location.href = url;
                 });
+            });
+
+            $(document).ready(function () {
+                let startCount = 0;
+                let endCount = <?php echo $watched; ?>;
+
+                let animationDuration = 0.0000000006;
+
+                animateCount('.count-number', startCount, endCount, animationDuration);
+
+                function animateCount(element, start, end, duration) {
+                    let range = end - start;
+                    let current = start;
+                    let increment = end > start ? 1 : -1;
+                    let stepTime = Math.abs(Math.floor(duration / range));
+                    let obj = $(element);
+
+                    let timer = setInterval(function () {
+                        current += increment;
+                        obj.text(current);
+
+                        if (current == end) {
+                            clearInterval(timer);
+                        }
+                    }, stepTime);
+                }
             });
         })(jQuery);
     </script>

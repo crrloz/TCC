@@ -33,8 +33,76 @@
 	::-webkit-input-placeholder {
 		color: #9267b0;
 	}
+
+	<?php if(!isset($_SESSION['isadmin'])){ ?>
+	.btn-edit {
+		display: none;
+	}
+	<?php } ?>
+
+	.input-field-subject {
+        border: 0;
+        background-color: transparent;
+        border-bottom: 0.5px solid; 
+        font: inherit;
+        font-size: 1.125rem;
+        padding: .25rem 0;
+        width: 100%;
+    }
+
+    .input-field-subject:focus, .input-field-subject:valid {
+        outline: 0;
+        border-bottom: 1px solid;
+    }
 </style>
 <body class="animition" style="background-color: rgb(250, 238, 221);">
+	<!-- POP-UP: Editar dançarino -->
+    <aside class="section-overlay section-overlay-dancers">
+        <div class="overlay overlay-dancerse" style="display: block;">
+        </div>
+
+        <!-- Pop-up -->
+        <div class="popup-dancers" style="display: block;">
+            <!-- Conteúdo -->
+			<form class="popup-dancers-content" action="dancers.inc.php" method="POST">
+				<div class="wrap-dancers-image flex-c-m">
+					<i class="fa fa-camera fs-60" style="padding: 30px; background: grey;"></i>
+				</div>
+
+				<div class="dancers-content">
+					<div class="wrap-dancers-inputs m-b-20" style="line-height: 1;">
+						<span><i class="f-glitten fs-60 color-user">Editar </i></span>
+						<span class="f-glitten fs-60 color-user">BAILARINO</span>
+					</div>
+
+					<div class="wrap-dancers-inputs p-r-15">
+						<span>
+							Nome
+						</span><br>
+						<input type="text" name="name" class="input-field-subject m-b-15">
+
+						<span>
+							Data de nascimento
+						</span><br>
+						<input type="date" name="date" class="input-field-subject m-b-15">
+
+						<span>
+							Texto do(a) bailarino(a)
+						</span>
+						<textarea name="text" class="textarea-contact bo-rad-10 size35 bo-color-user color-user p-r-10 p-l-10 p-t-5 m-t-10 bg4"></textarea>
+					</div>
+
+					<div class="wrap-dancers-buttons m-t-20">
+						<button class="btn4 bo-color-user color-user btn-url-direct" data-url="includes/delete.inc.php?delete_user">Excluir</button>
+						<button class="btn-close-popup btn4 bg-user color0">Cancelar</button>
+					</div>
+				</div>
+			</form>
+        </div>
+    </aside>
+
+
+	<!-- Header -->
     <?php include_once 'header.php' ?>
 
 
@@ -70,7 +138,10 @@
                 </div>
             </div>
 			
-			<hr style="margin: 0 40%;">
+			<!-- Banner -->
+			<div class="parallax1 parallax100" style="background-image: url(images/am1-26.JPG); background-position: center 0.166667px;">
+				<div class="overlay1-parallax t-center"></div>
+			</div>
 			
 			<div class="row p-t-80 p-b-80 p-r-100 p-l-100" style="margin: 0">
                 <div class="col-lg-6">
@@ -91,7 +162,7 @@
     </section>
 
 
-	<!-- Banner/Vídeo -->
+	<!-- Banner -->
     <div class="parallax0 parallax100" style="background-image: url(images/am1-26.JPG); background-position: center 0.166667px;">
 		<div class="overlay0-parallax t-center"></div>
 	</div>
@@ -111,16 +182,42 @@
 
         <div class="wrap-our_history-text">
             <div class="row p-b-80 p-r-100 p-l-100" style="margin: 0">
+			<?php
+			$sql = "SELECT * FROM dancers WHERE dancersName = 'LUAN CANELLAS'";
+			$result = mysqli_query($conn, $sql);
+
+			if ($result) {
+				$row = mysqli_fetch_assoc($result);
+				$id = $row['dancersId'];
+
+				$name = $row['dancersName'];
+				$nameParts = explode(' ', $name);
+				$firstName = $nameParts[0];
+				if(isset($nameParts[1])){
+					$secondName = $nameParts[1];
+				}
+
+				$date = $row['dancersBirthDate'];
+				$birthDate = new DateTime($date);
+				$currentAge = new DateTime();
+				$diff = $birthDate->diff($currentAge);
+				$age = $diff->y;
+
+				$image = "data:image/jpeg;base64," . base64_encode($row['dancersPic']);
+				$text = $row['dancersText'];
+				$url = $row['dancersUrl']; ?>
+
                 <div class="col-lg-6">
-					Luan Canellas, cabista, casado, morador do distrito de Arraial do Cabo, ingressou na dança acadêmica aos 14 anos. Gradualmente foi ganhando maiores aceitações a respeito de sua escolha. Mas ainda assim, na época, havia quem persistia e o falava: “Ballet não é coisa de homem”. Luan fez mais, foi e venceu. Por ser plural, se envolveu em diversas modalidades, mas sempre empolgado com o contemporâneo, street dance e danças africanas. Formou-se pelo Ballet Regina Coutinho e Eliza Cunha , sindicalizou-se, estudou bacharelado em Dança pela FATEF, integrou também a Companhia Municipal de Dança de Arraial do Cabo, coreografou e foi premiado em diversos eventos nacionais e internacionais. Atualmente Luan é graduado em Teologia, empreendedor, influencer e produtor cultural.
+					<?php echo $text?>
                 </div>
 
                 <div class="col-lg-6">
-				    <div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-						<img src="" alt="IMG-LUAN">
+				    <div class="wrap-pic-<?php echo $name?> size2 hov-img-zoom m-l-r-auto">
+						<img src="<?php echo $image?>" alt="IMG-<?php echo $name?>">
 					</div>
                 </div>
             </div>
+			<?php }?>
         </div>
     </section>
 
@@ -135,7 +232,7 @@
     <section class="p-b-105">
 		<div class="wrap-about-title p-b-50">
 			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
-				NOSSOS ARTISTAS
+				ELENCO
 			</h2>
         </div>
 
@@ -169,56 +266,55 @@
 					if($count%2){ ?>
 						<div class="row p-t-100">
 							<div class="col-md-6 p-t-45 p-b-30">
-								<div class="wrap-text- t-center">
+								<div class="wrap-text-<?php echo $name?> t-center">
 									<span class="t-center f-glitten fs-50">
-										<?php echo $firstName ?>
+										<?php echo $firstName?>
 									</span>
 
 									<?php if(isset($secondName)){ ?>
 									<h3 class="t-center m-b-35 m-t-5 f-glitten color7 fs-70">
-										<?php echo $secondName ?>
+										<?php echo $secondName?>
 									</h3><?php } ?>
 
 									<p class="t-center m-b-22 m-l-r-auto">
-										<?php echo $text ?>
+										<?php echo $text?>
 									</p>
 								</div>
 							</div>
 
-							<div class="col-md-6 p-b-30">
-								<?php if(isset($_SESSION['isadmin'])){ ?>
-								<?php } ?>
-
-								<div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-									<img src="<?php echo $image; ?>" alt="IMG-<?php echo $firstName ?>">
+							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative">
+								<div class="wrap-pic-<?php echo $name?> size2 hov-img-zoom m-l-r-auto">
+									<img src="<?php echo $image?>" alt="IMG-<?php echo $firstName?>">
+									<button class="btn-edit bg4-pattern" style="top: 86%; left: 12%;"><i class="fa fa-edit symbol-btn-edit"></i></button>
 								</div>
 							</div>
 						</div>
 					<?php } else { ?>
 						<div class="row p-t-100">
-							<div class="col-md-6 p-b-30">
-								<div class="wrap-pic- size2 hov-img-zoom m-l-r-auto">
-									<img src="<?php echo $image; ?>" alt="IMG-<?php echo $firstName ?>">
+							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative">
+								<div class="wrap-pic-<?php echo $name?> size2 hov-img-zoom m-l-r-auto">
+									<img src="<?php echo $image?>" alt="IMG-<?php echo $firstName?>">
+									<button class="btn-edit bg4-pattern" style="top: 72.5%; left: 80%;"><i class="fa fa-edit symbol-btn-edit"></i></button>
 								</div>
 							</div>
 
 							<div class="col-md-6 p-t-45 p-b-30">
-								<div class="wrap-text- t-center">
+								<div class="wrap-text-<?php echo $name?> t-center">
 									<span class="t-center f-glitten fs-50">
 										<?php echo $firstName ?>
 									</span>
 
 									<?php if(isset($secondName)){ ?>
 									<h3 class="t-center m-t-5 m-b-10 f-glitten fs-50 color7">
-										<?php echo $secondName ?>
+										<?php echo $secondName?>
 									</h3><?php } ?>
 
 									<h6 class="t-center m-b-25">
-										<?php echo $age ?> anos
+										<?php echo $age?> anos
 									</h6>
 
 									<p class="t-center m-b-22 m-l-r-auto">
-										<?php echo $text ?>
+										<?php echo $text?>
 
 										<a href="<?php echo $url?>"><i class="fa fa-instagram"></i></a>
 									</p>

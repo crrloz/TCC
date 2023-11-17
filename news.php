@@ -1,5 +1,5 @@
 <?php include_once 'head.php';
-if(isset($_SESSION["useruid"]) && isset($_SESSION["isadmin"])){ ?>
+if(isset($_SESSION["isadmin"])){ ?>
     <form action="includes/news.inc.php" method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="Título da notícia">
         <input type="text" name="url" placeholder="URL da notícia">
