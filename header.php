@@ -34,11 +34,12 @@
                 <nav class="menu">
                     <div class="list-section">
                         <ul>
+                            <li><a href="about.php" class="m-r-10">Quem Somos</a></li>
                             <li><a href="contact.php" class="m-r-10">Contato</a></li>
                             <li><a href="schedule.php">Agenda</a></li>
                         </ul>
                     </div>
-                    <div class="logo t-center">
+                    <div class="logo t-center m-r-60">
                         <!-- Logo -->
                         <a href="index.php">
                             <img src="images/logo/logo-branca.png">
@@ -46,14 +47,14 @@
                     </div>
                     <div class="list-section">
                         <ul>
-                            <li class="p-t-20"><a href="about.php">Quem Somos</a></li>
                             <?php 
                             if(isset($_SESSION["useruid"])){
                                 $imageSrc = $_SESSION['imagesrc'];
-                                echo '<li><a class="btn-user m-l-10" href="includes/logout.inc.php">Logout</a></li>'
+                                echo '<li><a class="btn-user m-l-60" href="includes/logout.inc.php">Logout</a></li>'
                                     .'<li class="wrap-cir-pic btn-profile btn-url-direct sizefull m-l-15" style="background-image: url('. $imageSrc .');" data-url=profile.php><li>';
                             } else {
-                                echo '<li><a class="btn-user m-l-10" href="signup.php">Cadastro</a></li>';
+                                echo '<li><a class="btn-user m-l-10" href="signup.php">Cadastro</a></li>'
+                                    .'<li><a class="btn-login m-l-10" href="login.php">Login</a></li>';
                             } ?>
                         </ul>
                     </div>

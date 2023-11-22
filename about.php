@@ -1,5 +1,34 @@
 <?php 
 	include_once 'head.php';
+
+	if(isset($_SESSION['isadmin']) && isset($_GET['id'])){ 
+		$id = $_GET['id'];
+		$sql = "SELECT * FROM dancers WHERE dancersId = ?";
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
+			header("location: about.php?error=stmtfailed");
+			exit();
+		}
+		mysqli_stmt_bind_param($stmt, "i", $id);
+		mysqli_stmt_execute($stmt);
+
+		$result = mysqli_stmt_get_result($stmt);
+
+		if ($row = mysqli_fetch_assoc($result)) {
+			$name = $row['dancersName'];
+
+			$dateParts = explode('-', $row["dancersBirthDate"]);
+			$date = $dateParts[2] . '/' . $dateParts[1] . '/' . $dateParts[0];
+
+			$image = $row['dancersPic'];
+			$text = $row['dancersText'];
+			$url = $row['dancersUrl'];
+		} else {
+			header("location: about.php?error=dancernotfound");
+			exit();
+		}
+		mysqli_stmt_close($stmt);
+	}
 ?>
     <title>Sobre Nós | COLETIVO HUMANOS</title>
 </head>
@@ -13,15 +42,6 @@
         font-size: 50px;
     }
 
-	.btn-show-more {
-		position: absolute;
-		font-size: 20px;
-		color: #111111;
-		padding: 10px;
-		top: -10%;
-		right: 2.5%;
-	}
-
 	input[type="text"], input[type="date"], input[type="time"] {
 		width: 100%;
 		height: 100%;
@@ -34,11 +54,19 @@
 		color: #9267b0;
 	}
 
-	<?php if(!isset($_SESSION['isadmin'])){ ?>
+	<?php if(isset($_SESSION['isadmin'])){ ?>
 	.btn-edit {
 		display: none;
 	}
-	<?php } ?>
+
+	.wrap-pic-dancer:hover > .btn-edit {
+		display: block;
+	}
+	<?php } else { ?>
+	.btn-edit {
+		display: none;
+	}
+	<?php }?>
 
 	.input-field-subject {
         border: 0;
@@ -57,49 +85,62 @@
 </style>
 <body class="animition" style="background-color: rgb(250, 238, 221);">
 	<!-- POP-UP: Editar dançarino -->
+	<?php if(isset($_SESSION['isadmin']) && isset($_GET['id'])){ ?>
     <aside class="section-overlay section-overlay-dancers">
-        <div class="overlay overlay-dancerse" style="display: block;">
+        <div class="overlay overlay-dancers" style="display: block;">
         </div>
 
         <!-- Pop-up -->
         <div class="popup-dancers" style="display: block;">
             <!-- Conteúdo -->
-			<form class="popup-dancers-content" action="dancers.inc.php" method="POST">
+			<form class="popup-dancers-content" action="includes/dancers.inc.php" enctype="multipart/form-data" method="POST">
 				<div class="wrap-dancers-image flex-c-m">
-					<i class="fa fa-camera fs-60" style="padding: 30px; background: grey;"></i>
+					<label for="image" class="m-t-10 m-b-10 color0 pointer">
+						<i class="fa fa-camera fs-60" style="padding: 30px; background: grey;"></i>
+					</label>
+					<input type="file" name="image" id="image" style="display: none;"/>
 				</div>
 
 				<div class="dancers-content">
 					<div class="wrap-dancers-inputs m-b-20" style="line-height: 1;">
 						<span><i class="f-glitten fs-60 color-user">Editar </i></span>
 						<span class="f-glitten fs-60 color-user">BAILARINO</span>
+						<p>Caso não queira modificar a foto atual do bailarino, não selecione outra.</p>
 					</div>
 
 					<div class="wrap-dancers-inputs p-r-15">
+						<input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+
 						<span>
 							Nome
 						</span><br>
-						<input type="text" name="name" class="input-field-subject m-b-15">
+						<input type="text" name="name" value="<?php echo $name?>" class="input-field-subject m-b-15">
 
 						<span>
 							Data de nascimento
 						</span><br>
-						<input type="date" name="date" class="input-field-subject m-b-15">
+						<input type="text" name="date" value="<?php echo $date?>" class="input-field-subject m-b-15">
+
+						<span>
+							Url
+						</span><br>
+						<input type="text" name="url" value="<?php echo $url?>" class="input-field-subject m-b-15">
 
 						<span>
 							Texto do(a) bailarino(a)
 						</span>
-						<textarea name="text" class="textarea-contact bo-rad-10 size35 bo-color-user color-user p-r-10 p-l-10 p-t-5 m-t-10 bg4"></textarea>
+						<input type="text" name="text" value="<?php echo $text?>" class="input-field-subject m-b-15"></textarea>
 					</div>
 
 					<div class="wrap-dancers-buttons m-t-20">
-						<button class="btn4 bo-color-user color-user btn-url-direct" data-url="includes/delete.inc.php?delete_user">Excluir</button>
-						<button class="btn-close-popup btn4 bg-user color0">Cancelar</button>
+						<button type="submit" name="edit_dancers" class="btn4 bo-color-0 color6">Editar</button>
+						<input type="button" value="CANCELAR" class="btn-close-popup btn4 color5" style="border-color: black;">
 					</div>
 				</div>
 			</form>
         </div>
     </aside>
+	<?php } ?>
 
 
 	<!-- Header -->
@@ -186,7 +227,7 @@
 			$sql = "SELECT * FROM dancers WHERE dancersName = 'LUAN CANELLAS'";
 			$result = mysqli_query($conn, $sql);
 
-			if ($result) {
+			if($result) {
 				$row = mysqli_fetch_assoc($result);
 				$id = $row['dancersId'];
 
@@ -208,11 +249,14 @@
 				$url = $row['dancersUrl']; ?>
 
                 <div class="col-lg-6">
-					<?php echo $text?>
+					<?php echo $text;
+					if(isset($url)){ ?><br><br>
+					<button class="btn4 bo-color-1"><a class="color7" href="<?php echo $url?>" target="_blank"><i class="fa fa-instagram m-r-5"></i>Ver</a></button>
+					<?php } ?>
                 </div>
 
                 <div class="col-lg-6">
-				    <div class="wrap-pic-<?php echo $name?> size2 hov-img-zoom m-l-r-auto">
+				    <div class="wrap-pic-dancer size2 hov-img-zoom m-l-r-auto">
 						<img src="<?php echo $image?>" alt="IMG-<?php echo $name?>">
 					</div>
                 </div>
@@ -229,7 +273,7 @@
 
 
     <!-- Nossos Artistas/Dançarinos -->
-    <section class="p-b-105">
+    <section class="p-b-80">
 		<div class="wrap-about-title p-b-50">
 			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
 				ELENCO
@@ -241,7 +285,7 @@
 			$sql = "SELECT * FROM dancers WHERE dancersName != 'LUAN CANELLAS' ORDER BY dancersId;";
 			$result = mysqli_query($conn, $sql);
 
-			if ($result && mysqli_num_rows($result) > 0) {
+			if($result && mysqli_num_rows($result) > 0) {
 				for ($count = 1; $count <= mysqli_num_rows($result); $count++) {
 					$row = mysqli_fetch_assoc($result);
 					$id = $row['dancersId'];
@@ -267,45 +311,48 @@
 						<div class="row p-t-100">
 							<div class="col-md-6 p-t-45 p-b-30">
 								<div class="wrap-text-<?php echo $name?> t-center">
-									<span class="t-center f-glitten fs-50">
+									<span class="t-center f-glitten fs-50" style="line-height: 0.7;">
 										<?php echo $firstName?>
 									</span>
 
 									<?php if(isset($secondName)){ ?>
-									<h3 class="t-center m-b-35 m-t-5 f-glitten color7 fs-70">
+									<h3 class="t-center m-b-35 m-t-5 f-glitten color7 fs-70" style="line-height: 0.8;">
 										<?php echo $secondName?>
 									</h3><?php } ?>
 
 									<p class="t-center m-b-22 m-l-r-auto">
-										<?php echo $text?>
+										<?php echo $text;
+										if(isset($url)){ ?><br><br>
+										<button class="btn4 bo-color-1"><a class="color7" href="<?php echo $url?>" target="_blank"><i class="fa fa-instagram m-r-5"></i>Ver</a></button>
+										<?php } ?>
 									</p>
 								</div>
 							</div>
 
 							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative">
-								<div class="wrap-pic-<?php echo $name?> size2 hov-img-zoom m-l-r-auto">
+								<div class="wrap-pic-dancer size2 hov-img-zoom m-l-r-auto">
 									<img src="<?php echo $image?>" alt="IMG-<?php echo $firstName?>">
-									<button class="btn-edit bg4-pattern" style="top: 86%; left: 12%;"><i class="fa fa-edit symbol-btn-edit"></i></button>
+									<button class="btn-edit bg4-pattern" style="top: 86%; left: 12%;" data-id="<?php echo $id; ?>"><i class="fa fa-edit symbol-btn-edit"></i></button>
 								</div>
 							</div>
 						</div>
 					<?php } else { ?>
 						<div class="row p-t-100">
 							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative">
-								<div class="wrap-pic-<?php echo $name?> size2 hov-img-zoom m-l-r-auto">
+								<div class="wrap-pic-dancer size2 hov-img-zoom m-l-r-auto">
 									<img src="<?php echo $image?>" alt="IMG-<?php echo $firstName?>">
-									<button class="btn-edit bg4-pattern" style="top: 72.5%; left: 80%;"><i class="fa fa-edit symbol-btn-edit"></i></button>
+									<button class="btn-edit bg4-pattern" style="top: 72.5%; left: 80%;" data-id="<?php echo $id; ?>"><i class="fa fa-edit symbol-btn-edit"></i></button>
 								</div>
 							</div>
 
 							<div class="col-md-6 p-t-45 p-b-30">
 								<div class="wrap-text-<?php echo $name?> t-center">
-									<span class="t-center f-glitten fs-50">
+									<span class="t-center f-glitten fs-50" style="line-height: 0.7;">
 										<?php echo $firstName ?>
 									</span>
 
 									<?php if(isset($secondName)){ ?>
-									<h3 class="t-center m-t-5 m-b-10 f-glitten fs-50 color7">
+									<h3 class="t-center m-t-5 m-b-10 f-glitten fs-50 color7" style="line-height: 0.8;">
 										<?php echo $secondName?>
 									</h3><?php } ?>
 
@@ -314,9 +361,10 @@
 									</h6>
 
 									<p class="t-center m-b-22 m-l-r-auto">
-										<?php echo $text?>
-
-										<a href="<?php echo $url?>"><i class="fa fa-instagram"></i></a>
+										<?php echo $text;
+										if(isset($url)){ ?><br><br>
+										<button class="btn4 bo-color-1"><a class="color7" href="<?php echo $url?>" target="_blank"><i class="fa fa-instagram m-r-5"></i>Ver</a></button>
+										<?php } ?>
 									</p>
 								</div>
 							</div>
@@ -330,9 +378,15 @@
 
 	<!-- Seção de Administração -->
 	<?php if(isset($_SESSION['isadmin'])){ ?>
-	<hr class="m-r-45 m-l-45">
+	<!-- Botão de Toggle para Administração -->
+	<div class="wrap-toggle-btn flex-c-m">
+		<button id="adminToggleBtn" class="admin-toggle-btn">
+			<span id="btnToggleIcon" class="ti-angle-down"></span>
+		</button>
+	</div>
 
-	<section class="section-admin-calendar m-b-40">
+	<section class="section-admin section-admin-calendar m-b-40 dis-none">
+		<hr class="m-r-150 m-l-150">
 		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
 			ADICIONAR BAILARINO
 		</h2>
@@ -381,7 +435,7 @@
 				</div>
 
 				<div class="col-12 t-center m-b-10">
-					<p>Deseja pular uma linha no texto? Digite um "&ltbr&gt" ou dois para pular um parágrafo</p>
+					<p>Deseja pular uma linha no texto? Digite um "&ltbr&gt" para pular uma linha ou dois para pular um parágrafo</p>
 				</div>
 
 				<div class="col-12 flex-c-m bo-rad-10 bg1 bg5-hover trans-0-4">
@@ -409,6 +463,20 @@
     
     <?php include_once 'footer.php' ?>
 	<script>
+		$(document).ready(function () {
+			var adminToggleBtn = $('#adminToggleBtn');
+			var adminSection = $('.section-admin');
+
+			var arrowIcon = adminToggleBtn.find('.ti-angle-down');
+
+			adminToggleBtn.click(function () {
+				adminSection.slideToggle();
+
+				arrowIcon.addClass('ti-angle-up');
+				arrowIcon.removeClass('ti-angle-down');
+			});
+		});
+
 		/*[DATERANGEPICKER]
 		===========================================================*/
 		/* Aqui eu reconfigurei o DateRangePicker para apresentar as datas em Português.
@@ -476,6 +544,22 @@
 
 		$('.daterangepicker').on('click',function(e){ 
 			e.stopPropagation();
+		});
+
+		/*[APARECER E REMOVER POPUP]
+    	===========================================================*/
+		$('.btn-edit').on('click', function(event) {
+			event.preventDefault();
+			
+			var dancerId = $(this).data('id');
+			
+			window.location.href = 'about.php?id=' + dancerId;
+		});
+
+		 
+
+		$('.btn-close-popup').on('click', function(){
+			$('.section-overlay').css('display','none');
 		});
 	</script>
 </body>

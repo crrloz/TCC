@@ -51,18 +51,69 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	.wrap-btn-order {
 		position: absolute;
 		bottom: 0;
-		margin: 2.5% 0;
+		padding: 2.5% 0;
 		left: 50%;
 		transform: translateX(-50%);
 		width: 100%;
 		background-color: rgb(250, 238, 221);
+		border-radius: 7px;
 	}
 
-	.section-admin-schedule {
+	.section-admin section-admin-schedule {
 		transition: height 0.5s ease-in-out;
 	}
 
 	.bg5-hover:hover {background-color: #FDF33E;}
+
+	.arrow-slick_right {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+		height: 60px;
+		font-size: 18px;
+		color: white;
+		position: absolute;
+		background-color: black;
+		bottom: 30%;
+		transform: translateY(-50%);
+		border-radius: 50%;
+		transition: all 0.4s;
+		right: 50px;
+	}
+
+	.arrow-slick_left {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+		height: 60px;
+		font-size: 18px;
+		color: white;
+		position: absolute;
+		background-color: black;
+		bottom: 30%;
+		transform: translateY(-50%);
+		border-radius: 50%;
+		transition: all 0.4s;
+		left: 50px;
+	}
+
+	.calendar-carousel {
+		display: flex;
+	}
+
+	.month {
+		width: 100%;
+	}
+
+	::-webkit-scrollbar {
+		width: 0px;
+	}
+
+	.popup-event-content {
+		padding: 10px 40px 0 40px;
+	}
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
 	<!-- POP-UP: Evento -->
@@ -97,7 +148,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 			<!-- Conteúdo -->
 			<div class="popup-event-content t-left">
 				<?php $eventsPic = "data:image/jpeg;base64,". base64_encode($row['eventsPic'])?>
-				<div class="event-image sizefull m-l-25 m-r-25 m-t-30 p-t-250 bo-rad-4" style="background-image: url('<?php echo $eventsPic?>');">
+				<div class="event-image sizefull m-t-30 m-b-30 p-t-250 bo-rad-4" style="background-image: url('<?php echo $eventsPic?>');">
 				</div>
 
 				<div class="event-name m-t-10 m-l-25">
@@ -105,11 +156,11 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 				</div>
 
 				<div class="event-date m-l-25">
-					<p class="fs-25"><?php echo $eventsDate; ?></p>
+					<p class="fs-25"><?php echo $eventsDate; ?><span class="fs-20"> • <?php echo "R$". $row['eventsPrice'];?></span></p>
 				</div>
 
 				<div class="event-description m-l-25 m-t-10">
-					<p class="fs-20 color5"><?php echo $row['eventsDesc']; ?></p>
+					<p class="fs-20 color5"><?php echo $row['eventsDesc']; ?><br><br><br><br></p>
 				</div>
 
 				<!-- Botão Pedir -->
@@ -179,8 +230,11 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 			</div>
 		</div>
 
-		<div class="wrap-calendar flex-c-m">
-			<div id="calendar" class="m-t-80 m-b-40"></div>
+		<div class="wrap-calendar flex-c-m pos-relative">
+			<button class="arrow-slick_right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+			<button class="arrow-slick_left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+    
+			<div id="calendar" class="m-t-80 m-b-40 t-center"></div>
 		</div>
 
 		<div class="wrap-calendar-description">
@@ -194,12 +248,12 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	<!-- Botão de Toggle para Administração -->
 	<div class="wrap-toggle-btn flex-c-m">
 		<button id="adminToggleBtn" class="admin-toggle-btn">
-			<span class="ti-angle-down"></span>
+			<span id="btnToggleIcon" class="ti-angle-down"></span>
 		</button>
 	</div>
 
 
-	<section class="section-admin-schedule m-b-40 dis-none">
+	<section class="section-admin section-admin-schedule m-b-40 dis-none">
 		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
 			ADICIONAR EVENTO
 		</h2>
@@ -239,7 +293,38 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 					</div>
 				</div>
 
-				<div class="col-12">
+				<div class="col-md-6">
+					<!-- Quantidade -->
+					<span>
+						Quantidade
+					</span>
+
+					<div class="wrap-inputquantity size12 bo3 m-t-3 m-b-23">
+						<input class="input-schedule sizefull p-l-20" type="number" name="quantity" placeholder="Quantidade de ingressos">
+					</div>
+
+					<p>
+						Caso não haja um limite, digite um valor grande.
+					</p>
+
+				</div>
+
+				<div class="col-md-6">
+					<!-- Ingressos -->
+					<span>
+						Preço
+					</span>
+
+					<div class="wrap-inputprice size12 bo3 m-t-3 m-b-23">
+						<input class="input-schedule sizefull p-l-20" type="text" pattern="[0-9]+([.][0-9]+)?" name="price" placeholder="Preço por ingresso">
+					</div>
+
+					<p>
+						Para valores com centavos, utilize "." e não ",".
+					</p>
+				</div>
+
+				<div class="col-12 m-t-7">
 					<!-- Descrição -->
 					<span>
 						Descrição do evento
@@ -248,7 +333,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 				</div>
 
 				<div class="col-12 t-center m-b-10">
-					<p>Deseja pular uma linha no texto? Digite um "&ltbr&gt" ou dois para pular um parágrafo</p>
+					<p>Deseja pular uma linha no texto? Digite um "&ltbr&gt" para pular uma linha ou dois para pular um parágrafo</p>
 				</div>
 
 				<div class="col-12 flex-c-m bo-rad-10 bg1 bg5-hover trans-0-4">
@@ -278,16 +363,24 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 	<script>
 		$(document).ready(function () {
 			var adminToggleBtn = $('#adminToggleBtn');
-			var adminSection = $('.section-admin-schedule');
-
+			var adminSection = $('.section-admin');
 			var arrowIcon = adminToggleBtn.find('.ti-angle-down');
-    		arrowIcon.rotation = 0;
+			
+			var count = 0;
 
 			adminToggleBtn.click(function () {
-				adminSection.slideToggle();
+				if(count%2 == 0){
+					adminSection.slideToggle();
 
-				arrowIcon.rotation += 180;
-				arrowIcon.css('transform', 'rotate(' + arrowIcon.rotation + 'deg)');
+					arrowIcon.addClass('ti-angle-up');
+					arrowIcon.removeClass('ti-angle-down');
+				} else {
+					adminSection.slideToggle();
+
+					arrowIcon.addClass('ti-angle-down');
+					arrowIcon.removeClass('ti-angle-up');	
+				}
+				count++;
 			});
 		});
 

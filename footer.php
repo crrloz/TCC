@@ -1,4 +1,4 @@
-<footer class="bg4">
+	<footer>
 		<div class="container m-t-40">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 p-t-50">
@@ -55,25 +55,9 @@
 					<div class="m-b-25">
 						<ul class="m-b-70">
 							<li class="m-b-14">
-								<a href="" class="color4">Política de Proteção e Privacidade</a>
-							</li>
-
-							<li class="m-b-14">
-								<a href="" class="color4">Nossa Ética</a>
+								<a href="policy.php" class="color4">Política de Proteção e Privacidade</a>
 							</li>
 						</ul>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="m-b-38">
-						
-					</h4>
-
-					<!-- - -->
-					<div class="">
-
 					</div>
 				</div>
 			</div>
@@ -84,7 +68,7 @@
 				<div class="flex-sb-m flex-w p-t-22 p-b-22">
 					<div class="p-t-5 p-b-5">
 						<a href="#" class="fs-20 c-white"><i class="fa fa-youtube-play m-l-18" aria-hidden="true"></i></a>
-						<a href="#" class="fs-20 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
+						<a target="_blank" href="https://instagram.com/coletivo.humanos/" class="fs-20 c-white"><i class="fa fa-instagram m-l-18" aria-hidden="true"></i></a>
 					</div>
 
 					<div class="color0 p-r-20 p-t-5 p-b-5">

@@ -39,6 +39,10 @@ body, html {
   word-wrap: break-word;
 }
 
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
 /* ------------------------------------ */
 
 a {
@@ -147,8 +151,8 @@ video {
 }
 
 .popup-dancers-content {
-  width: 700px;
-  height: 400px;
+  padding: 40px 40px;
+  width: 800px;
   display: flex;
 }
 
@@ -169,7 +173,7 @@ video {
     margin: 10px 0px;
   }
 
-  .wrap-trash-icon, .wrap-dancers-image {
+  .wrap-trash-icon .wrap-dancers-image {
     height: 100px;
     width: 100px;
     transform: translateX(100%);
@@ -184,12 +188,16 @@ video {
 
 /* ------------------------------------ */
 
-.delete-content, .wrap-trash-icon, .wrap-dancers-image {
+.delete-content, .wrap-trash-icon {
   position: relative;
   width: 300px;
   height: 400px;
 }
 
+.wrap-dancers-image {
+  position: relative;
+  width: 300px;
+}
 /* ------------------------------------ */
 
 .btn-hide-popup {
@@ -391,6 +399,26 @@ menu ul li a {
   color: white;
   background: #D99E07;
   border: #D99E07 solid 0.1rem;
+  transition: 0.4s;
+}
+
+.btn-login {
+  color: white;
+  background: #D99E07;
+  border: #D99E07 solid 0.1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  padding: 0.375rem 1rem;
+  cursor: pointer;
+}
+
+.btn-login:hover{
+  color: white;
+  background: none;
+  border: white solid 0.1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  padding: 0.375rem 1rem;
   transition: 0.4s;
 }
 

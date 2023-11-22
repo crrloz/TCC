@@ -89,15 +89,19 @@
                             <input type="text" name="uid" placeholder="Usuário" class="input-field" value="<?php echo $_GET['uid'] ?? '';?>">
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col-4">
+                    <div class="row m-t-20">
+                        <div class="col-12">
                             <input type="password" name="pwd" placeholder="Senha" class="input-field">
                         </div>
-                        <div class="col-4">
+                    </div>
+                    <div class="row m-t-20">
+                        <div class="col-12">
                             <input type="password" name="pwdrepeat" placeholder="Repetir senha" class="input-field">
                         </div>
-                        <div class="col-4 t-center">
-                            <input type="submit" name="submit" value="Cadastrar-se" class="btn3">
+                    </div>
+                    <div class="row m-t-20">
+                        <div class="col-12 t-center">
+                            <input type="submit" name="submit_signup" value="Cadastrar" class="btn3">
                         </div>
                     </div>
                 </div>
@@ -124,7 +128,6 @@
 
     <!-- Footer -->
     <hr class="m-r-45 m-l-45">
-    
     
     <?php include_once 'footer.php' ?>
 </body>

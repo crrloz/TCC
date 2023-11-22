@@ -72,7 +72,7 @@
 
     <!-- Seção de Login -->
     <section class="section-wrap-input m-t-120 m-b-100 t-center">
-        <h2>RESETE SUA SENHA!</h2>
+        <h2 class="p-b-20">RESETE SUA SENHA!</h2>
         <p>Digite o e-mail da sua conta. Enviaremos as instruções para mudar sua senha.</p>
         
         <form action="includes/reset-request.inc.php" method="post">

@@ -47,7 +47,7 @@
 						</span>
 
 						<div class="wrap-inputname size12 bo3 m-t-3 m-b-23">
-							<input class="input-contact sizefull p-l-20" type="text" name="name" placeholder="Nome">
+							<input class="input-contact sizefull p-l-20" type="text" name="name" value="<?php echo $_GET['name'] ?? '';?>" placeholder="Nome">
 						</div>
 					</div>
 
@@ -58,18 +58,18 @@
 						</span>
 
 						<div class="wrap-inputemail size12 bo3 m-t-3 m-b-23">
-							<input class="input-contact sizefull p-l-20" type="text" name="email" placeholder="Email">
+							<input class="input-contact sizefull p-l-20" type="text" name="email" value="<?php echo $_GET['email'] ?? '';?>" placeholder="Email">
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<!-- Telefone -->
 						<span>
-							Telefone (opcional)
+							Telefone com DDD (opcional)
 						</span>
 
 						<div class="wrap-inputphone size12 bo3 m-t-3 m-b-23">
-							<input class="input-contact sizefull p-l-20" type="text" name="phone" placeholder="Telefone">
+							<input class="input-contact sizefull p-l-20" type="text" name="phone" value="<?php echo $_GET['phone'] ?? '';?>" placeholder="Telefone">
 						</div>
 					</div>
 
@@ -78,13 +78,13 @@
 						<span>
 							Mensagem
 						</span>
-						<textarea class="textarea-contact bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Mensagem" style="background-color: rgb(250, 238, 221);"></textarea>
+						<textarea class="textarea-contact bo-rad-10 size35 bo3 p-l-20 p-t-15 m-b-10 m-t-3" name="message" value="<?php echo $_GET['message'] ?? '';?>" placeholder="Mensagem" style="background-color: rgb(250, 238, 221);"></textarea>
 					</div>
 				</div>
 
 				<div class="wrap-btn-send flex-c-m m-t-13">
 					<!-- Button3 -->
-					<button type="submit" class="btn3 flex-c-m size36 trans-0-4">
+					<button type="submit" name="submit_contact" class="btn3 flex-c-m size36 trans-0-4">
 						Enviar
 					</button>
 				</div>

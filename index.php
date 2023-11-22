@@ -96,12 +96,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    O Coletivo Artístico Humanos é um grupo de dança situado em Arraial do Cabo, dedicado a representar e celebrar a rica cultura afro-brasileira por meio da expressão corporal. Criado e dirigido por seu talentoso fundador, LUAN, o Coletivo tem como objetivo proporcionar um espaço inclusivo e acolhedor onde a arte negra possa florescer e se manifestar de forma poderosa. <br>
-                    <span><a href="about.php" class="hov_underline">Descobrir mais</a></span>
+                    O Coletivo Artístico Humanos é um grupo de dança situado em Arraial do Cabo, dedicado a representar e celebrar a rica cultura afro-brasileira por meio da expressão corporal. Criado e dirigido por seu talentoso fundador, LUAN, o Coletivo tem como objetivo proporcionar um espaço inclusivo e acolhedor onde a arte negra possa florescer e se manifestar de forma poderosa.
                 </div>
                 <div class="col-md-6 m-t-0-40">
                     Nosso Coletivo acredita no poder transformador da dança como uma forma de expressão artística e como uma ferramenta para promover a consciência, o diálogo e a igualdade. Nossos artistas, habilmente treinados pelo próprio criador, trazem para o palco uma fusão de estilos contemporâneos e tradicionais, em coreografias que evocam histórias, emoções e a força da identidade negra.
                 </div>
+                <span><a href="about.php" class="hov_underline m-l-15">Descobrir mais</a></span>
             </div>
         </div>
     </section>
@@ -109,7 +109,7 @@
 
     <!-- Divisor -->
     <section class="section-divider">
-        <div class="item-divider p-t-150 p-b-150" style="background-image: url(images/dança2.jpg);">
+        <div class="item-divider p-t-100 p-b-100" style="background-image: url(images/dança2.jpg);">
             <div class="container">
                 <div class="row t-center">
                     <?php
@@ -123,7 +123,7 @@
                         $watched = "Erro na consulta SQL";
                     }
                     ?>
-                    <div class="col-md-6 f-glitten fs-50 color0 t-shadow_divisor">Mais de <span class="count-number f-glitten"><?php echo $watched;?></span> presenças</div>
+                    <div class="col-md-6 f-glitten fs-50 color0 t-shadow_divisor flex-c-m">Mais de <span class="count-number f-glitten p-l-10 p-r-10"><?php echo $watched;?></span> presenças</div>
                     <div class="col-md-6 f-glitten fs-45 color0 t-shadow_divisor" id="countdown"></div>
                 </div>
             </div>
@@ -151,38 +151,65 @@
                         $title = $row['newsName'];
                         $image = "data:image/jpeg;base64," . base64_encode($row['newsPic']);
                         $url = $row['newsUrl'];
-                        
-                        if($count == 1){ ?>
+
+                        if(mysqli_num_rows($result) == 1){ ?>
+                            <div class="col-md-12 p-t-250 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                            </div>
+                        <?php } else if(mysqli_num_rows($result) == 2){ ?>
                             <div class="col-md-6 p-t-250 sizefull" style="background-image: url(<?php echo $image ?>);">
                                 <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
                             </div>
-                        <?php } else if($count == 2){ ?>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
-                                        <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
-                                    </div>
-                        <?php } else if($count == 3){ ?>
-                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
-                                        <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
-                                    </div>
-                                </div>
-                        <?php } else if($count == 4){ ?>
-                                <div class="row">
-                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
+                        <?php } else if(mysqli_num_rows($result) == 3){
+                            if($count == 1){ ?>
+                                <div class="col-md-6 p-t-250 sizefull" style="background-image: url(<?php echo $image ?>);">
                                     <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                </div>
+                            <?php } else if($count == 2){ ?>
+                                <div class="col-md-6">
+                                        <div class="col-md-6 p-t-125 sizefull" style="padding-right: 0; padding-left: 0; background-image: url(<?php echo $image ?>);">
+                                            <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                        </div>
+                        <?php } else if($count == 3){ ?>
+                                        <div class="col-md-6 p-t-125 sizefull" style="width: 100%;padding-right: 0; padding-left: 0; background-image: url(<?php echo $image ?>);">
+                                            <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                        </div>
+                                </div>
+                        <?php } else if(mysqli_num_rows($result) == 4){
+
+                        } else if(mysqli_num_rows($result) == 5){
+                            if($count == 1){ ?>
+                                <div class="col-md-6 p-t-250 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                    <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                </div>
+                            <?php } else if($count == 2){ ?>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                            <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                        </div>
+                            <?php } else if($count == 3){ ?>
+                                        <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                            <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                        </div>
                                     </div>
-                        <?php } else if($count == 5){ ?>
-                                    <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
+                            <?php } else if($count == 4){ ?>
+                                    <div class="row">
+                                        <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
                                         <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                        </div>
+                            <?php } else if($count == 5){ ?>
+                                        <div class="col-md-6 p-t-125 sizefull" style="background-image: url(<?php echo $image ?>);">
+                                            <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php }
+                            <?php }
+                        }
                         $count++;
                     }
-                } ?>
-
+                }
+             } ?>
             </div>
         </div>
     </section>
@@ -291,7 +318,7 @@
                             var minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60));
                             var segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000);
 
-                            document.getElementById("countdown").innerHTML = dias + "d " + horas + "h " + minutos + "m " + segundos + "s";
+                            document.getElementById("countdown").innerHTML = dias + "d " + horas + "h " + minutos + "m " + segundos + "s<br>para o próx. evento!";
                         } else {
                             document.getElementById("countdown").innerHTML = "...";
                         }
@@ -326,6 +353,9 @@
                 });
             });
 
+
+            /*[CONTAGEM]
+            ===========================================================*/
             $(document).ready(function () {
                 let startCount = 0;
                 let endCount = <?php echo $watched; ?>;
