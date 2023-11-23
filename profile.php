@@ -86,7 +86,7 @@
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <!-- POP-UP: Mudar imagem -->
     <aside class="section-overlay section-overlay-file">
-        <div class="overlay overlay-file" style="display: block;">
+        <div class="overlay" style="display: block;">
         </div>
 
         <!-- Pop-up -->
@@ -121,7 +121,7 @@
     
     <!-- POP-UP: Deletar usuário -->
     <aside class="section-overlay section-overlay-delete">
-        <div class="overlay overlay-delete" style="display: block;">
+        <div class="overlay" style="display: block;">
         </div>
 
         <!-- Pop-up -->
@@ -388,9 +388,7 @@
             var popupDelete = $('.section-overlay-delete');
             var popupEmail = $('.section-overlay-email');
 
-            var overlayFile = $('.overlay-file');
-            var overlayDelete = $('.overlay-delete');
-            var overlayEmail = $('.overlay-email');
+            var overlay = $('.overlay');
 
 
             $(btnHidePopup).on('click', function(){
@@ -430,16 +428,9 @@
             });
 
 
-            $(overlayFile).on('click', function(){
+            $(overlay).on('click', function(){
                 $(popupFile).css('display','none');
                 $(popupEmail).css('display','none');
-            });
-
-            $(overlayEmail).on('click', function(){
-                $(popupEmail).css('display','none');
-            });
-            
-            $(overlayDelete).on('click', function(){
                 $(popupDelete).css('display','none');
             });
 

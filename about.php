@@ -54,17 +54,14 @@
 		color: #9267b0;
 	}
 
-	<?php if(isset($_SESSION['isadmin'])){ ?>
+	
 	.btn-edit {
 		display: none;
 	}
 
+	<?php if(isset($_SESSION['isadmin'])){ ?>
 	.wrap-pic-dancer:hover > .btn-edit {
 		display: block;
-	}
-	<?php } else { ?>
-	.btn-edit {
-		display: none;
 	}
 	<?php }?>
 
@@ -83,7 +80,7 @@
         border-bottom: 1px solid;
     }
 </style>
-<body class="animition" style="background-color: rgb(250, 238, 221);">
+<body class="animsition" style="background-color: rgb(250, 238, 221);">
 	<!-- POP-UP: Editar dançarino -->
 	<?php if(isset($_SESSION['isadmin']) && isset($_GET['id'])){ ?>
     <aside class="section-overlay section-overlay-dancers">
@@ -133,7 +130,8 @@
 					</div>
 
 					<div class="wrap-dancers-buttons m-t-20">
-						<button type="submit" name="edit_dancers" class="btn4 bo-color-0 color6">Editar</button>
+						<button type="submit" name="edit_dancers" class="btn4 bo-color-0 color6" style="background: #7F4AA4; color: white;">Editar</button>
+						<button type="submit" name="delete_dancers" class="btn4 bo-color-0 color6 m-r-10">Excluir</button>
 						<input type="button" value="CANCELAR" class="btn-close-popup btn4 color5" style="border-color: black;">
 					</div>
 				</div>
@@ -168,7 +166,7 @@
                 <div class="col-lg-6">
 					Com objetivo de valorização do corpo negro e suas potencialidades na sociedade, nascemos em circunstâncias pandemicas para movimentar o cenário artístisco do povo negro de Arraial do Cabo e de municípios vizinhos.<br><br>
 
-					Criado para valorização do corpo negro na dança, o Coletivo Humanos, hoje apresenta novas áreas de atuações. <b>[colocar o texto que o luan mandou pra malu]</b>
+					Criado para valorização do corpo negro na dança, o Coletivo Humanos, hoje apresenta novas áreas de atuações.
                 </div>
 
                 <div class="col-lg-6">
@@ -261,7 +259,71 @@
 					</div>
                 </div>
             </div>
-			<?php }?>
+			<?php } $secondName = null; ?>
+        </div>
+    </section>
+
+
+	<!-- Banner -->
+    <div class="parallax0 parallax100" style="background-image: url(images/img.JPG); background-position: center 0.166667px;">
+		<div class="overlay0-parallax t-center"></div>
+	</div>
+
+
+	<!-- O que é um coletivo -->
+    <section class="section-what_is">
+        <div class="wrap-what-title p-b-50">
+			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+				O QUE É UM COLETIVO ARTÍSTICO?
+			</h2>
+        </div>
+
+        <div class="wrap-what_is-text">
+            <div class="row p-b-80 p-r-100 p-l-100" style="margin: 0">
+                <div class="col-lg-6">
+					Um coletivo artístico é um grupo de artistas que trabalham juntos para realizar espetáculos ou entretenimento. Existem muitos tipos diferentes de coletivos artísticos, algumas empresas são formadas por membros de estúdios ou por artistas autônomos. Em geral alguns grupos de academias são formados para fins de competição. Muitas companhias são estabelecidas nas cidades para estar perto de teatros ou outros locais de arte performática.
+                </div>
+
+                <div class="col-lg-6">
+					Há evidências que mostram o início das trupes nos tempos romano e grego. Esses grupos eram originalmente para musicais e se apresentavam nos cinemas. As companhias se apresentavam para a classe alta como uma forma de entretenimento. À medida que a música evoluiu, também evoluíram os tipos de companhias. Nos últimos anos, grupos são vistos em programas de televisão musical.
+                </div>
+            </div>
+		</div>
+	</section>
+			
+
+	<!-- Banner -->
+	<div class="parallax1 parallax100" style="background-image: url(images/am1-26.JPG); background-position: center 0.166667px;">
+		<div class="overlay1-parallax t-center"></div>
+	</div>
+
+
+	<section class="section-black_art">
+        <div class="wrap-art-title p-b-50">
+			<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
+				A ARTE NEGRA<br>NO CONTEXTO DO BALÉ BRASILEIRO
+			</h2>
+        </div>
+
+        <div class="wrap-art-text">	
+			<div class="row p-b-80 p-r-100 p-l-100" style="margin: 0">
+                <div class="col-lg-6">
+					Em uma sociedade permeada pela persistência do racismo e pela escassez de representatividade negra em posições de destaque nas artes e na sociedade, desponta o Coletivo Artístico Humanos. Em meio a um cenário pandêmico no ano de 2020, Luan Canellas decidiu tomar uma iniciativa para contornar a problemática da ausência de corpos negros nos grupos de dança, que majoritariamente eram compostos por indivíduos brancos. Dessa forma, o coletivo emergiu com a proposta de valorizar o corpo negro nas artes cênicas, enfatizando sua excelência técnica no balé, na dança contemporânea, no jazz, entre outras formas de expressão, sem jamais objetificar essas corporalidades.<br><br>
+
+
+					Embora enfrentem inúmeras dificuldades e obstáculos nesse meio, os artistas negros encontram no Coletivo Artístico Humanos um espaço dedicado à promoção do corpo negro nas artes cênicas, ao fortalecimento da cultura negra e à necessidade de proporcionar um ambiente seguro e acolhedor para artistas e ativistas negras.
+                </div>
+
+                <div class="col-lg-6">
+					A arte negra no contexto do balé brasileiro ganha uma relevância ímpar, uma vez que reflete a diversidade cultural de nossa nação e a importância de assegurar a representatividade racial no âmbito artístico. <br><br>
+
+					O objetivo primordial do Coletivo é criar um ambiente inclusivo, diversificado e propício para o avanço do balé brasileiro, com a participação ativa de artistas e ativistas negros. Nessa perspectiva, o Coletivo Artístico Humanos assume um papel fundamental não apenas para o balé brasileiro, mas para todo o universo das artes cênicas, representando uma organização cultural de grande relevância.<br><br>
+
+					“Os desafios de ser artista em um país que desconsidera e, ultimamente, chega a demonizar a educação e a cultura, são enormes para qualquer pessoa. E, quando se trata de pessoas negras, esse desafio aumenta. Assim queremos buscamos a cada instante ampliar o cenário artístico para o nosso povo.”
+
+					<p class="t-right">— Luan Canellas, diretor e fundador.</p>
+                </div>
+			</div>
         </div>
     </section>
 
@@ -316,9 +378,13 @@
 									</span>
 
 									<?php if(isset($secondName)){ ?>
-									<h3 class="t-center m-b-35 m-t-5 f-glitten color7 fs-70" style="line-height: 0.8;">
+									<h3 class="t-center m-b-10 m-t-5 f-glitten color7 fs-70" style="line-height: 0.8;">
 										<?php echo $secondName?>
 									</h3><?php } ?>
+
+									<h6 class="t-center m-b-25">
+										<?php echo $age?> anos
+									</h6>
 
 									<p class="t-center m-b-22 m-l-r-auto">
 										<?php echo $text;
@@ -329,19 +395,19 @@
 								</div>
 							</div>
 
-							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative">
-								<div class="wrap-pic-dancer size2 hov-img-zoom m-l-r-auto">
-									<img src="<?php echo $image?>" alt="IMG-<?php echo $firstName?>">
-									<button class="btn-edit bg4-pattern" style="top: 86%; left: 12%;" data-id="<?php echo $id; ?>"><i class="fa fa-edit symbol-btn-edit"></i></button>
+							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative flex-c-m">
+								<div class="wrap-pic-dancer size2 m-l-r-auto">
+									<div class="sizefull m-l-r-auto" style="width: 390px; height: 390px; background-image: url(<?php echo $image?>)"></div>
+									<button class="btn-edit" style="top: 86%; left: 13%; background: #D99E07;" data-id="<?php echo $id; ?>"><i class="fa fa-edit symbol-btn-edit"></i></button>
 								</div>
 							</div>
 						</div>
 					<?php } else { ?>
 						<div class="row p-t-100">
-							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative">
-								<div class="wrap-pic-dancer size2 hov-img-zoom m-l-r-auto">
-									<img src="<?php echo $image?>" alt="IMG-<?php echo $firstName?>">
-									<button class="btn-edit bg4-pattern" style="top: 72.5%; left: 80%;" data-id="<?php echo $id; ?>"><i class="fa fa-edit symbol-btn-edit"></i></button>
+							<div class="col-md-6 p-b-30 dancer-pic-column pos-relative flex-c-m">
+								<div class="wrap-pic-dancer size2 m-l-r-auto">
+									<div class="sizefull m-l-r-auto" style="width: 390px; height: 390px; background-image: url(<?php echo $image?>)"></div>
+									<button class="btn-edit" style="top: 80.5%; left: 80%; background: #D99E07;" data-id="<?php echo $id; ?>"><i class="fa fa-edit symbol-btn-edit"></i></button>
 								</div>
 							</div>
 
@@ -463,20 +529,6 @@
     
     <?php include_once 'footer.php' ?>
 	<script>
-		$(document).ready(function () {
-			var adminToggleBtn = $('#adminToggleBtn');
-			var adminSection = $('.section-admin');
-
-			var arrowIcon = adminToggleBtn.find('.ti-angle-down');
-
-			adminToggleBtn.click(function () {
-				adminSection.slideToggle();
-
-				arrowIcon.addClass('ti-angle-up');
-				arrowIcon.removeClass('ti-angle-down');
-			});
-		});
-
 		/*[DATERANGEPICKER]
 		===========================================================*/
 		/* Aqui eu reconfigurei o DateRangePicker para apresentar as datas em Português.

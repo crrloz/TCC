@@ -120,5 +120,31 @@
 				overlayParentElement : 'html',
 				transition: function(url){ window.location.href = url; }
 			});
+
+
+			/*[MOSTRAR SEÇÕES DE ADMINISTRAÇÃO]
+			===========================================================*/
+			$(document).ready(function () {
+				var adminToggleBtn = $('#adminToggleBtn');
+				var adminSection = $('.section-admin');
+				var arrowIcon = adminToggleBtn.find('.ti-angle-down');
+				
+				var count = 0;
+
+				adminToggleBtn.click(function () {
+					if(count%2 == 0){
+						adminSection.slideToggle();
+
+						arrowIcon.addClass('ti-angle-up');
+						arrowIcon.removeClass('ti-angle-down');
+					} else {
+						adminSection.slideToggle();
+
+						arrowIcon.addClass('ti-angle-down');
+						arrowIcon.removeClass('ti-angle-up');	
+					}
+					count++;
+				});
+			});
 		})(jQuery);
 	</script>

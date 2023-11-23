@@ -10,7 +10,6 @@
     .color6 {color: #7F4AA4;}
 
     .color7 {color: #D99E07;}
-    
 
     input[type="text"] {
         appearance: none;
@@ -46,6 +45,33 @@
     .input-field::-webkit-input-placeholder {
         color: #9D6EBE;
     }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #7F4AA4;
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        animation: spin 1s linear infinite;
+    }
+
+    .wrap-loading-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(250, 238, 221);
+        padding: 80px;
+        text-align: center;
+        z-index: 200;
+        display: block;
+        border-radius: 4px;
+    }
 </style>
 <body class="animsition" style="background-color: rgb(250, 238, 221);">
     <?php include_once 'header.php';
@@ -60,8 +86,19 @@
             } else if($_GET['error'] == "thepassdontmatch"){ echo "as senhas não batem."; } else if($_GET['error'] == "usernametaken"){ echo "este nome de usuário já está sendo utilizado.";}?></strong>
         </div>
     </aside>
-
     <?php } ?>
+
+
+    <!-- Modal de Carregamento -->
+    <aside class="section-overlay-loading">
+        <div class="overlay overlay-loading" style="display: block;">
+        </div>
+
+        <div class="wrap-loading-content">
+            <div class="loader"></div>
+        </div>
+    </aside>
+
 
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/dança3.jpg);">
@@ -76,7 +113,7 @@
         <div class="signup-form m-t-120 m-b-40 t-center">
             <h2 class="p-b-20">CADASTRE-SE</h2>
             <p>Preencha os dados abaixo corretamente e realize seu cadastro em nosso site!</p>
-            <form action="includes/signup.inc.php" method="post" class="m-t-25">
+            <form action="includes/signup.inc.php" method="post" class="signup-form m-t-25">
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
@@ -107,21 +144,22 @@
                 </div>
                 <br>
 
+                <?php
+                if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
+                    echo "<p class='p-b-5'>Preencha todos os campos!</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "invaliduid"){
+                    echo "<p class='p-b-5'>Usuário inválido.</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "invalidemail"){
+                    echo "<p class='p-b-5'>Endereço de e-mail inválido.</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "thepassdontmatch"){
+                    echo "<p class='p-b-5'>As senham não batem.</p>";
+                } else if(isset($_GET["error"]) && $_GET["error"] == "usernametaken"){
+                    echo "<p class='p-b-5'>Nome de usuário já utilizado.</p>";
+                }
+                ?>
+
                 <a href="login.php" class="color5">Já possui um cadastro? Clique aqui!</a>
             </form>
-            <?php
-                if(isset($_GET["error"]) && $_GET["error"] == "emptyinput"){
-                    echo "<p class='p-b-20'>Preencha todos os campos!</p>";
-                } else if(isset($_GET["error"]) && $_GET["error"] == "invaliduid"){
-                    echo "<p class='p-b-20'>Usuário inválido.</p>";
-                } else if(isset($_GET["error"]) && $_GET["error"] == "invalidemail"){
-                    echo "<p class='p-b-20'>Endereço de e-mail inválido.</p>";
-                } else if(isset($_GET["error"]) && $_GET["error"] == "thepassdontmatch"){
-                    echo "<p class='p-b-20'>As senham não batem.</p>";
-                } else if(isset($_GET["error"]) && $_GET["error"] == "usernametaken"){
-                    echo "<p class='p-b-20'>Nome de usuário já utilizado.</p>";
-                }
-            ?>
         </div>
     </section>
 
@@ -130,4 +168,11 @@
     <hr class="m-r-45 m-l-45">
     
     <?php include_once 'footer.php' ?>
+    <script>
+        $(document).ready(function() {
+            $('.signup-form').submit(function() {
+                $('.section-overlay-loading, .wrap-loading-content').show();
+            });
+        });
+    </script>
 </body>

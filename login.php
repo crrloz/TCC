@@ -55,8 +55,6 @@
 
             <input type="submit" name="submit" value="Logar" class="btn3"><br><br>
 
-            <a href="reset.php" class="color5 m-b-15">Esqueceu sua senha? Clique aqui!</a>
-
             <?php
             if(isset($_GET["error"]) && $_GET["error"] == "wronglogin"){
                 echo "<p>Dados incorretos.</p>";
@@ -64,6 +62,8 @@
                 echo "<p>Preencha todos os campos!</p>";
             }
             ?>
+            
+            <a href="reset.php" class="color5 m-b-15">Esqueceu sua senha? Clique aqui!</a>
         </form>
     </section>
 

@@ -106,7 +106,8 @@ video {
 
 .section-overlay-file,
 .section-overlay-email,
-.section-overlay-delete {
+.section-overlay-delete,
+.section-overlay-loading {
   display: none;
 }
 

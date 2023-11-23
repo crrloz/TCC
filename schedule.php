@@ -223,7 +223,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 
 			<div class="description bg2 t-center flex-c-m">
 				<?php if ($nextEventDate) { ?>
-					<span class="color0">O próximo evento "<?php echo $nextEventName; ?>" será realizado no dia <?php echo date('d', strtotime($nextEventDate)); ?>, numa <?php echo date('l', strtotime($nextEventDate)); ?>. Agende já o seu ingresso!</span>
+					<span class="color0">O próximo evento "<b><?php echo $nextEventName; ?></b>" será realizado no dia <?php echo date('d', strtotime($nextEventDate)); ?>. Agende já o seu ingresso!</span>
 				<?php } else { ?>
 					<span class="color0">Nenhum evento agendado.</span>
 				<?php } ?>
@@ -254,6 +254,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 
 
 	<section class="section-admin section-admin-schedule m-b-40 dis-none">
+		<hr class="m-r-150 m-l-150">
 		<h2 class="m-t-50 m-b-20 f-glitten fs-50 t-center">
 			ADICIONAR EVENTO
 		</h2>
@@ -304,7 +305,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 					</div>
 
 					<p>
-						Caso não haja um limite, digite um valor grande.
+						Caso não haja um limite, digite um valor grande
 					</p>
 
 				</div>
@@ -320,7 +321,7 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
 					</div>
 
 					<p>
-						Para valores com centavos, utilize "." e não ",".
+						Para valores com centavos, utilize "." e não ","
 					</p>
 				</div>
 
@@ -361,29 +362,6 @@ if(isset($_GET['event']) && !isset($_SESSION['userid'])){
     
     <?php include_once 'footer.php' ?>
 	<script>
-		$(document).ready(function () {
-			var adminToggleBtn = $('#adminToggleBtn');
-			var adminSection = $('.section-admin');
-			var arrowIcon = adminToggleBtn.find('.ti-angle-down');
-			
-			var count = 0;
-
-			adminToggleBtn.click(function () {
-				if(count%2 == 0){
-					adminSection.slideToggle();
-
-					arrowIcon.addClass('ti-angle-up');
-					arrowIcon.removeClass('ti-angle-down');
-				} else {
-					adminSection.slideToggle();
-
-					arrowIcon.addClass('ti-angle-down');
-					arrowIcon.removeClass('ti-angle-up');	
-				}
-				count++;
-			});
-		});
-
 		/*[DATERANGEPICKER]
 		===========================================================*/
 		/* Aqui eu reconfigurei o DateRangePicker para apresentar as datas em Português.

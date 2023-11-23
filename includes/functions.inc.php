@@ -271,7 +271,7 @@ function sendEmail($message, $subject, $email){
     $mail->Port = 465;
     $mail->SMTPSecure = 'ssl';
     $mail->isHTML(true);
-    $mail->setFrom('comunicacaoprohu@gmail.com', 'Coletivo Artístico Humanos');
+    $mail->setFrom('comunicacaoprohu@gmail.com', 'Coletivo Artistico Humanos');
     $mail->addAddress($email);
     $mail->Subject = $subject;
     $mail->Body = $message;

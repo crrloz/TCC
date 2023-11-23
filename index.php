@@ -175,7 +175,8 @@
                                             <a href="<?php echo $url?>" target="_blank"><?php echo $title ?></a>
                                         </div>
                                 </div>
-                        <?php } else if(mysqli_num_rows($result) == 4){
+                        <?php }
+                        } else if(mysqli_num_rows($result) == 4){
 
                         } else if(mysqli_num_rows($result) == 5){
                             if($count == 1){ ?>
@@ -205,11 +206,15 @@
                                     </div>
                                 </div>
                             <?php }
-                        }
-                        $count++;
+                        } $count++;
                     }
-                }
-             } ?>
+                } 
+                
+                if(isset($_SESSION['isadmin'])){ ?>
+                <button class="btn4 bo-color-2 m-t-20">
+                    <a class="color9" href="news.php">CADASTRAR &rarr;</a>
+                </button>
+                <?php } ?>
             </div>
         </div>
     </section>

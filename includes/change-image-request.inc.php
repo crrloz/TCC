@@ -19,7 +19,7 @@ if(isset($_POST['submit_img'])){
         }
     
         $_SESSION['imagesrc'] = "data:image/jpeg;base64," . base64_encode($imageData);
-        header("location: ../profile.php");
+        header("location: ../profile.php?error=none");
         exit();
     } else {
         header("location: ../profile.php?error=imageerror");

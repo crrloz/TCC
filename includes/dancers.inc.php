@@ -50,7 +50,7 @@ if(isset($_POST['submit_dancers'])){
     $text = $_POST['text'];
 
     if(isset($_POST['url'])){
-        $url = "https://www.instagram.com/".$_POST['url']."/";
+        $url = $_POST['url'];
     } else {
         $url = null;
     }
@@ -95,6 +95,25 @@ if(isset($_POST['submit_dancers'])){
         exit();
     } else {
         header("location: ../about.php?error=imageerror");
+        exit();
+    }
+} else if(isset($_POST['delete_dancers'])){
+    $id = $_POST['id'];
+    
+    $sql = "DELETE FROM dancers WHERE dancersId = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../about.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        header("location: ../about.php?error=none");
+        exit();
+    } else {
+        header("location: ../about.php?error=couldnotdeletedancer");
         exit();
     }
 } else {
